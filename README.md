@@ -10,7 +10,11 @@ The foler 121_SAMPLE_PVG contains data for the PVG created from all available va
 
 1.3 odgi etc
 
+<<<<<<< HEAD
 # 2 # The 6-sample LSDV PVG
+=======
+## The 6-sample LSDV PVG
+>>>>>>> 03009c709722ad291c2d17503b9930518d13cf7b
 
 The foler 6_SAMPLE_PVG contains data for the PVG created from 6 representative LSDV genomes for computationally efficient investigation.
 
