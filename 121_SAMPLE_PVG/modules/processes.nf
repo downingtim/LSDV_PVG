@@ -18,10 +18,6 @@ Download dataset to examine (eg LSDV)
 #==============================================
 */
 
-// Script parameters
-params.fasta = '/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/lumpy_2_skin_2_disease_2_virus_2_2_.fasta'
-fasta_file = file(params.fasta)
-
 process download {
     output:
     path("*.fasta"), emit: "write"
@@ -33,13 +29,22 @@ process download {
 }
 
 process make_pvg {
+    tag {"index reference FASTA"}
+    label 'pvg'
 
     input:
-    path file from fasta_file
-   
+    path (refFasta)
+    
+    output:
+    path("${refFasta}.gz.fai"), emit: sam_fai
     
     script:
     """
-    samtools faidx $fasta
+    #blast indexes for self-self blast
+    makeblastdb -dbtype nucl -in $refFasta
+    bgzip ${refFasta}
+    echo ${refFasta} ${refFasta}.gz
+    #samtools index
+    samtools faidx ${refFasta}.gz > ${refFasta}.gz.fai
     """
 }
