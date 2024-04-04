@@ -1,0 +1,492 @@
+Apr-04 11:09:17.651 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/pangenome --input goatpox_2_virus_2_.fasta.gz --n_haplotypes 13 --outdir GOAT --communities --wfmash_segment_length 1000
+Apr-04 11:09:17.723 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 23.10.1
+Apr-04 11:09:17.737 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/mnt/lustre/RDS-live/downing/.nextflow/plugins; core-plugins: nf-amazon@2.1.4,nf-azure@1.3.3,nf-cloudcache@0.3.0,nf-codecommit@0.1.5,nf-console@1.0.6,nf-ga4gh@1.1.0,nf-google@1.8.3,nf-tower@1.6.3,nf-wave@1.0.1
+Apr-04 11:09:17.744 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-04 11:09:17.745 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-04 11:09:17.747 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Apr-04 11:09:17.755 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-04 11:09:17.766 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /mnt/lustre/RDS-live/downing/.nextflow/scm
+Apr-04 11:09:18.455 [main] DEBUG nextflow.scm.AssetManager - Git config: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/pangenome.git
+Apr-04 11:09:18.469 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Apr-04 11:09:18.475 [main] DEBUG nextflow.scm.AssetManager - Git config: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/pangenome.git
+Apr-04 11:09:19.171 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/nextflow.config
+Apr-04 11:09:19.171 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/nextflow.config
+Apr-04 11:09:19.179 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Apr-04 11:09:19.896 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Apr-04 11:09:19.897 [main] INFO  nextflow.cli.CmdRun - Launching `https://github.com/nf-core/pangenome` [stupefied_coulomb] DSL2 - revision: 0e8a38734e [master]
+Apr-04 11:09:19.897 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-validation@1.1.3]
+Apr-04 11:09:19.897 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Apr-04 11:09:19.897 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-validation@1.1.3]
+Apr-04 11:09:19.897 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-validation version: 1.1.3
+Apr-04 11:09:19.905 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-validation@1.1.3' resolved
+Apr-04 11:09:19.905 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-validation@1.1.3'
+Apr-04 11:09:19.910 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-validation@1.1.3
+Apr-04 11:09:19.915 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /mnt/lustre/RDS-live/downing/.nextflow/secrets/store.json
+Apr-04 11:09:19.917 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@4be12f6c] - activable => nextflow.secret.LocalSecretsProvider@4be12f6c
+Apr-04 11:09:19.956 [main] DEBUG nextflow.Session - Session UUID: 6ee11b5e-8646-4c47-afa6-553587325f02
+Apr-04 11:09:19.956 [main] DEBUG nextflow.Session - Run name: stupefied_coulomb
+Apr-04 11:09:19.956 [main] DEBUG nextflow.Session - Executor pool size: 64
+Apr-04 11:09:19.961 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Apr-04 11:09:19.964 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=192; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-04 11:09:19.979 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 23.10.1 build 5891
+  Created: 12-01-2024 22:01 UTC 
+  System: Linux 5.4.0-42-generic
+  Runtime: Groovy 3.0.19 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
+  Encoding: UTF-8 (UTF-8)
+  Process: 2509536@login1 [192.168.200.211]
+  CPUs: 64 - Mem: 995.6 GB (926.4 GB) - Swap: 32 GB (31.8 GB)
+Apr-04 11:09:19.992 [main] DEBUG nextflow.Session - Work-dir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work [lustre]
+Apr-04 11:09:19.992 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/bin
+Apr-04 11:09:20.000 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Apr-04 11:09:20.008 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Apr-04 11:09:20.056 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Apr-04 11:09:20.065 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 65; maxThreads: 1000
+Apr-04 11:09:20.125 [main] DEBUG nextflow.Session - Session start
+Apr-04 11:09:20.129 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/GOAT/pipeline_info/execution_trace_2024-04-04_11-09-19.txt
+Apr-04 11:09:20.268 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Apr-04 11:09:20.492 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-validation
+Apr-04 11:09:22.497 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsHelp:paramsHelp]; plugin Id: nf-validation
+Apr-04 11:09:22.497 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-validation
+Apr-04 11:09:22.497 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-validation
+Apr-04 11:09:22.498 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-validation
+Apr-04 11:09:22.643 [main] DEBUG nextflow.Nextflow - Using schema file: nextflow_schema.json
+Apr-04 11:09:22.645 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `monochromeLogs` -- Initialise it to a default value eg. `params.monochromeLogs = some_value`
+Apr-04 11:09:22.654 [main] INFO  nextflow.Nextflow - 
+
+-[2m----------------------------------------------------[0m-
+                                        [0;32m,--.[0;30m/[0;32m,-.[0m
+[0;34m        ___     __   __   __   ___     [0;32m/,-._.--~'[0m
+[0;34m  |\ | |__  __ /  ` /  \ |__) |__         [0;33m}  {[0m
+[0;34m  | \| |       \__, \__/ |  \ |___     [0;32m\`-._,-`-,[0m
+                                        [0;32m`._,._,'[0m
+[0;35m  nf-core/pangenome v1.1.2-g0e8a387[0m
+-[2m----------------------------------------------------[0m-
+[1mCore Nextflow options[0m
+  [0;34mrevision             : [0;32mmaster[0m
+  [0;34mrunName              : [0;32mstupefied_coulomb[0m
+  [0;34mlaunchDir            : [0;32m/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST[0m
+  [0;34mworkDir              : [0;32m/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work[0m
+  [0;34mprojectDir           : [0;32m/mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome[0m
+  [0;34muserName             : [0;32mdowning[0m
+  [0;34mprofile              : [0;32mstandard[0m
+  [0;34mconfigFiles          : [0;32m[0m
+
+[1mInput/output options[0m
+  [0;34minput                : [0;32mgoatpox_2_virus_2_.fasta.gz[0m
+  [0;34mn_haplotypes         : [0;32m13[0m
+  [0;34moutdir               : [0;32mGOAT[0m
+
+[1mWfmash Options[0m
+  [0;34mwfmash_map_pct_id    : [0;32m90.0[0m
+  [0;34mwfmash_segment_length: [0;32m1000[0m
+
+[1mSeqwish Options[0m
+  [0;34mseqwish_sparse_factor: [0;32m0.0[0m
+
+[1mCommunity[0m
+  [0;34mcommunities          : [0;32mtrue[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+If you use nf-core/pangenome for your analysis please cite:
+
+* The pipeline
+  https://doi.org/10.5281/zenodo.8202636
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+  https://github.com/nf-core/pangenome/blob/master/CITATIONS.md
+-[2m----------------------------------------------------[0m-
+Apr-04 11:09:22.658 [main] DEBUG nextflow.validation.SchemaValidator - Starting parameters validation
+Apr-04 11:09:22.770 [main] DEBUG nextflow.validation.SchemaValidator - Finishing parameters validation
+Apr-04 11:09:22.770 [main] WARN  nextflow.Nextflow - [nf-core/pangenome] You are attempting to run the pipeline without any custom configuration!
+
+This will be dependent on your local compute environment but can be achieved via one or more of the following:
+   (1) Using an existing pipeline profile e.g. `-profile docker` or `-profile singularity`
+   (2) Using an existing nf-core/configs for your Institution e.g. `-profile crick` or `-profile uppmax`
+   (3) Using your own local custom config e.g. `-c /path/to/your/custom.config`
+
+Please refer to the quick start section and usage docs for the pipeline.
+ 
+Apr-04 11:09:22.878 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:COMMUNITY:WFMASH_MAP_COMMUNITY
+Apr-04 11:09:22.880 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:WFMASH_MAP_COMMUNITY` matches process NFCORE_PANGENOME:PANGENOME:COMMUNITY:WFMASH_MAP_COMMUNITY
+Apr-04 11:09:22.885 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:22.885 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:22.889 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Apr-04 11:09:22.893 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=64; memory=995.6 GB; capacity=64; pollInterval=100ms; dumpInterval=5m
+Apr-04 11:09:22.895 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Apr-04 11:09:22.935 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:COMMUNITY:PAF2NET
+Apr-04 11:09:22.936 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PAF2NET` matches process NFCORE_PANGENOME:PANGENOME:COMMUNITY:PAF2NET
+Apr-04 11:09:22.936 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:22.936 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:22.944 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:COMMUNITY:NET2COMMUNITIES
+Apr-04 11:09:22.945 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:NET2COMMUNITIES` matches process NFCORE_PANGENOME:PANGENOME:COMMUNITY:NET2COMMUNITIES
+Apr-04 11:09:22.946 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:22.946 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:22.974 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:COMMUNITY:EXTRACT_COMMUNITIES
+Apr-04 11:09:22.974 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:EXTRACT_COMMUNITIES` matches process NFCORE_PANGENOME:PANGENOME:COMMUNITY:EXTRACT_COMMUNITIES
+Apr-04 11:09:22.976 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:22.976 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:22.984 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:COMMUNITY:TABIX_BGZIP
+Apr-04 11:09:22.984 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TABIX_BGZIP` matches process NFCORE_PANGENOME:PANGENOME:COMMUNITY:TABIX_BGZIP
+Apr-04 11:09:22.985 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:22.985 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:22.992 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:COMMUNITY:SAMTOOLS_FAIDX
+Apr-04 11:09:22.992 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SAMTOOLS_FAIDX` matches process NFCORE_PANGENOME:PANGENOME:COMMUNITY:SAMTOOLS_FAIDX
+Apr-04 11:09:22.993 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:22.993 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.020 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:WFMASH_MAP_ALIGN
+Apr-04 11:09:23.021 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:WFMASH_MAP_ALIGN` matches process NFCORE_PANGENOME:PANGENOME:PGGB:WFMASH_MAP_ALIGN
+Apr-04 11:09:23.023 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.023 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.031 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:SEQWISH
+Apr-04 11:09:23.031 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SEQWISH` matches process NFCORE_PANGENOME:PANGENOME:PGGB:SEQWISH
+Apr-04 11:09:23.032 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.032 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.037 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:SMOOTHXG
+Apr-04 11:09:23.037 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SMOOTHXG` matches process NFCORE_PANGENOME:PANGENOME:PGGB:SMOOTHXG
+Apr-04 11:09:23.038 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.038 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.042 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:GFAFFIX
+Apr-04 11:09:23.042 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:GFAFFIX` matches process NFCORE_PANGENOME:PANGENOME:PGGB:GFAFFIX
+Apr-04 11:09:23.042 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.043 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.048 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_BUILD
+Apr-04 11:09:23.048 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_BUILD` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_BUILD
+Apr-04 11:09:23.049 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.049 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.054 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_UNCHOP
+Apr-04 11:09:23.054 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_UNCHOP` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_UNCHOP
+Apr-04 11:09:23.055 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.055 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.058 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_SORT
+Apr-04 11:09:23.058 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_SORT` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_SORT
+Apr-04 11:09:23.059 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.059 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.063 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_VIEW
+Apr-04 11:09:23.063 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIEW` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_VIEW
+Apr-04 11:09:23.063 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.063 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.070 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS
+Apr-04 11:09:23.070 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_STATS` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS
+Apr-04 11:09:23.071 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.071 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.075 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COLOR
+Apr-04 11:09:23.075 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_COLOR` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COLOR
+Apr-04 11:09:23.076 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.076 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.080 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_POS
+Apr-04 11:09:23.081 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_POS` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_POS
+Apr-04 11:09:23.081 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.081 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.084 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_DEPTH
+Apr-04 11:09:23.084 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_DEPTH` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_DEPTH
+Apr-04 11:09:23.084 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.084 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.086 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_INV
+Apr-04 11:09:23.087 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_INV` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_INV
+Apr-04 11:09:23.087 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.087 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.089 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COMPR
+Apr-04 11:09:23.089 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_COMPR` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COMPR
+Apr-04 11:09:23.090 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.090 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.093 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_UNCALLED
+Apr-04 11:09:23.093 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_UNCALLED` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_UNCALLED
+Apr-04 11:09:23.094 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.094 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.097 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_LAYOUT
+Apr-04 11:09:23.097 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_LAYOUT` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_LAYOUT
+Apr-04 11:09:23.097 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.097 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.102 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_MULTIQC
+Apr-04 11:09:23.102 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_DRAW_MULTIQC` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_MULTIQC
+Apr-04 11:09:23.102 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.102 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.104 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_HEIGHT
+Apr-04 11:09:23.105 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_DRAW_HEIGHT` matches process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_HEIGHT
+Apr-04 11:09:23.105 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.105 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.119 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_SQUEEZE
+Apr-04 11:09:23.120 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_SQUEEZE` matches process NFCORE_PANGENOME:PANGENOME:ODGI_SQUEEZE
+Apr-04 11:09:23.120 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.120 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.124 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_STATS
+Apr-04 11:09:23.124 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_STATS` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_STATS
+Apr-04 11:09:23.125 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.125 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.130 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COLOR
+Apr-04 11:09:23.130 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_COLOR` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COLOR
+Apr-04 11:09:23.130 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.131 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.133 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_POS
+Apr-04 11:09:23.133 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_POS` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_POS
+Apr-04 11:09:23.133 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.133 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.135 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_DEPTH
+Apr-04 11:09:23.136 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_DEPTH` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_DEPTH
+Apr-04 11:09:23.136 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.136 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.138 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_INV
+Apr-04 11:09:23.138 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_INV` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_INV
+Apr-04 11:09:23.139 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.139 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.141 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COMPR
+Apr-04 11:09:23.141 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_COMPR` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COMPR
+Apr-04 11:09:23.141 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.141 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.143 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_UNCALLED
+Apr-04 11:09:23.143 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIZ_UNCALLED` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_UNCALLED
+Apr-04 11:09:23.144 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.144 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.147 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_LAYOUT
+Apr-04 11:09:23.147 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_LAYOUT` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_LAYOUT
+Apr-04 11:09:23.147 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.147 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.150 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_MULTIQC
+Apr-04 11:09:23.150 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_DRAW_MULTIQC` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_MULTIQC
+Apr-04 11:09:23.151 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.151 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.153 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_HEIGHT
+Apr-04 11:09:23.153 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_DRAW_HEIGHT` matches process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_HEIGHT
+Apr-04 11:09:23.153 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.153 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.163 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:ODGI_VIEW
+Apr-04 11:09:23.163 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ODGI_VIEW` matches process NFCORE_PANGENOME:PANGENOME:ODGI_VIEW
+Apr-04 11:09:23.164 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.164 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.174 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:MULTIQC_COMMUNITY
+Apr-04 11:09:23.174 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTIQC_COMMUNITY` matches process NFCORE_PANGENOME:PANGENOME:MULTIQC_COMMUNITY
+Apr-04 11:09:23.174 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.174 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.206 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_PANGENOME:PANGENOME:MULTIQC
+Apr-04 11:09:23.206 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTIQC` matches process NFCORE_PANGENOME:PANGENOME:MULTIQC
+Apr-04 11:09:23.206 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Apr-04 11:09:23.206 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Apr-04 11:09:23.212 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+Apr-04 11:09:23.213 [main] DEBUG nextflow.Session - Igniting dataflow network (66)
+Apr-04 11:09:23.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:WFMASH_MAP_COMMUNITY
+Apr-04 11:09:23.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:PAF2NET
+Apr-04 11:09:23.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:NET2COMMUNITIES
+Apr-04 11:09:23.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:EXTRACT_COMMUNITIES
+Apr-04 11:09:23.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:TABIX_BGZIP
+Apr-04 11:09:23.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:SAMTOOLS_FAIDX
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:WFMASH_MAP_ALIGN
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:SEQWISH
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:SMOOTHXG
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:GFAFFIX
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_BUILD
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_UNCHOP
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_SORT
+Apr-04 11:09:23.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_VIEW
+Apr-04 11:09:23.221 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS
+Apr-04 11:09:23.223 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COLOR
+Apr-04 11:09:23.223 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_POS
+Apr-04 11:09:23.224 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_DEPTH
+Apr-04 11:09:23.227 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_INV
+Apr-04 11:09:23.227 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COMPR
+Apr-04 11:09:23.227 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_UNCALLED
+Apr-04 11:09:23.227 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_LAYOUT
+Apr-04 11:09:23.227 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_MULTIQC
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_HEIGHT
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_SQUEEZE
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_STATS
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COLOR
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_POS
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_DEPTH
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_INV
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COMPR
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_UNCALLED
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_LAYOUT
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_MULTIQC
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_HEIGHT
+Apr-04 11:09:23.228 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:ODGI_VIEW
+Apr-04 11:09:23.229 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:MULTIQC_COMMUNITY
+Apr-04 11:09:23.229 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_PANGENOME:PANGENOME:MULTIQC
+Apr-04 11:09:23.232 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_8edb781fc62d8421: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../modules/nf-core/odgi/squeeze/main.nf
+  Script_ad4d756533665505: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/local/paf2net/main.nf
+  Script_04324e1c2f23815c: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/gfaffix/main.nf
+  Script_7e5bee018cf2944b: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/odgi/build/main.nf
+  Script_80f2892a8cb6148d: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/odgi/unchop/main.nf
+  Script_a5ed8f60458fcb28: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/smoothxg/main.nf
+  Script_10f3a8016cec6f61: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/community.nf
+  Script_e539f8fe4b23934e: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/local/net2communities/main.nf
+  Script_61fae35dc249f180: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../subworkflows/local/odgi_qc.nf
+  Script_34a6e65ee7dbdbe0: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./subworkflows/local/utils_nfcore_pangenome_pipeline/../../nf-core/utils_nextflow_pipeline/main.nf
+  Script_7b9546d200c82530: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../modules/local/vg_deconstruct/main.nf
+  Script_a7d371fe23db7aab: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./subworkflows/local/utils_nfcore_pangenome_pipeline/../../nf-core/utils_nfvalidation_plugin/main.nf
+  Script_912b8ef9a5ae92c3: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../subworkflows/local/../../modules/nf-core/odgi/stats/main.nf
+  Script_af8f33d91bbfce00: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/odgi/viz/main.nf
+  Script_f423d14684a06230: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../modules/local/multiqc_community/main.nf
+  Script_52ff1c2b07fb45f6: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/seqwish/induce/main.nf
+  Script_11299cb12a111d0f: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../modules/nf-core/multiqc/main.nf
+  Script_4efc6a0de193aa96: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/local/extract_communities/main.nf
+  Script_131c04f2e92ec58c: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/odgi/sort/main.nf
+  Script_e713e033211c924b: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/tabix/bgzip/main.nf
+  Script_a6c386edbb218661: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/odgi/draw/main.nf
+  Script_c307d29fe77b3c7d: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../modules/nf-core/odgi/view/main.nf
+  Script_61b1de974727a343: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/main.nf
+  Script_32f7ef123629af97: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/pggb.nf
+  Script_f6db48fd2056bd8b: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../subworkflows/local/../../modules/nf-core/odgi/layout/main.nf
+  Script_5f834a7f907ef07c: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/local/split_approx_mappings_in_chunks/main.nf
+  Script_be0adedc591c66cc: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/nf-core/utils_nfcore_pipeline/main.nf
+  Script_43a86c70e7b4824d: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/input_check.nf
+  Script_cea1f0d636719001: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/wfmash/main.nf
+  Script_aa2d9c40caa5da6e: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./subworkflows/local/utils_nfcore_pangenome_pipeline/main.nf
+  Script_274156cf92c4a1c4: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/../subworkflows/local/../../modules/nf-core/samtools/faidx/main.nf
+  Script_2bd785679a2879e8: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/./workflows/pangenome.nf
+Apr-04 11:09:23.233 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Apr-04 11:09:23.233 [main] DEBUG nextflow.Session - Session await
+Apr-04 11:09:23.319 [Actor Thread 42] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.009 s; total time: 0.01 s
+Apr-04 11:09:23.324 [Actor Thread 42] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/collect-file/d6bca80856f61b6f7cab5dd60f456eb5
+Apr-04 11:09:23.332 [Actor Thread 42] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-11087306036543111987
+Apr-04 11:09:23.355 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:23.357 [Task submitter] INFO  nextflow.Session - [90/a979d3] Submitted process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:WFMASH_MAP_COMMUNITY (goatpox_2_virus_2_.fasta.gz)
+Apr-04 11:09:24.059 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: NFCORE_PANGENOME:PANGENOME:COMMUNITY:WFMASH_MAP_COMMUNITY (goatpox_2_virus_2_.fasta.gz); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/90/a979d3a0102a11f790d39b9761c0f0]
+Apr-04 11:09:24.091 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=192; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-04 11:09:24.099 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:24.101 [Task submitter] INFO  nextflow.Session - [9a/7735d1] Submitted process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:PAF2NET (goatpox_2_virus_2_.fasta.gz)
+Apr-04 11:09:24.242 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: NFCORE_PANGENOME:PANGENOME:COMMUNITY:PAF2NET (goatpox_2_virus_2_.fasta.gz); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/9a/7735d1304c1cdbfcecb2cea8a217ba]
+Apr-04 11:09:24.265 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:24.265 [Task submitter] INFO  nextflow.Session - [1c/3c7faa] Submitted process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:NET2COMMUNITIES (goatpox_2_virus_2_.fasta.gz)
+Apr-04 11:09:24.916 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: NFCORE_PANGENOME:PANGENOME:COMMUNITY:NET2COMMUNITIES (goatpox_2_virus_2_.fasta.gz); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/1c/3c7faae233fbf64bf22737f5455fed]
+Apr-04 11:09:24.936 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:24.936 [Task submitter] INFO  nextflow.Session - [bf/0e7f4b] Submitted process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:EXTRACT_COMMUNITIES ([id:goatpox_2_virus_2_.fasta.gz.community.0])
+Apr-04 11:09:25.083 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: NFCORE_PANGENOME:PANGENOME:COMMUNITY:EXTRACT_COMMUNITIES ([id:goatpox_2_virus_2_.fasta.gz.community.0]); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/bf/0e7f4b03b66281eca0188e913b93ca]
+Apr-04 11:09:25.104 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:25.105 [Task submitter] INFO  nextflow.Session - [59/042eae] Submitted process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:TABIX_BGZIP (goatpox_2_virus_2_.fasta.gz.community.0)
+Apr-04 11:09:25.394 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: NFCORE_PANGENOME:PANGENOME:COMMUNITY:TABIX_BGZIP (goatpox_2_virus_2_.fasta.gz.community.0); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/59/042eae5c2eadf0aad7199fe310cbf0]
+Apr-04 11:09:25.396 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Process `NFCORE_PANGENOME:PANGENOME:COMMUNITY:TABIX_BGZIP (goatpox_2_virus_2_.fasta.gz.community.0)` is unable to find [UnixPath]: `/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/59/042eae5c2eadf0aad7199fe310cbf0/goatpox_2_virus_2_.fasta.gz.community.0.fa.gz.gzi` (pattern: `goatpox_2_virus_2_.fasta.gz.community.0.fa.gz.gzi`)
+Apr-04 11:09:25.463 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_PANGENOME:PANGENOME:COMMUNITY:TABIX_BGZIP > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Apr-04 11:09:25.472 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:25.473 [Task submitter] INFO  nextflow.Session - [1e/225b3f] Submitted process > NFCORE_PANGENOME:PANGENOME:COMMUNITY:SAMTOOLS_FAIDX (goatpox_2_virus_2_.fasta.gz.community.0.fa.gz)
+Apr-04 11:09:25.686 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: NFCORE_PANGENOME:PANGENOME:COMMUNITY:SAMTOOLS_FAIDX (goatpox_2_virus_2_.fasta.gz.community.0.fa.gz); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/1e/225b3fd802f3508d6f2487b5f72ba0]
+Apr-04 11:09:25.695 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_PANGENOME:PANGENOME:COMMUNITY:SAMTOOLS_FAIDX > Skipping output binding because one or more optional files are missing: fileoutparam<0:1>
+Apr-04 11:09:25.713 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:25.714 [Task submitter] INFO  nextflow.Session - [78/0d8b59] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:WFMASH_MAP_ALIGN (goatpox_2_virus_2_.fasta.gz.community.0)
+Apr-04 11:09:27.378 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: NFCORE_PANGENOME:PANGENOME:PGGB:WFMASH_MAP_ALIGN (goatpox_2_virus_2_.fasta.gz.community.0); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/78/0d8b594f0e3278f563145020fe6c7e]
+Apr-04 11:09:27.401 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:27.401 [Task submitter] INFO  nextflow.Session - [62/6e0b2f] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:SEQWISH (goatpox_2_virus_2_.fasta.gz.community.0)
+Apr-04 11:09:28.566 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: NFCORE_PANGENOME:PANGENOME:PGGB:SEQWISH (goatpox_2_virus_2_.fasta.gz.community.0); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/62/6e0b2f76c39af4655f0eb4da5daea2]
+Apr-04 11:09:28.586 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:28.586 [Task submitter] INFO  nextflow.Session - [7b/b36a0d] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_BUILD (goatpox_2_virus_2_.fasta.gz.community.0.seqwish)
+Apr-04 11:09:28.592 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:28.592 [Task submitter] INFO  nextflow.Session - [a3/7ce962] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:SMOOTHXG (goatpox_2_virus_2_.fasta.gz.community.0)
+Apr-04 11:09:30.229 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_BUILD (goatpox_2_virus_2_.fasta.gz.community.0.seqwish); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/7b/b36a0d5fcc1e0606f971dc9c2f8be4]
+Apr-04 11:09:30.248 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:30.249 [Task submitter] INFO  nextflow.Session - [7b/61dd3a] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS (goatpox_2_virus_2_.fasta.gz.community.0.seqwish)
+Apr-04 11:09:30.384 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS (goatpox_2_virus_2_.fasta.gz.community.0.seqwish); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/7b/61dd3a568a8453c28affc64e41ad71]
+Apr-04 11:09:30.390 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS > Skipping output binding because one or more optional files are missing: fileoutparam<0:1>
+Apr-04 11:09:44.611 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: NFCORE_PANGENOME:PANGENOME:PGGB:SMOOTHXG (goatpox_2_virus_2_.fasta.gz.community.0); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/a3/7ce96258621bd167b464f0a0562b44]
+Apr-04 11:09:44.618 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_PANGENOME:PANGENOME:PGGB:SMOOTHXG > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+Apr-04 11:09:44.628 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:44.629 [Task submitter] INFO  nextflow.Session - [28/efc71a] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:GFAFFIX (goatpox_2_virus_2_.fasta.gz.community.0)
+Apr-04 11:09:44.792 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: NFCORE_PANGENOME:PANGENOME:PGGB:GFAFFIX (goatpox_2_virus_2_.fasta.gz.community.0); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/28/efc71ab9f101a4f82393eb5b72ad64]
+Apr-04 11:09:44.809 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:44.809 [Task submitter] INFO  nextflow.Session - [1b/99aeb0] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_BUILD (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:46.438 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_BUILD (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/1b/99aeb0ab4b1efb862ea4a37cab57c0]
+Apr-04 11:09:46.454 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:46.454 [Task submitter] INFO  nextflow.Session - [86/2356fd] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_UNCHOP (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:46.629 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_UNCHOP (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/86/2356fd3a90fd59c01b75ed4351f178]
+Apr-04 11:09:46.644 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:46.644 [Task submitter] INFO  nextflow.Session - [e1/add2a7] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_SORT (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:48.864 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_SORT (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/e1/add2a7c0ed31711812f7bb28626adc]
+Apr-04 11:09:48.899 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.899 [Task submitter] INFO  nextflow.Session - [bf/23e5af] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_UNCALLED (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_uncalled)
+Apr-04 11:09:48.907 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.907 [Task submitter] INFO  nextflow.Session - [99/ddb407] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_POS (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_pos)
+Apr-04 11:09:48.911 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.912 [Task submitter] INFO  nextflow.Session - [0f/644299] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COMPR (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_O)
+Apr-04 11:09:48.916 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.916 [Task submitter] INFO  nextflow.Session - [c7/cc75bb] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_SQUEEZE (goatpox_2_virus_2_.fasta.gz)
+Apr-04 11:09:48.919 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.919 [Task submitter] INFO  nextflow.Session - [1e/b72bcd] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_LAYOUT (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:48.921 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.921 [Task submitter] INFO  nextflow.Session - [09/6996ce] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_VIEW (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:48.925 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.925 [Task submitter] INFO  nextflow.Session - [87/2a4642] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COLOR (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz)
+Apr-04 11:09:48.929 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.929 [Task submitter] INFO  nextflow.Session - [2e/c2f249] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:48.932 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.932 [Task submitter] INFO  nextflow.Session - [63/fab255] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_INV (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_inv)
+Apr-04 11:09:48.935 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:48.936 [Task submitter] INFO  nextflow.Session - [a9/519383] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_DEPTH (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_depth)
+Apr-04 11:09:49.058 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 19; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COMPR (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_O); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/0f/644299af70566532e34aba73ec11d5]
+Apr-04 11:09:49.072 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 25; name: NFCORE_PANGENOME:PANGENOME:ODGI_SQUEEZE (goatpox_2_virus_2_.fasta.gz); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/c7/cc75bb01320eab5cbbfc90a649e89e]
+Apr-04 11:09:49.078 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_VIEW (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/09/6996ceebafd5f2a8c37befb92ffcb1]
+Apr-04 11:09:49.083 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 22; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_COLOR (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/87/2a4642caba638302acc534c329c371]
+Apr-04 11:09:49.085 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.086 [Task submitter] INFO  nextflow.Session - [9b/926d60] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_DEPTH (goatpox_2_virus_2_.fasta.gz.squeeze.viz_depth)
+Apr-04 11:09:49.092 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.093 [Task submitter] INFO  nextflow.Session - [6a/4449e0] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_UNCALLED (goatpox_2_virus_2_.fasta.gz.squeeze.viz_uncalled)
+Apr-04 11:09:49.095 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 24; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/2e/c2f24933b2cbf81aed45cdc828ef6e]
+Apr-04 11:09:49.097 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.097 [Task submitter] INFO  nextflow.Session - [30/c159e8] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_POS (goatpox_2_virus_2_.fasta.gz.squeeze.viz_pos)
+Apr-04 11:09:49.099 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_STATS > Skipping output binding because one or more optional files are missing: fileoutparam<0:1>
+Apr-04 11:09:49.101 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.101 [Task submitter] INFO  nextflow.Session - [61/63a790] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COLOR (goatpox_2_virus_2_.fasta.gz.squeeze.viz)
+Apr-04 11:09:49.102 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 21; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_INV (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_inv); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/63/fab255ff591527ca4bf9757e689fb9]
+Apr-04 11:09:49.105 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.105 [Task submitter] INFO  nextflow.Session - [82/563c2a] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_LAYOUT (goatpox_2_virus_2_.fasta.gz.squeeze)
+Apr-04 11:09:49.106 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 23; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_DEPTH (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_depth); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/a9/51938397a2c0c86dd873c17693e366]
+Apr-04 11:09:49.109 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.109 [Task submitter] INFO  nextflow.Session - [02/1c0c8e] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_STATS (goatpox_2_virus_2_.fasta.gz.squeeze)
+Apr-04 11:09:49.112 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.113 [Task submitter] INFO  nextflow.Session - [65/1392cb] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_VIEW (goatpox_2_virus_2_.fasta.gz.squeeze)
+Apr-04 11:09:49.117 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.117 [Task submitter] INFO  nextflow.Session - [bd/178620] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_INV (goatpox_2_virus_2_.fasta.gz.squeeze.viz_inv)
+Apr-04 11:09:49.121 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:49.121 [Task submitter] INFO  nextflow.Session - [fc/12ca1b] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COMPR (goatpox_2_virus_2_.fasta.gz.squeeze.viz_O)
+Apr-04 11:09:49.158 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 17; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_UNCALLED (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_uncalled); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/bf/23e5afd8154ebb44d7266cb27045d4]
+Apr-04 11:09:49.164 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 18; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_VIZ_POS (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix.viz_pos); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/99/ddb407b74e8434e295c9c42b18b54b]
+Apr-04 11:09:49.247 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 33; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COLOR (goatpox_2_virus_2_.fasta.gz.squeeze.viz); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/61/63a79066334237e92fd22fb3c44219]
+Apr-04 11:09:49.254 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 28; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_STATS (goatpox_2_virus_2_.fasta.gz.squeeze); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/02/1c0c8e37bb5bbc3a57cdde0bd6a597]
+Apr-04 11:09:49.258 [Task monitor] DEBUG nextflow.processor.TaskProcessor - Process NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_STATS > Skipping output binding because one or more optional files are missing: fileoutparam<0:1>
+Apr-04 11:09:49.262 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 26; name: NFCORE_PANGENOME:PANGENOME:ODGI_VIEW (goatpox_2_virus_2_.fasta.gz.squeeze); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/65/1392cb97f29a859cebed2d79399b9c]
+Apr-04 11:09:49.266 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 31; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_INV (goatpox_2_virus_2_.fasta.gz.squeeze.viz_inv); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/bd/178620b8e87eb89524ff81e7d2545b]
+Apr-04 11:09:49.269 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 34; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_COMPR (goatpox_2_virus_2_.fasta.gz.squeeze.viz_O); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/fc/12ca1b0d9c757b108b8a8e7472aa60]
+Apr-04 11:09:49.347 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 30; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_DEPTH (goatpox_2_virus_2_.fasta.gz.squeeze.viz_depth); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/9b/926d60be3a884a93688fae33495c7b]
+Apr-04 11:09:49.353 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 32; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_UNCALLED (goatpox_2_virus_2_.fasta.gz.squeeze.viz_uncalled); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/6a/4449e0fb40fa53bea7b3da4894df1a]
+Apr-04 11:09:49.357 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 29; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_VIZ_POS (goatpox_2_virus_2_.fasta.gz.squeeze.viz_pos); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/30/c159e8f91039b908f24a50c2b406e6]
+Apr-04 11:09:50.624 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 20; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_LAYOUT (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/1e/b72bcd38e91b9be33897728b01cdfa]
+Apr-04 11:09:50.640 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:50.640 [Task submitter] INFO  nextflow.Session - [bf/ce781e] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_MULTIQC (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:50.643 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:50.643 [Task submitter] INFO  nextflow.Session - [74/73dabe] Submitted process > NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_HEIGHT (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix)
+Apr-04 11:09:50.793 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 35; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_HEIGHT (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/74/73dabe45e9750a93d0a397633c039b]
+Apr-04 11:09:50.811 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 27; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_LAYOUT (goatpox_2_virus_2_.fasta.gz.squeeze); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/82/563c2afe05aa57b6c1c3e18a02efb8]
+Apr-04 11:09:50.824 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:50.825 [Task submitter] INFO  nextflow.Session - [c2/ccafef] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_MULTIQC (goatpox_2_virus_2_.fasta.gz.squeeze)
+Apr-04 11:09:50.829 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:50.829 [Task submitter] INFO  nextflow.Session - [38/6a0730] Submitted process > NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_HEIGHT (goatpox_2_virus_2_.fasta.gz.squeeze)
+Apr-04 11:09:51.006 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 37; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_HEIGHT (goatpox_2_virus_2_.fasta.gz.squeeze); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/38/6a073084c429dbb55ad8353b7a8be7]
+Apr-04 11:09:52.789 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 36; name: NFCORE_PANGENOME:PANGENOME:PGGB:ODGI_QC:ODGI_DRAW_MULTIQC (goatpox_2_virus_2_.fasta.gz.community.0.gfaffix); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/bf/ce781e113034f07aa83696433eeebd]
+Apr-04 11:09:52.804 [Actor Thread 51] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /mnt/lustre/RDS-live/downing/.nextflow/assets/nf-core/pangenome/assets/multiqc_config.yml
+Apr-04 11:09:52.814 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:52.814 [Task submitter] INFO  nextflow.Session - [11/43f4b3] Submitted process > NFCORE_PANGENOME:PANGENOME:MULTIQC_COMMUNITY (goatpox_2_virus_2_.fasta.gz.community.0)
+Apr-04 11:09:53.048 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 38; name: NFCORE_PANGENOME:PANGENOME:ODGI_QC:ODGI_DRAW_MULTIQC (goatpox_2_virus_2_.fasta.gz.squeeze); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/c2/ccafef1ac58c292dea6579618fb75d]
+Apr-04 11:09:53.067 [Actor Thread 65] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 26; slices: 1; internal sort time: 0.011 s; external sort time: 0.002 s; total time: 0.013 s
+Apr-04 11:09:53.070 [Actor Thread 65] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/collect-file/1ebf3508b5609ff403704b8b0d81eccc
+Apr-04 11:09:53.074 [Actor Thread 65] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-6570988877777889061
+Apr-04 11:09:53.085 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Apr-04 11:09:53.085 [Task submitter] INFO  nextflow.Session - [fe/f39a64] Submitted process > NFCORE_PANGENOME:PANGENOME:MULTIQC
+Apr-04 11:09:57.458 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 39; name: NFCORE_PANGENOME:PANGENOME:MULTIQC_COMMUNITY (goatpox_2_virus_2_.fasta.gz.community.0); status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/11/43f4b3762dca9ef29b5d40d006b73f]
+Apr-04 11:09:57.712 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 40; name: NFCORE_PANGENOME:PANGENOME:MULTIQC; status: COMPLETED; exit: 0; error: -; workDir: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/fe/f39a645debf580f4f07a09af376e9f]
+Apr-04 11:09:57.730 [main] DEBUG nextflow.Session - Session await > all processes finished
+Apr-04 11:09:57.732 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Apr-04 11:09:57.732 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Apr-04 11:09:57.752 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Apr-04 11:09:57.754 [main] INFO  nextflow.Nextflow - -[0;35m[nf-core/pangenome][0;32m Pipeline completed successfully[0m-
+Apr-04 11:09:57.761 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=40; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=4m 51s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=10; peakCpus=20; peakMemory=120 GB; ]
+Apr-04 11:09:57.761 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Apr-04 11:09:57.763 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Apr-04 11:09:58.143 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Apr-04 11:09:58.309 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Apr-04 11:09:58.309 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-validation@1.1.3'
+Apr-04 11:09:58.309 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-validation
+Apr-04 11:09:58.324 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Apr-04 11:09:58.325 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

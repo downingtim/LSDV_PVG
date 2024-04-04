@@ -1,0 +1,2 @@
+Module	Section	Sample Name	Source
+ODGI	all_sections	LSDV_genomes	/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/b8/b9157c7c6a5bda64af220e9e91fd48/2/LSDV_genomes.fasta.gz.squeeze.og.stats.yaml

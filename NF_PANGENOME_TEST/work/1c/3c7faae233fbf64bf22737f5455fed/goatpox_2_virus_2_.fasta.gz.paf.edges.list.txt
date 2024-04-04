@@ -1,0 +1,1 @@
+/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/9a/7735d1304c1cdbfcecb2cea8a217ba/goatpox_2_virus_2_.fasta.gz.paf.edges.list.txt

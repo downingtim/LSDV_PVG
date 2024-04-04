@@ -1,0 +1,1 @@
+/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/1c/b8f57bd2cc3f04c920d49a9fa3db6b/LSDV_genomes.fasta.gz.paf.edges.list.txt

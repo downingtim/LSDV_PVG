@@ -1,0 +1,31 @@
+[wfmash::map] Reference = [lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.community.4.fa.gz]
+[wfmash::map] Query = [lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.community.4.fa.gz]
+[wfmash::map] Kmer size = 19
+[wfmash::map] Window size = 136
+[wfmash::map] Segment length = 5000 (read split allowed)
+[wfmash::map] Block length min = 25000
+[wfmash::map] Chaining gap max = 100000
+[wfmash::map] Percentage identity threshold = 90%
+[wfmash::map] Skip self mappings
+[wfmash::map] Mapping output file = /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/cf/3a8d75b94132ab36417049e6aba966/wfmash-MhV5yd
+[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
+[wfmash::map] Execution threads  = 6
+[wfmash::skch::Sketch::build] minimizers picked from reference = 21771
+[wfmash::skch::Sketch::index] unique minimizers = 2162
+[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (2, 1) ... (20, 16)
+[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, consider all minimizers during lookup.
+[wfmash::map] time spent computing the reference index: 0.0337323 sec
+[wfmash::skch::Map::mapQuery] mapped 25.00% @ 4.66e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 25.00% @ 4.63e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 2.96e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[wfmash::skch::Map::mapQuery] count of mapped reads = 10, reads qualified for mapping = 10, total input reads = 10, total input bp = 1503170
+[wfmash::map] time spent mapping the query: 5.10e-01 sec
+[wfmash::map] mapping results saved in: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/cf/3a8d75b94132ab36417049e6aba966/wfmash-MhV5yd
+[wfmash::align] Reference = [lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.community.4.fa.gz]
+[wfmash::align] Query = [lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.community.4.fa.gz]
+[wfmash::align] Mapping file = /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/cf/3a8d75b94132ab36417049e6aba966/wfmash-MhV5yd
+[wfmash::align] Alignment identity cutoff = 7.20e-01%
+[wfmash::align] Alignment output file = /dev/stdout
+[wfmash::align] time spent loading the reference index: 7.94e-03 sec
+[wfmash::align::computeAlignments] aligned  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 18.89% @ 5.11e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:02[wfmash::align::computeAlignments] aligned 37.78% @ 5.11e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:01[wfmash::align::computeAlignments] aligned 54.44% @ 4.91e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:01[wfmash::align::computeAlignments] aligned 73.33% @ 4.96e+06 bp/s elapsed: 00:00:00:02 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 94.44% @ 5.11e+06 bp/s elapsed: 00:00:00:02 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 100.00% @ 4.51e+06 bp/s elapsed: 00:00:00:03 remain: 00:00:00:00
+[wfmash::align::computeAlignments] count of mapped reads = 10, total aligned bp = 13528530
+[wfmash::align] time spent computing the alignment: 3.01e+00 sec
+[wfmash::align] alignment results saved in: /dev/stdout

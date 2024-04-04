@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=1544
+%cpu=83
+cpu_model=AMD EPYC 7543P 32-Core Processor
+rchar=936823
+wchar=1366726
+syscr=411
+syscw=267
+read_bytes=0
+write_bytes=1376256
+%mem=0
+vmem=75124
+rss=14000
+peak_vmem=75124
+peak_rss=14016
+vol_ctxt=21
+inv_ctxt=2

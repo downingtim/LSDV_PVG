@@ -1,0 +1,21 @@
+[wfmash::map] Reference = [LSDV_genomes.fasta.gz]
+[wfmash::map] Query = [LSDV_genomes.fasta.gz]
+[wfmash::map] Kmer size = 19
+[wfmash::map] Window size = 27
+[wfmash::map] Segment length = 1000 (read split allowed)
+[wfmash::map] Block length min = 5000
+[wfmash::map] Chaining gap max = 100000
+[wfmash::map] Percentage identity threshold = 90%
+[wfmash::map] Skip self mappings
+[wfmash::map] Mapping output file = /dev/stdout
+[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
+[wfmash::map] Execution threads  = 6
+[wfmash::skch::Sketch::build] minimizers picked from reference = 1360055
+[wfmash::skch::Sketch::index] unique minimizers = 14190
+[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (1, 555) ... (244, 1)
+[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, consider all minimizers during lookup.
+[wfmash::map] time spent computing the reference index: 0.162481 sec
+[wfmash::skch::Map::mapQuery] mapped  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped  2.89% @ 1.05e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:16[wfmash::skch::Map::mapQuery] mapped  7.86% @ 1.43e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:11[wfmash::skch::Map::mapQuery] mapped 12.82% @ 1.56e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:10[wfmash::skch::Map::mapQuery] mapped 17.78% @ 1.62e+06 bp/s elapsed: 00:00:00:02 remain: 00:00:00:09[wfmash::skch::Map::mapQuery] mapped 22.73% @ 1.38e+06 bp/s elapsed: 00:00:00:03 remain: 00:00:00:10[wfmash::skch::Map::mapQuery] mapped 27.69% @ 1.44e+06 bp/s elapsed: 00:00:00:03 remain: 00:00:00:09[wfmash::skch::Map::mapQuery] mapped 32.64% @ 1.49e+06 bp/s elapsed: 00:00:00:04 remain: 00:00:00:08[wfmash::skch::Map::mapQuery] mapped 34.70% @ 1.40e+06 bp/s elapsed: 00:00:00:04 remain: 00:00:00:08[wfmash::skch::Map::mapQuery] mapped 37.58% @ 1.37e+06 bp/s elapsed: 00:00:00:05 remain: 00:00:00:08[wfmash::skch::Map::mapQuery] mapped 42.54% @ 1.41e+06 bp/s elapsed: 00:00:00:05 remain: 00:00:00:07[wfmash::skch::Map::mapQuery] mapped 47.50% @ 1.44e+06 bp/s elapsed: 00:00:00:06 remain: 00:00:00:06[wfmash::skch::Map::mapQuery] mapped 51.64% @ 1.45e+06 bp/s elapsed: 00:00:00:06 remain: 00:00:00:06[wfmash::skch::Map::mapQuery] mapped 52.46% @ 1.36e+06 bp/s elapsed: 00:00:00:07 remain: 00:00:00:06[wfmash::skch::Map::mapQuery] mapped 57.42% @ 1.39e+06 bp/s elapsed: 00:00:00:07 remain: 00:00:00:05[wfmash::skch::Map::mapQuery] mapped 62.38% @ 1.42e+06 bp/s elapsed: 00:00:00:08 remain: 00:00:00:04[wfmash::skch::Map::mapQuery] mapped 67.35% @ 1.44e+06 bp/s elapsed: 00:00:00:08 remain: 00:00:00:04[wfmash::skch::Map::mapQuery] mapped 69.83% @ 1.41e+06 bp/s elapsed: 00:00:00:09 remain: 00:00:00:03[wfmash::skch::Map::mapQuery] mapped 72.31% @ 1.39e+06 bp/s elapsed: 00:00:00:09 remain: 00:00:00:03[wfmash::skch::Map::mapQuery] mapped 77.26% @ 1.41e+06 bp/s elapsed: 00:00:00:10 remain: 00:00:00:02[wfmash::skch::Map::mapQuery] mapped 82.22% @ 1.43e+06 bp/s elapsed: 00:00:00:10 remain: 00:00:00:02[wfmash::skch::Map::mapQuery] mapped 86.35% @ 1.43e+06 bp/s elapsed: 00:00:00:11 remain: 00:00:00:01[wfmash::skch::Map::mapQuery] mapped 87.18% @ 1.38e+06 bp/s elapsed: 00:00:00:11 remain: 00:00:00:01[wfmash::skch::Map::mapQuery] mapped 92.14% @ 1.40e+06 bp/s elapsed: 00:00:00:12 remain: 00:00:00:01[wfmash::skch::Map::mapQuery] mapped 97.11% @ 1.41e+06 bp/s elapsed: 00:00:00:12 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 99.59% @ 1.39e+06 bp/s elapsed: 00:00:00:13 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 1.35e+06 bp/s elapsed: 00:00:00:13 remain: 00:00:00:00
+[wfmash::skch::Map::mapQuery] count of mapped reads = 120, reads qualified for mapping = 121, total input reads = 121, total input bp = 18213439
+[wfmash::map] time spent mapping the query: 1.35e+01 sec
+[wfmash::map] mapping results saved in: /dev/stdout

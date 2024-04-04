@@ -1,0 +1,9 @@
+path_sgd_zipf_space_max: 100
+path_sgd_zipf_max_number_of_distributions: 101
+[odgi::path_linear_sgd] calculating linear SGD schedule (0.00127551[odgi::path_linear_sgd] 1D path-guided SGD:  1.00 100 00.00% @ 0.00e+00 bp/s elapsed:  1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 2.74e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming: 69.57% @ 3.99e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 4.05e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 100.00% @ 1.81e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 1.01e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  8.70% @ 6.24e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 15.22% @ 2.37e+05 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 9.20e+01 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00

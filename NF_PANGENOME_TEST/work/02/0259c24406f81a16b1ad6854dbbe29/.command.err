@@ -1,0 +1,24 @@
+[seqwish::seqidx] 0.001 indexing sequences
+[seqwish::seqidx] 0.033 index built
+[seqwish::alignments] 0.033 processing alignments
+[seqwish::alignments] 0.080 indexing
+[seqwish::alignments] 0.083 index built
+[seqwish::transclosure] 0.087 computing transitive closures
+[seqwish::transclosure] 0.094 0.00% 0-1503170 overlap_collect
+[seqwish::transclosure] 0.411 0.00% 0-1503170 rank_build
+[seqwish::transclosure] 0.449 0.00% 0-1503170 parallel_union_find
+[seqwish::transclosure] 0.819 0.00% 0-1503170 dset_write
+[seqwish::transclosure] 0.833 0.00% 0-1503170 dset_compression
+[seqwish::transclosure] 0.913 0.00% 0-1503170 dset_sort
+[seqwish::transclosure] 0.977 0.00% 0-1503170 dset_invert
+[seqwish::transclosure] 1.055 0.00% 0-1503170 graph_emission
+[seqwish::transclosure] 1.187 100.00% building node_iitree and path_iitree indexes
+[seqwish::transclosure] 1.194 100.00% done
+[seqwish::transclosure] 1.194 done with transitive closures
+[seqwish::compact] 1.194 compacting nodes
+[seqwish::compact] 1.195 done compacting
+[seqwish::compact] 1.195 built node index
+[seqwish::links] 1.195 finding graph links
+[seqwish::links] 1.199 links derived
+[seqwish::gfa] 1.199 writing graph
+[seqwish::gfa] 1.240 done

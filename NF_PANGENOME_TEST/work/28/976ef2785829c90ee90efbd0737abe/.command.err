@@ -1,0 +1,21 @@
+[wfmash::map] Reference = [goatpox_2_virus_2_.fasta.gz]
+[wfmash::map] Query = [goatpox_2_virus_2_.fasta.gz]
+[wfmash::map] Kmer size = 19
+[wfmash::map] Window size = 136
+[wfmash::map] Segment length = 5000 (read split allowed)
+[wfmash::map] Block length min = 25000
+[wfmash::map] Chaining gap max = 100000
+[wfmash::map] Percentage identity threshold = 90%
+[wfmash::map] Skip self mappings
+[wfmash::map] Mapping output file = /dev/stdout
+[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
+[wfmash::map] Execution threads  = 6
+[wfmash::skch::Sketch::build] minimizers picked from reference = 27859
+[wfmash::skch::Sketch::index] unique minimizers = 2825
+[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (1, 120) ... (25, 9)
+[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, consider all minimizers during lookup.
+[wfmash::map] time spent computing the reference index: 0.0300449 sec
+[wfmash::skch::Map::mapQuery] mapped  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 3.89e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[wfmash::skch::Map::mapQuery] count of mapped reads = 12, reads qualified for mapping = 13, total input reads = 13, total input bp = 1947701
+[wfmash::map] time spent mapping the query: 5.03e-01 sec
+[wfmash::map] mapping results saved in: /dev/stdout

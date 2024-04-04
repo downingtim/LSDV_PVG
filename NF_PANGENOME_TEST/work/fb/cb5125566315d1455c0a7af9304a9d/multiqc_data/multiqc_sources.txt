@@ -1,0 +1,2 @@
+Module	Section	Sample Name	Source
+ODGI	all_sections	goatpox_2_virus_2	/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/fb/cb5125566315d1455c0a7af9304a9d/2/goatpox_2_virus_2_.fasta.gz.squeeze.og.stats.yaml

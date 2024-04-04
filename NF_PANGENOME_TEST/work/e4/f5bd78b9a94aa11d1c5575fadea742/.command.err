@@ -1,0 +1,21 @@
+[wfmash::map] Reference = [LSDV_genomes.fasta.gz]
+[wfmash::map] Query = [LSDV_genomes.fasta.gz]
+[wfmash::map] Kmer size = 19
+[wfmash::map] Window size = 136
+[wfmash::map] Segment length = 5000 (read split allowed)
+[wfmash::map] Block length min = 25000
+[wfmash::map] Chaining gap max = 100000
+[wfmash::map] Percentage identity threshold = 90%
+[wfmash::map] Skip self mappings
+[wfmash::map] Mapping output file = /dev/stdout
+[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
+[wfmash::map] Execution threads  = 6
+[wfmash::skch::Sketch::build] minimizers picked from reference = 266849
+[wfmash::skch::Sketch::index] unique minimizers = 2773
+[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (1, 102) ... (240, 19)
+[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, consider all minimizers during lookup.
+[wfmash::map] time spent computing the reference index: 0.129816 sec
+[wfmash::skch::Map::mapQuery] mapped  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 17.78% @ 6.47e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:02[wfmash::skch::Map::mapQuery] mapped 37.58% @ 6.84e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:01[wfmash::skch::Map::mapQuery] mapped 57.42% @ 6.97e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:01[wfmash::skch::Map::mapQuery] mapped 75.61% @ 6.88e+06 bp/s elapsed: 00:00:00:02 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 92.14% @ 6.71e+06 bp/s elapsed: 00:00:00:02 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 6.07e+06 bp/s elapsed: 00:00:00:03 remain: 00:00:00:00
+[wfmash::skch::Map::mapQuery] count of mapped reads = 120, reads qualified for mapping = 121, total input reads = 121, total input bp = 18213439
+[wfmash::map] time spent mapping the query: 3.00e+00 sec
+[wfmash::map] mapping results saved in: /dev/stdout

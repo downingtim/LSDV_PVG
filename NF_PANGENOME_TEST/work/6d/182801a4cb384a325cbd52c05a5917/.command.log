@@ -1,0 +1,19 @@
+
+  /// MultiQC 🔍 | v1.14
+
+|           multiqc | MultiQC Version v1.21 now available!
+|           multiqc | Search path : /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/6d/182801a4cb384a325cbd52c05a5917
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 17/17  
+|              odgi | Found 2 reports
+|    custom_content | odgi_O: Found 1 sample (image)
+|    custom_content | odgi_viz: Found 1 sample (image)
+|    custom_content | odgi_viz_pos: Found 1 sample (image)
+|    custom_content | odgi_viz_inv: Found 1 sample (image)
+|    custom_content | odgi_viz_depth: Found 1 sample (image)
+|    custom_content | odgi_viz_uncalled: Found 1 sample (image)
+|    custom_content | odgi_draw: Found 1 sample (image)
+|           multiqc | Compressing plot data
+|           multiqc | Report      : lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.community.4_multiqc/multiqc_report.html
+|           multiqc | Data        : lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.community.4_multiqc/multiqc_data
+|           multiqc | Plots       : lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.community.4_multiqc/multiqc_plots
+|           multiqc | MultiQC complete
