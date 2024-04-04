@@ -1,3 +1,0 @@
-Sample	Mean links length: node space
-LSDV_genomes	0.42268
-seqwish	6.9703
