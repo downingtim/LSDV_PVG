@@ -1,3 +1,0 @@
-Sample	Mean links length: nucleotide space
-lumpy_2_skin_2_disease_2_virus_2_2	152.008
-seqwish	35700.9

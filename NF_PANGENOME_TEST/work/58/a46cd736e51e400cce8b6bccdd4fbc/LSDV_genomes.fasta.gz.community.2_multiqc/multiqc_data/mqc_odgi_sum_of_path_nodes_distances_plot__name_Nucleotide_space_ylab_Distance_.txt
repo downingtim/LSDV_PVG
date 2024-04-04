@@ -1,3 +1,0 @@
-Sample	Sum of distances: nucleotide space
-LSDV_genomes	1.00001
-seqwish	6.50807

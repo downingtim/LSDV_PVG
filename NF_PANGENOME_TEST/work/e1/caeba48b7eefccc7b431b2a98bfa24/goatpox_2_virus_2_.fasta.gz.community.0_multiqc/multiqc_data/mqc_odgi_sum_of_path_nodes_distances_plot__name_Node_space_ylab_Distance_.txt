@@ -1,3 +1,0 @@
-Sample	Sum of distances: node space
-goatpox_2_virus_2	1.52964
-seqwish	1595.39

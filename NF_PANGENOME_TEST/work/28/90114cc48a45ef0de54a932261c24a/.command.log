@@ -1,31 +1,0 @@
-[wfmash::map] Reference = [LSDV_genomes.fasta.gz.community.4.fa.gz]
-[wfmash::map] Query = [LSDV_genomes.fasta.gz.community.4.fa.gz]
-[wfmash::map] Kmer size = 19
-[wfmash::map] Window size = 136
-[wfmash::map] Segment length = 5000 (read split allowed)
-[wfmash::map] Block length min = 25000
-[wfmash::map] Chaining gap max = 100000
-[wfmash::map] Percentage identity threshold = 90%
-[wfmash::map] Skip self mappings
-[wfmash::map] Mapping output file = /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/28/90114cc48a45ef0de54a932261c24a/wfmash-1xThO7
-[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
-[wfmash::map] Execution threads  = 6
-[wfmash::skch::Sketch::build] minimizers picked from reference = 22001
-[wfmash::skch::Sketch::index] unique minimizers = 2174
-[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (2, 1) ... (20, 27)
-[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, consider all minimizers during lookup.
-[wfmash::map] time spent computing the reference index: 0.0260543 sec
-[wfmash::skch::Map::mapQuery] mapped 20.00% @ 3.71e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 20.00% @ 3.61e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 2.96e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[wfmash::skch::Map::mapQuery] count of mapped reads = 10, reads qualified for mapping = 10, total input reads = 10, total input bp = 1503170
-[wfmash::map] time spent mapping the query: 5.10e-01 sec
-[wfmash::map] mapping results saved in: /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/28/90114cc48a45ef0de54a932261c24a/wfmash-1xThO7
-[wfmash::align] Reference = [LSDV_genomes.fasta.gz.community.4.fa.gz]
-[wfmash::align] Query = [LSDV_genomes.fasta.gz.community.4.fa.gz]
-[wfmash::align] Mapping file = /mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/28/90114cc48a45ef0de54a932261c24a/wfmash-1xThO7
-[wfmash::align] Alignment identity cutoff = 7.20e-01%
-[wfmash::align] Alignment output file = /dev/stdout
-[wfmash::align] time spent loading the reference index: 7.20e-03 sec
-[wfmash::align::computeAlignments] aligned  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 20.00% @ 5.41e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:02[wfmash::align::computeAlignments] aligned 40.00% @ 5.41e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:01[wfmash::align::computeAlignments] aligned 58.89% @ 5.31e+06 bp/s elapsed: 00:00:00:01 remain: 00:00:00:01[wfmash::align::computeAlignments] aligned 71.11% @ 4.81e+06 bp/s elapsed: 00:00:00:02 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 92.22% @ 4.99e+06 bp/s elapsed: 00:00:00:02 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 100.00% @ 4.51e+06 bp/s elapsed: 00:00:00:03 remain: 00:00:00:00
-[wfmash::align::computeAlignments] count of mapped reads = 10, total aligned bp = 13528530
-[wfmash::align] time spent computing the alignment: 3.01e+00 sec
-[wfmash::align] alignment results saved in: /dev/stdout

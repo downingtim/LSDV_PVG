@@ -1,3 +1,0 @@
-Sample	Mean links length: nucleotide space
-LSDV_genomes	1.33628
-seqwish	21998.8

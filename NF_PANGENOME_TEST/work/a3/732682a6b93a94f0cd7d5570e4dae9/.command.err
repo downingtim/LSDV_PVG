@@ -1,117 +1,0 @@
-[smoothxg::(1-3)::main] loading graph
-[smoothxg::(1-3)::main] prepping graph for smoothing
-[odgi::gfa_to_handle] building nodes:  1.42% @ 1.05e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::gfa_to_handle] building edges:  0.16% @ 1.53e+03/s elapsed: 00:00:00:00 remain: 00:00:00:05[odgi::gfa_to_handle] building edges: 100.00% @ 3.52e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::gfa_to_handle] building paths:  7.69% @ 8.31e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 4.96e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::prep] building path index
-[smoothxg::(1-3)::prep] path_sgd_zipf_space_max: 100
-[smoothxg::(1-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
-[smoothxg::(1-3)::prep] sorting graph
-[odgi::path_linear_sgd] calculating linear SGD schedule (4.92e-08 1.00e+00 100 0 1.00e-02)
-[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
-[odgi::path_linear_sgd] 1D path-guided SGD:  0.02% @ 8.14e+05/s elapsed: 00:00:00:00 remain: 00:00:00:07[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 2.31e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] grooming:  2.71% @ 1.44e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] organizing handles: 33.00% @ 1.67e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] flipped 0 handles
-[odgi::topological_order] sorting nodes:  0.15% @ 3.95e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::prep] chopping graph to 100
-[odgi::chop] 488 node(s) to chop.
-[smoothxg::(1-3)::prep] writing graph goatpox_2_virus_2_.fasta.gz.seqwish.gfa.prep.0.gfa
-[smoothxg::(1-3)::main] building xg index
-[smoothxg::(1-3)::smoothable_blocks] computing blocks
-[smoothxg::(1-3)::smoothable_blocks] computing blocks for 7403 handles:  0.24% @ 1.92e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smoothable_blocks] computing blocks for 7403 handles: 100.00% @ 2.95e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1400) and depth >= 0
-[smoothxg::(1-3)::break_and_split_blocks] splitting 280 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
-[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 280 blocks:  8.21% @ 7.18e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 280 blocks: 100.00% @ 1.11e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
-[smoothxg::(1-3)::break_and_split_blocks] split 0 blocks
-[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 280 blocks:  4.29% @ 1.18e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 280 blocks: 21.43% @ 2.31e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 280 blocks: 38.21% @ 2.10e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 280 blocks: 55.71% @ 2.05e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 280 blocks: 71.79% @ 1.99e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 280 blocks: 93.57% @ 2.08e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 280 blocks: 100.00% @ 1.85e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00
-[smoothxg::(1-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 7.63e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::smooth_and_lace] sorting path_mappings
-[smoothxg::(1-3)::smooth_and_lace] adding nodes from 280 graphs:  9.29% @ 2.14e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding nodes from 280 graphs: 100.00% @ 1.12e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::smooth_and_lace] adding edges from 280 graphs:  8.93% @ 3.31e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding edges from 280 graphs: 100.00% @ 1.12e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::smooth_and_lace] embedding 2988 path fragments:  0.03% @ 1.14e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] embedding 2988 path fragments: 100.00% @ 1.19e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::smooth_and_lace] validating 13 path sequences:  7.69% @ 4.05e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] validating 13 path sequences: 100.00% @ 5.14e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::smooth_and_lace] walking edges in 13 paths:  7.69% @ 1.79e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] walking edges in 13 paths: 100.00% @ 5.18e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(1-3)::main] unchopping smoothed graph
-[odgi::unchop] unchopped 167 nodes into 83 new nodes.
-[smoothxg::(1-3)::main] smoothed graph length 178101bp in 7792 nodes
-[smoothxg::(1-3)::main] writing smoothed graph to goatpox_2_virus_2_.fasta.gz.seqwish.gfa.smooth.0.gfa
-[smoothxg::(2-3)::main] loading graph
-[smoothxg::(2-3)::main] prepping graph for smoothing
-[odgi::gfa_to_handle] building nodes:  1.33% @ 1.76e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::gfa_to_handle] building edges:  0.64% @ 2.10e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 3.52e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::gfa_to_handle] building paths:  7.69% @ 9.00e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 4.98e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::prep] building path index
-[smoothxg::(2-3)::prep] path_sgd_zipf_space_max: 100
-[smoothxg::(2-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
-[smoothxg::(2-3)::prep] sorting graph
-[odgi::path_linear_sgd] calculating linear SGD schedule (4.92e-08 1.00e+00 100 0 1.00e-02)
-[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
-[odgi::path_linear_sgd] 1D path-guided SGD:  0.07% @ 3.30e+06/s elapsed: 00:00:00:00 remain: 00:00:00:01[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 2.31e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] grooming:  0.92% @ 3.45e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] organizing handles: 31.33% @ 1.95e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] flipped 0 handles
-[odgi::topological_order] sorting nodes:  0.14% @ 2.41e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::prep] chopping graph to 100
-[odgi::chop] 488 node(s) to chop.
-[smoothxg::(2-3)::prep] writing graph goatpox_2_virus_2_.fasta.gz.seqwish.gfa.smooth.0.gfa.prep.1.gfa
-[smoothxg::(2-3)::main] building xg index
-[smoothxg::(2-3)::smoothable_blocks] computing blocks
-[smoothxg::(2-3)::smoothable_blocks] computing blocks for 7403 handles:  0.38% @ 3.14e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smoothable_blocks] computing blocks for 7403 handles: 100.00% @ 2.96e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1800) and depth >= 0
-[smoothxg::(2-3)::break_and_split_blocks] splitting 227 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
-[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 227 blocks: 11.01% @ 5.79e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 227 blocks: 100.00% @ 8.92e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
-[smoothxg::(2-3)::break_and_split_blocks] split 0 blocks
-[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 227 blocks:  0.44% @ 2.03e+02/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 227 blocks: 22.47% @ 2.00e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 227 blocks: 38.33% @ 1.72e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 227 blocks: 52.42% @ 1.58e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 227 blocks: 68.28% @ 1.54e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 227 blocks: 82.38% @ 1.49e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 227 blocks: 100.00% @ 1.51e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00
-[smoothxg::(2-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 1.50e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::smooth_and_lace] sorting path_mappings
-[smoothxg::(2-3)::smooth_and_lace] adding nodes from 227 graphs: 11.01% @ 3.96e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding nodes from 227 graphs: 100.00% @ 9.07e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::smooth_and_lace] adding edges from 227 graphs: 11.01% @ 3.14e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding edges from 227 graphs: 100.00% @ 9.07e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::smooth_and_lace] embedding 2329 path fragments:  0.04% @ 1.17e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] embedding 2329 path fragments: 100.00% @ 9.31e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::smooth_and_lace] validating 13 path sequences:  7.69% @ 2.73e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] validating 13 path sequences: 100.00% @ 5.12e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::smooth_and_lace] walking edges in 13 paths:  7.69% @ 6.92e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] walking edges in 13 paths: 100.00% @ 5.17e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(2-3)::main] unchopping smoothed graph
-[odgi::unchop] unchopped 135 nodes into 67 new nodes.
-[smoothxg::(2-3)::main] smoothed graph length 178049bp in 7814 nodes
-[smoothxg::(2-3)::main] writing smoothed graph to goatpox_2_virus_2_.fasta.gz.seqwish.gfa.smooth.1.gfa
-[smoothxg::(3-3)::main] loading graph
-[smoothxg::(3-3)::main] prepping graph for smoothing
-[odgi::gfa_to_handle] building nodes:  1.22% @ 1.35e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::gfa_to_handle] building edges:  0.34% @ 1.23e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 3.53e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::gfa_to_handle] building paths: 15.38% @ 1.98e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 4.99e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::prep] building path index
-[smoothxg::(3-3)::prep] path_sgd_zipf_space_max: 100
-[smoothxg::(3-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
-[smoothxg::(3-3)::prep] sorting graph
-[odgi::path_linear_sgd] calculating linear SGD schedule (4.92e-08 1.00e+00 100 0 1.00e-02)
-[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
-[odgi::path_linear_sgd] 1D path-guided SGD:  0.03% @ 9.07e+05/s elapsed: 00:00:00:00 remain: 00:00:00:06[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 2.31e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] grooming:  1.15% @ 4.08e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] organizing handles: 34.97% @ 1.78e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[odgi::groom] flipped 0 handles
-[odgi::topological_order] sorting nodes:  0.52% @ 3.47e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.61e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::prep] chopping graph to 100
-[odgi::chop] 488 node(s) to chop.
-[smoothxg::(3-3)::prep] writing graph goatpox_2_virus_2_.fasta.gz.seqwish.gfa.smooth.1.gfa.prep.2.gfa
-[smoothxg::(3-3)::main] building xg index
-[smoothxg::(3-3)::smoothable_blocks] computing blocks
-[smoothxg::(3-3)::smoothable_blocks] computing blocks for 7403 handles:  0.15% @ 3.67e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smoothable_blocks] computing blocks for 7403 handles: 100.00% @ 2.96e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (2200) and depth >= 0
-[smoothxg::(3-3)::break_and_split_blocks] splitting 173 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
-[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 173 blocks:  6.94% @ 4.30e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 173 blocks: 100.00% @ 6.84e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
-[smoothxg::(3-3)::break_and_split_blocks] split 0 blocks
-[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 173 blocks:  0.58% @ 1.16e+02/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 173 blocks: 16.76% @ 1.12e+02/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 173 blocks: 34.10% @ 1.16e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 173 blocks: 49.71% @ 1.13e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 173 blocks: 64.74% @ 1.11e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 173 blocks: 79.19% @ 1.09e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 173 blocks: 100.00% @ 1.15e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00
-[smoothxg::(3-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 1.08e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::smooth_and_lace] sorting path_mappings
-[smoothxg::(3-3)::smooth_and_lace] adding nodes from 173 graphs:  6.94% @ 1.67e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding nodes from 173 graphs: 100.00% @ 6.91e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::smooth_and_lace] adding edges from 173 graphs:  7.51% @ 1.51e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding edges from 173 graphs: 100.00% @ 6.91e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::smooth_and_lace] embedding 1890 path fragments:  0.05% @ 6.17e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] embedding 1890 path fragments: 100.00% @ 7.55e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::smooth_and_lace] validating 13 path sequences: 15.38% @ 5.43e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] validating 13 path sequences: 100.00% @ 5.12e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::smooth_and_lace] walking edges in 13 paths:  7.69% @ 1.45e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] walking edges in 13 paths: 100.00% @ 5.18e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
-[smoothxg::(3-3)::main] unchopping smoothed graph
-[odgi::unchop] unchopped 64 nodes into 32 new nodes.
-[smoothxg::(3-3)::main] smoothed graph length 177946bp in 7810 nodes
-[smoothxg::(3-3)::main] writing smoothed graph to goatpox_2_virus_2_.fasta.gz.smoothxg.gfa

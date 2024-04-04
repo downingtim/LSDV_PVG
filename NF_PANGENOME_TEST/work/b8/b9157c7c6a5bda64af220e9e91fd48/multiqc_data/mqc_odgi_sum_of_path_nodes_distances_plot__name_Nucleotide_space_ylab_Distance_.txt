@@ -1,2 +1,0 @@
-Sample	Sum of distances: nucleotide space
-LSDV_genomes	1.03411

@@ -1,1 +1,0 @@
-/mnt/lustre/RDS-live/downing/LSDV_PVG/NF_PANGENOME_TEST/work/f0/b3babc030be79ab74be2912d0bac60/lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.paf.edges.list.txt
