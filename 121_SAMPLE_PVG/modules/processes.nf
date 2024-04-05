@@ -138,10 +138,10 @@ process openness_pangrowth {
 
     # model growth - prepare dataset 1 - not useful
     ~/pangrowth/pangrowth growth -h ${outDir}/PANGROWTH/hist.txt > ${outDir}/PANGROWTH/LSDV
-    # python ~/pangrowth/scripts/plot_growth.py ${outDir}/PANGROWTH/LSDV ${outDir}/PANGROWTH/LSDV.growth.pdf
+    python ~/pangrowth/scripts/plot_growth.py ${outDir}/PANGROWTH/LSDV ${outDir}/PANGROWTH/LSDV.growth.pdf
 
     # do core
     ~/pangrowth/pangrowth core -h ${outDir}/PANGROWTH/hist.txt  -q 0.5 > ${outDir}/PANGROWTH/LSDV_core
-    # python ~/pangrowth/scripts/plot_core.py ${outDir}/PANGROWTH/LSDV_core ${outDir}/PANGROWTH/LSDV_core.pdf
+    python ~/pangrowth/scripts/plot_core.py ${outDir}/PANGROWTH/LSDV_core ${outDir}/PANGROWTH/LSDV_core.pdf
     """
 }
