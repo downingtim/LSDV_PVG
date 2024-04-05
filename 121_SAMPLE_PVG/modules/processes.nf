@@ -131,7 +131,7 @@ process openness_pangrowth {
     ./${faSplit} byname ${refFasta} PANGROWTH/SEQS/
 
     # run pangrowth
-    ~/pangrowth/pangrowth hist -k 17 -t 12  ${refFasta} > ${outDir}/PANGROWTH/hist.txt
+    ~/pangrowth/pangrowth hist -k 17 -t 12 PANGROWTH/SEQS/*a > ${outDir}/PANGROWTH/hist.txt
 
     # plot AFS for single dataset - not very useful! 
     python ~/pangrowth/scripts/plot_single_hist.py ${outDir}/PANGROWTH/hist.txt ${outDir}/PANGROWTH/LSDV.pangrowth.pdf
