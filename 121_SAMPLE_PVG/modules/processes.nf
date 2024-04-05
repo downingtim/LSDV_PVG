@@ -40,41 +40,56 @@ process make_pvg {
     output:
     publishDir "${outDir}", mode: "copy"
     path("${refFasta}.gz.fai"), emit: sam_fai
+    path("${outDir}/LSDV_CURRENT/*.gfa"), emit: gfa
     
     script:
     """
-    mkdir BLAST
+    # mkdir BLAST
     # creat Blast indexes for self-self blast
-    makeblastdb -dbtype nucl -in $refFasta -out BLAST/fasta.db 
-    # blastall -p blastn -d BLAST/fasta.db -i $refFasta -e 1.0 -outfmt 6 > self-blast.out
+    # makeblastdb -dbtype nucl -in ${refFasta} -out BLAST/fasta.db 
+    # blastall -p blastn -d BLAST/fasta.db -i ${refFasta} -e 1.0 -outfmt 6 > self-blast.out
     
     # SAMtools index
     bgzip ${refFasta}
-    echo ${refFasta} ${refFasta}.gz
     samtools faidx ${refFasta}.gz > ${refFasta}.gz.fai
 
-    echo ${outDir}
-
-    # run pangenome in nf-core
-    nextflow run nf-core/pangenome --input ${refFasta}.gz --n_haplotypes 135 --outdir \
-      ${outDir}/LSDV_CURRENT  --communities  --wfmash_segment_length 1000
+    # run pangenome in nf-core - don't work as reliably as PGGB, so best avoided
+    # nextflow run nf-core/pangenome --input ${refFasta}.gz --n_haplotypes 135 --outdir \
+    #   ${outDir}/LSDV_CURRENT  --communities  --wfmash_segment_length 1000
+    #odgi stats -m -i ${outDir}/LSDV_CURRENT/FINAL_ODGI/${refFasta}.gz.squeeze.og -S > ${outDir}/odgi.stats.txt 
 
     # alternative to nf-core pangenome
-    #pggb -i msa_fa -m -S -o LSDV_CURRENT -t 16 -p 90 -s 1k -n 135
-    #cd LSDV_CURRENT
-    #odgi build -g file_gfa -o file_og 
-
-    odgi stats -m -i ${outDir}/LSDV_CURRENT/FINAL_ODGI/${refFasta}.gz.squeeze.og -S > ${outDir}/odgi.stats.txt 
+    pggb -i ${refFasta}.gz -m -S -o ${outDir}/LSDV_CURRENT -t 16 -p 90 -s 1k -n 135 
     """
 }
 
-process openness {
-    tag {"get PVG openness"}
-    label 'openness'
+process rename {
+    tag {"rename"}
+    label 'pvg2'
 
     input:
     path (refFasta)
     path (outDir)
+    path (gfa_in)
+
+    output:
+    publishDir "${outDir}", mode: "copy"
+
+    script:
+    """
+    odgi build -g $gfa_in -o ${outDir}/LSDV_CURRENT/${refFasta}.og 
+    odgi stats -m -i ${outDir}/LSDV_CURRENT/${refFasta}.og -S > ${outDir}/odgi.stats.txt 
+    """
+}
+
+process openness_panacus {
+    tag {"get PVG openness panacus"}
+    label 'openness_panacus'
+
+    input:
+    path (refFasta)
+    path (outDir)
+    path (gfa_in)
     
     output:
     publishDir "${outDir}", mode: "copy"
@@ -83,11 +98,50 @@ process openness {
     """
     # mamba install -c conda-forge -c bioconda panacus
     # get haplotypes
-    grep '^P' ${outDir}/LSDV_CURRENT/FINAL_GFA/${refFasta}.gz.squeeze.unchop.Ygs.view.gfa | cut -f2 > ${outDir}/haplotypes.txt
+    # mkdir PANACUS
+    grep '^P' $gfa_in | cut -f2 > ${outDir}/PANACUS/haplotypes.txt
+    
     # run panacus to get data
-    RUST_LOG=info panacus histgrowth -t4 -l 1,2,1,1,1 -q 0,0,1,0.5,0.1 -S -s ${outDir}/haplotypes.txt  ${outDir}/LSDV_CURRENT/FINAL_GFA/${refFasta}.gz.squeeze.unchop.Ygs.view.gfa > ${outDir}/histgrowth.node.tsv
+    RUST_LOG=info panacus histgrowth -t4 -l 1,2,1,1,1 -q 0,0,1,0.5,0.1 -S -s ${outDir}/PANACUS/haplotypes.txt $gfa_in > ${outDir}/PANACUS/histgrowth.node.tsv
+ 
     # visualise plot as PDF
-    panacus-visualize -e ${outDir}/histgrowth.node.tsv > ${outDir}/histgrowth.node.pdf
+    panacus-visualize -e ${outDir}/PANACUS/histgrowth.node.tsv > ${outDir}/PANACUS/histgrowth.node.pdf
+    """
+}
 
+process openness_pangrowth {
+    tag {"get PVG openness pangrowth"}
+    label 'openness_pangrowth'
+
+    input:
+    path (refFasta)
+    path (outDir)
+    path (faSplit)
+
+    output:
+    publishDir "${outDir}", mode: "copy"
+    
+    script:
+    """
+    mkdir PANGROWTH
+    # need to split files into individual files in folder SEQS
+    mkdir PANGROWTH/SEQS/
+    # wget https://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/faSplit and chmod it
+    echo    ./${faSplit} byname ${refFasta} PANGROWTH/SEQS/
+    ./${faSplit} byname ${refFasta} PANGROWTH/SEQS/
+
+    # run pangrowth
+    ~/pangrowth/pangrowth hist -k 17 -t 12  ${refFasta} > ${outDir}/PANGROWTH/hist.txt
+
+    # plot AFS for single dataset - not very useful! 
+    python ~/pangrowth/scripts/plot_single_hist.py ${outDir}/PANGROWTH/hist.txt ${outDir}/PANGROWTH/LSDV.pangrowth.pdf
+
+    # model growth - prepare dataset 1 - not useful
+    ~/pangrowth/pangrowth growth -h ${outDir}/PANGROWTH/hist.txt > ${outDir}/PANGROWTH/LSDV
+    # python ~/pangrowth/scripts/plot_growth.py ${outDir}/PANGROWTH/LSDV ${outDir}/PANGROWTH/LSDV.growth.pdf
+
+    # do core
+    ~/pangrowth/pangrowth core -h ${outDir}/PANGROWTH/hist.txt  -q 0.5 > ${outDir}/PANGROWTH/LSDV_core
+    # python ~/pangrowth/scripts/plot_core.py ${outDir}/PANGROWTH/LSDV_core ${outDir}/PANGROWTH/LSDV_core.pdf
     """
 }

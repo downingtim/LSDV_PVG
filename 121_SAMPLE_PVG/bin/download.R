@@ -25,11 +25,8 @@ library(phytools) # phytools v0.7-70
 library(ggplot2)  # ggplot v2_3.3.3
 library(ape)      # ape v5.5
 library(treeio)   # treeio v1.14.3
-library(grid)
 library(Rcpp)
 library(RcppArmadillo)
-library(rentrez)
-library(adegenet)
 
 ##This script takes in a string "species" which is the name of an organism
 ##It returns a fasta file with every complete genomic sequences of the input
@@ -39,6 +36,7 @@ library(adegenet)
 # args <- commandArgs(trailingOnly = T)
 # species <- args[1] #ex : LSDV, Sheeppox_virus
 species <- "goatpox virus"
+species <- "lumpy skin disease virus"
 
 ##Collecting the IDs of the sequences
 sp <- paste (species, "[organism] AND complete genome [title]")
@@ -46,7 +44,7 @@ sp2 <- paste (species, "[organism] AND genomic sequence [title]")
 # adjust for "genomic sequence"
 
 ##Query used to ask the database
-query <- entrez_search(db="nuccore", term=sp ,retmax=4)
+query <- entrez_search(db="nuccore", term=sp ,retmax=9999)
 query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=9999)
   # extracting the IDs of every sequence that matches the query
 IDs <- c(query$ids, query2$ids)  #storing the IDs
@@ -111,7 +109,7 @@ metadata <- sapply(IDs, function(ID){
   return(c(country,collection_date,host))
 })
 print("Information successfully collected")
-View(metadata)
+#View(metadata)
 ##Opening a new file to create new headers
 new_fasta <- "transientfile.fasta"
 output_conn <- file(new_fasta, "w")
@@ -183,11 +181,14 @@ for (k in 1:length(lengths(in1))){
 out <- paste("/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/",old_fasta2,sep="")
 print(out)
 write.fasta(in1, names(in1), out)
+outaln <- gsub("fasta", "aln", out)
 
-system2(command='mafft', args=c('--thread 50 --auto /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/goatpox_2_virus_2_.fasta > /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/goatpox_2_virus_2.aln'))
+# fix below
+
+system2(command='mafft', args=c('--thread 50 --auto ',out,' > ',outaln))
 
 # now run RAxML
-system2(command='raxml-ng', args=c(' --all --msa /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/goatpox_2_virus_2.aln --model GTR+G4 --prefix T14 --seed 21231 --bs-metric fbp,tbe --redo'))
+system2(command='raxml-ng', args=c(' --all --msa ',outaln,' --model GTR+G4 --prefix T14 --seed 21231 --bs-metric fbp,tbe --redo'))
 
 tree <- read.tree("/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/bin/T14.raxml.supportTBE")
 moyenne <- mean(tree$edge.length)
@@ -291,3 +292,8 @@ for (k in 1:length(lengths(in11))){ # 5end
   colnames(xx) <- "A"
   in11[[k]] <- paste(xx$A[106911:length(xx$A)], collapse="") } # end for
 write.fasta(in11, names(in11), "v5_3end.fasta")
+
+# split files up in SEQS/ folder
+system2(command='mkdir', args=c('PANGROWTH'))
+system2(command='mkdir', args=c('PANGROWTH/SEQS'))
+system2(command='/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/faSplit', args=c('byname ',output,' PANGROWTH/SEQS/'))
