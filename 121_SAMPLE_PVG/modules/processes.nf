@@ -142,6 +142,6 @@ process openness_pangrowth {
 
     # do core
     ~/pangrowth/pangrowth core -h ${outDir}/PANGROWTH/hist.txt  -q 0.5 > ${outDir}/PANGROWTH/LSDV_core
-    python ~/pangrowth/scripts/plot_core.py ${outDir}/PANGROWTH/LSDV_core ${outDir}/PANGROWTH/LSDV_core.pdf
+    # python ~/pangrowth/scripts/plot_core.py ${outDir}/PANGROWTH/LSDV_core ${outDir}/PANGROWTH/LSDV_core.pdf
     """
 }
