@@ -1,7 +1,0 @@
-# panacus histgrowth -t4 -l 1,2,1,1,1 -q 0,0,1,0.5,0.1 -S -s 121_SAMPLE_PVG/PANACUS/haplotypes.txt goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.gfa
-coverage	1	2	1	1	1
-quorum	0	0	1	0.5	0.1
-1	4731	4442	4731	4731	4731
-2	6147	5569	3315	6147	6147
-3	6869	6002	2621	4704	6869
-4	7158	6002	2359	6002	7158
