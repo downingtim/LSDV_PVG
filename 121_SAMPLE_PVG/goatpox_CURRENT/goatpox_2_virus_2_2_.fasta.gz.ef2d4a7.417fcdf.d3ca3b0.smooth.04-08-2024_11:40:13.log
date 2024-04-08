@@ -1,0 +1,315 @@
+Starting pggb on 04-08-2024_11:40:13
+
+Command: /mnt/lustre/RDS-live/downing/miniconda3/bin/pggb -i goatpox_2_virus_2_2_.fasta.gz -m -S -o 121_SAMPLE_PVG/goatpox_CURRENT -t 46 -p 90 -s 1k -n 135
+
+PARAMETERS
+
+general:
+  input-fasta:        goatpox_2_virus_2_2_.fasta.gz
+  output-dir:         121_SAMPLE_PVG/goatpox_CURRENT
+  temp-dir:           121_SAMPLE_PVG/goatpox_CURRENT
+  resume:             false
+  compress:           false
+  threads:            46
+  poa_threads:        46
+wfmash:
+  version:            v0.10.3-3-g8ba3c53
+  segment-length:     1000
+  block-length:       5000
+  map-pct-id:         90
+  n-mappings:         135
+  no-splits:          false
+  sparse-map:         false
+  mash-kmer:          19
+  mash-kmer-thres:    0.001
+  exclude-delim:      false
+  no-merge-segments:  false
+seqwish:
+  version:            v0.7.9-0-gd9e7ab5
+  min-match-len:      19
+  sparse-factor:      0
+  transclose-batch:   10000000
+smoothxg:
+  version:            v0.7.0-0-g66d3044
+  skip-normalization: false
+  n-haps:             135
+  path-jump-max:      0
+  edge-jump-max:      0
+  poa-length-target:  700,900,1100
+  poa-params:         1,19,39,3,81,1
+  poa_padding:        0.001
+  run_abpoa:          false
+  run_global_poa:     false
+  pad-max-depth:      100
+  write-maf:          false
+  consensus-spec:     false
+  consensus-prefix:   Consensus_
+  block-id-min:       .9000
+  block-ratio-min:    0
+odgi:
+  version:            v0.8.3-26-gbc7742ed
+  viz:                true
+  layout:             true
+  stats:              true
+gfaffix:
+  version:            v0.1.4
+  reduce-redundancy:  true
+vg:
+  version:            v1.43.0
+  deconstruct:        false
+reporting:
+  version:            v1.14
+  multiqc:            true
+
+Running pggb
+
+[wfmash::map] Reference = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::map] Query = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::map] Kmer size = 19
+[wfmash::map] Window size = 27
+[wfmash::map] Segment length = 1000 (read split allowed)
+[wfmash::map] Block length min = 5000
+[wfmash::map] Chaining gap max = 100000
+[wfmash::map] Percentage identity threshold = 90%
+[wfmash::map] Skip self mappings
+[wfmash::map] Mapping output file = /dev/stdout
+[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
+[wfmash::map] Execution threads  = 46
+[wfmash::skch::Sketch::build] minimizers picked from reference = 44096
+[wfmash::skch::Sketch::index] unique minimizers = 14143
+[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (1, 1901) ... (19, 1)
+[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, consider all minimizers during lookup.
+[wfmash::map] time spent computing the reference index: 0.0234841 sec
+[wfmash::skch::Map::mapQuery] mapped 50.00% @ 3.73e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 50.00% @ 3.57e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 1.18e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[wfmash::skch::Map::mapQuery] count of mapped reads = 3, reads qualified for mapping = 4, total input reads = 4, total input bp = 600982
+[wfmash::map] time spent mapping the query: 5.13e-01 sec
+[wfmash::map] mapping results saved in: /dev/stdout
+wfmash -s 1000 -l 5000 -p 90 -n 134 -k 19 -H 0.001 -X -t 46 --tmp-base 121_SAMPLE_PVG/goatpox_CURRENT goatpox_2_virus_2_2_.fasta.gz --approx-map
+1.40s user 4.52s system 1067% cpu 0.55s total 19536Kb max memory
+[wfmash::align] Reference = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::align] Query = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::align] Mapping file = 121_SAMPLE_PVG/goatpox_CURRENT/wfmash-cRzwmP
+[wfmash::align] Alignment identity cutoff = 0.72%
+[wfmash::align] Alignment output file = /dev/stdout
+[wfmash::align] time spent loading the reference index: 0.0319056 sec
+[wfmash::align::computeAlignments] aligned  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 100.00% @ 1.76e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[wfmash::align::computeAlignments] count of mapped reads = 4, total aligned bp = 883000
+[wfmash::align] time spent computing the alignment: 5.33e-01 sec
+[wfmash::align] alignment results saved in: /dev/stdout
+wfmash -s 1000 -l 5000 -p 90 -n 134 -k 19 -H 0.001 -X -t 46 --tmp-base 121_SAMPLE_PVG/goatpox_CURRENT goatpox_2_virus_2_2_.fasta.gz -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.mappings.wfmash.paf --invert-filtering
+1.80s user 4.26s system 1095% cpu 0.55s total 60240Kb max memory
+[seqwish::seqidx] 0.001 indexing sequences
+[seqwish::seqidx] 0.032 index built
+[seqwish::alignments] 0.032 processing alignments
+[seqwish::alignments] 0.045 indexing
+[seqwish::alignments] 0.160 index built
+[seqwish::transclosure] 0.164 computing transitive closures
+[seqwish::transclosure] 0.168 0.00% 0-600982 overlap_collect
+[seqwish::transclosure] 0.250 0.00% 0-600982 rank_build
+[seqwish::transclosure] 0.262 0.00% 0-600982 parallel_union_find
+[seqwish::transclosure] 0.283 0.00% 0-600982 dset_write
+[seqwish::transclosure] 0.290 0.00% 0-600982 dset_compression
+[seqwish::transclosure] 0.358 0.00% 0-600982 dset_sort
+[seqwish::transclosure] 0.412 0.00% 0-600982 dset_invert
+[seqwish::transclosure] 0.475 0.00% 0-600982 graph_emission
+[seqwish::transclosure] 0.527 100.00% building node_iitree and path_iitree indexes
+[seqwish::transclosure] 0.540 100.00% done
+[seqwish::transclosure] 0.540 done with transitive closures
+[seqwish::compact] 0.540 compacting nodes
+[seqwish::compact] 0.543 done compacting
+[seqwish::compact] 0.543 built node index
+[seqwish::links] 0.543 finding graph links
+[seqwish::links] 0.563 links derived
+[seqwish::gfa] 0.563 writing graph
+[seqwish::gfa] 0.597 done
+seqwish -s goatpox_2_virus_2_2_.fasta.gz -p 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.alignments.wfmash.paf -k 19 -f 0 -g 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa -B 10000000 -t 46 --temp-dir 121_SAMPLE_PVG/goatpox_CURRENT -P
+13.46s user 0.37s system 2262% cpu 0.61s total 69396Kb max memory
+[smoothxg::(1-3)::main] loading graph
+[smoothxg::(1-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  2.09% @ 3.61e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.71% @ 3.09e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 3.27e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 25.00% @ 1.22e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 1.55e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::prep] building path index
+[smoothxg::(1-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(1-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(1-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (6.05e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.06% @ 6.21e+05/s elapsed: 00:00:00:00 remain: 00:00:00:02[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 6.44e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming: 100.00% @ 9.27e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 41.82% @ 3.86e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  0.58% @ 1.14e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::prep] chopping graph to 100
+[odgi::chop] 490 node(s) to chop.
+[smoothxg::(1-3)::prep] writing graph 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa.prep.0.gfa
+[smoothxg::(1-3)::main] building xg index
+[smoothxg::(1-3)::smoothable_blocks] computing blocks
+[smoothxg::(1-3)::smoothable_blocks] computing blocks for 6834 handles:  0.10% @ 1.34e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smoothable_blocks] computing blocks for 6834 handles: 100.00% @ 2.73e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1400) and depth >= 0
+[smoothxg::(1-3)::break_and_split_blocks] splitting 242 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
+[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 242 blocks:  4.55% @ 1.95e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 242 blocks: 100.00% @ 9.48e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(1-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 242 blocks:  0.41% @ 4.91e+01/s elapsed: 00:00:00:00 remain: 00:00:00:04[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 242 blocks: 30.58% @ 2.73e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 242 blocks: 77.27% @ 3.59e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 242 blocks: 100.00% @ 3.14e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 9.63e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(1-3)::smooth_and_lace] adding nodes from 242 graphs:  2.89% @ 4.05e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding nodes from 242 graphs: 100.00% @ 9.67e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] adding edges from 242 graphs:  3.72% @ 1.24e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding edges from 242 graphs: 100.00% @ 9.67e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] embedding 915 path fragments:  0.11% @ 1.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] embedding 915 path fragments: 100.00% @ 3.66e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] validating 4 path sequences: 25.00% @ 2.55e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] validating 4 path sequences: 100.00% @ 1.57e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] walking edges in 4 paths: 25.00% @ 1.14e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] walking edges in 4 paths: 100.00% @ 1.59e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 140 nodes into 68 new nodes.
+[smoothxg::(1-3)::main] smoothed graph length 161237bp in 7160 nodes
+[smoothxg::(1-3)::main] writing smoothed graph to 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa.smooth.0.gfa
+[smoothxg::(2-3)::main] loading graph
+[smoothxg::(2-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  0.74% @ 9.33e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.11% @ 3.91e+03/s elapsed: 00:00:00:00 remain: 00:00:00:02[odgi::gfa_to_handle] building edges: 100.00% @ 3.27e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 25.00% @ 1.59e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 1.56e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::prep] building path index
+[smoothxg::(2-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(2-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(2-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (6.05e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.12% @ 1.51e+06/s elapsed: 00:00:00:00 remain: 00:00:00:01[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 6.45e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  1.27% @ 3.46e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 40.39% @ 2.11e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  0.15% @ 6.14e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::prep] chopping graph to 100
+[odgi::chop] 490 node(s) to chop.
+[smoothxg::(2-3)::prep] writing graph 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa.smooth.0.gfa.prep.1.gfa
+[smoothxg::(2-3)::main] building xg index
+[smoothxg::(2-3)::smoothable_blocks] computing blocks
+[smoothxg::(2-3)::smoothable_blocks] computing blocks for 6834 handles:  0.13% @ 2.18e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smoothable_blocks] computing blocks for 6834 handles: 100.00% @ 2.73e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1800) and depth >= 0
+[smoothxg::(2-3)::break_and_split_blocks] splitting 189 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
+[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 189 blocks: 24.34% @ 1.57e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 189 blocks: 100.00% @ 7.47e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(2-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 189 blocks:  0.53% @ 5.40e+01/s elapsed: 00:00:00:00 remain: 00:00:00:03[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 189 blocks: 31.75% @ 2.23e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 189 blocks: 83.60% @ 3.04e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 189 blocks: 100.00% @ 2.46e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 1.01e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(2-3)::smooth_and_lace] adding nodes from 189 graphs:  4.23% @ 1.83e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding nodes from 189 graphs: 100.00% @ 7.55e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] adding edges from 189 graphs:  4.23% @ 1.35e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding edges from 189 graphs: 100.00% @ 7.55e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] embedding 711 path fragments:  0.14% @ 2.02e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] embedding 711 path fragments: 100.00% @ 2.84e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] validating 4 path sequences: 25.00% @ 3.67e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] validating 4 path sequences: 100.00% @ 1.58e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] walking edges in 4 paths: 25.00% @ 1.25e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] walking edges in 4 paths: 100.00% @ 1.59e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 114 nodes into 56 new nodes.
+[smoothxg::(2-3)::main] smoothed graph length 161249bp in 7162 nodes
+[smoothxg::(2-3)::main] writing smoothed graph to 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa.smooth.1.gfa
+[smoothxg::(3-3)::main] loading graph
+[smoothxg::(3-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  1.97% @ 3.65e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.89% @ 5.01e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 3.27e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 25.00% @ 1.54e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 1.56e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::prep] building path index
+[smoothxg::(3-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(3-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(3-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (6.05e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.37% @ 2.45e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 6.44e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming: 100.00% @ 1.09e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 22.96% @ 1.21e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  0.15% @ 4.62e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.43e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::prep] chopping graph to 100
+[odgi::chop] 490 node(s) to chop.
+[smoothxg::(3-3)::prep] writing graph 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa.smooth.1.gfa.prep.2.gfa
+[smoothxg::(3-3)::main] building xg index
+[smoothxg::(3-3)::smoothable_blocks] computing blocks
+[smoothxg::(3-3)::smoothable_blocks] computing blocks for 6834 handles:  0.35% @ 2.05e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smoothable_blocks] computing blocks for 6834 handles: 100.00% @ 2.73e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (2200) and depth >= 0
+[smoothxg::(3-3)::break_and_split_blocks] splitting 152 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
+[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 152 blocks:  3.29% @ 1.74e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 152 blocks: 100.00% @ 6.01e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(3-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 152 blocks:  0.66% @ 5.52e+01/s elapsed: 00:00:00:00 remain: 00:00:00:02[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 152 blocks: 33.55% @ 1.90e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 152 blocks: 65.13% @ 1.91e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 152 blocks: 100.00% @ 1.98e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 8.03e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(3-3)::smooth_and_lace] adding nodes from 152 graphs:  3.95% @ 1.65e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding nodes from 152 graphs: 100.00% @ 6.07e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] adding edges from 152 graphs:  3.29% @ 8.39e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding edges from 152 graphs: 100.00% @ 6.07e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] embedding 573 path fragments:  0.17% @ 1.24e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] embedding 573 path fragments: 100.00% @ 2.29e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] validating 4 path sequences: 25.00% @ 3.53e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] validating 4 path sequences: 100.00% @ 1.58e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] walking edges in 4 paths: 25.00% @ 1.22e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] walking edges in 4 paths: 100.00% @ 1.59e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 104 nodes into 52 new nodes.
+[smoothxg::(3-3)::main] smoothed graph length 161189bp in 7162 nodes
+[smoothxg::(3-3)::main] writing smoothed graph to 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.gfa
+smoothxg -t 46 -T 46 -g 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa -r 135 --base 121_SAMPLE_PVG/goatpox_CURRENT --chop-to 100 -I .9000 -R 0 -j 0 -e 0 -l 700,900,1100 -P 1,19,39,3,81,1 -O 0.001 -Y 13500 -d 0 -D 0 -Q Consensus_ -V -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.gfa
+44.95s user 62.80s system 812% cpu 13.26s total 1221556Kb max memory
+gfaffix 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.gfa -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.fix.gfa
+0.02s user 0.00s system 93% cpu 0.03s total 9908Kb max memory
+pigz
+0.00s user 0.00s system 3% cpu 0.03s total 2424Kb max memory
+[odgi::gfa_to_handle] building nodes:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 1.43e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 1.94e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 7.99e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi build -t 46 -P -g 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.fix.gfa -o - -O
+0.10s user 0.01s system 8% cpu 1.53s total 10344Kb max memory
+[odgi::unchop] unchopped 8 nodes into 4 new nodes.
+odgi unchop -P -t 46 -i - -o -
+1.56s user 0.22s system 110% cpu 1.62s total 21260Kb max memory
+path_sgd_zipf_space_max: 100
+path_sgd_zipf_max_number_of_distributions: 101
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.00% @ 0.00e+00 bp/s elapsed: [odgi::path_linear_sgd] calculating linear SGD schedule (00:00:00:00 remain: 00:00:00:004.39e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 3.78e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  0.57% @ 1.05e+05 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming:  1.58% @ 8.17e+05 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 1.43e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 32.10% @ 2.10e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 46.98% @ 2.60e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 1.43e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  0.15% @ 7.10e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes:  0.25% @ 1.21e+05 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 1.43e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi sort -P -p Ygs --temp-dir 121_SAMPLE_PVG/goatpox_CURRENT -t 46 -i - -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og
+8.02s user 0.04s system 217% cpu 3.71s total 28396Kb max memory
+odgi view -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -g
+0.01s user 0.01s system 86% cpu 0.03s total 7912Kb max memory
+[odgi::gfa_to_handle] building nodes:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 1.22e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 1.64e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 8.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi build -t 46 -P -g 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.gfa -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.seqwish.og
+0.07s user 0.03s system 6% cpu 1.52s total 9784Kb max memory
+odgi viz -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.viz_multiqc.png -x 1500 -y 500 -a 10 -I Consensus_
+0.01s user 0.01s system 88% cpu 0.02s total 12708Kb max memory
+odgi viz -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.viz_pos_multiqc.png -x 1500 -y 500 -a 10 -u -d -I Consensus_
+0.02s user 0.00s system 91% cpu 0.03s total 13072Kb max memory
+odgi viz -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.viz_depth_multiqc.png -x 1500 -y 500 -a 10 -m -I Consensus_
+0.02s user 0.01s system 91% cpu 0.03s total 12844Kb max memory
+odgi viz -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.viz_inv_multiqc.png -x 1500 -y 500 -a 10 -z -I Consensus_
+0.02s user 0.00s system 94% cpu 0.03s total 12776Kb max memory
+odgi viz -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.viz_O_multiqc.png -x 1500 -y 500 -a 10 -O -I Consensus_
+0.01s user 0.01s system 90% cpu 0.03s total 12320Kb max memory
+odgi viz -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.viz_uncalled_multiqc.png -x 1500 -y 500 -a 10 -N -I Consensus_
+0.02s user 0.00s system 94% cpu 0.03s total 12952Kb max memory
+[odgi::path_linear_sgd_layout] 2D path-guided SGD:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd_layout] 2D path-guided SGD: 100.00% @ 1.13e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi layout -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -o 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.lay -T 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.lay.tsv -t 46 --temp-dir 121_SAMPLE_PVG/goatpox_CURRENT -P
+5.05s user 0.22s system 857% cpu 0.61s total 28264Kb max memory
+odgi draw -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -c 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.lay -p 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.lay.draw.png -H 1000
+3.87s user 0.61s system 135% cpu 3.30s total 790392Kb max memory
+odgi draw -i 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og -c 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.lay -p 121_SAMPLE_PVG/goatpox_CURRENT/goatpox_2_virus_2_2_.fasta.gz.ef2d4a7.417fcdf.d3ca3b0.smooth.final.og.lay.draw_multiqc.png -C -w 20 -H 1000
+4.82s user 0.46s system 136% cpu 3.87s total 987696Kb max memory
+
+  /// MultiQC 🔍 | v1.14
+
+|           multiqc | MultiQC Version v1.21 now available!
+|           multiqc | Not cleaning sample names
+|           multiqc | Search path : /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/work/04/633d8b841d11b8fe566a2a16988b0b/121_SAMPLE_PVG/goatpox_CURRENT
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 26/26  
+|              odgi | Found 2 reports
+|    custom_content | odgi_O: Found 1 sample (image)
+|    custom_content | odgi_viz: Found 1 sample (image)
+|    custom_content | odgi_viz_pos: Found 1 sample (image)
+|    custom_content | odgi_viz_inv: Found 1 sample (image)
+|    custom_content | odgi_viz_depth: Found 1 sample (image)
+|    custom_content | odgi_viz_uncalled: Found 1 sample (image)
+|    custom_content | odgi_draw: Found 1 sample (image)
+|           multiqc | Compressing plot data
+|           multiqc | Report      : 121_SAMPLE_PVG/goatpox_CURRENT/multiqc_report.html
+|           multiqc | Data        : 121_SAMPLE_PVG/goatpox_CURRENT/multiqc_data
+|           multiqc | MultiQC complete
+multiqc 121_SAMPLE_PVG/goatpox_CURRENT -s -o 121_SAMPLE_PVG/goatpox_CURRENT -c 121_SAMPLE_PVG/goatpox_CURRENT/multiqc_config.yaml
+3.47s user 4.99s system 200% cpu 4.22s total 109588Kb max memory
