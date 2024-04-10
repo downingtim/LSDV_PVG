@@ -1,3 +1,4 @@
+#!/usr/bin/env perl
 
 $in1 = $ARGV[0]."/VCF/path1";
 open(IN, $in1);

@@ -36,7 +36,7 @@ library(RcppArmadillo)
 # args <- commandArgs(trailingOnly = T)
 # species <- args[1] #ex : LSDV, Sheeppox_virus
 species <- "lumpy skin disease virus"
-species <- "goatpox virus"
+# species <- "goatpox virus"
 
 ##Collecting the IDs of the sequences
 sp <- paste (species, "[organism] AND complete genome [title]")
@@ -44,8 +44,8 @@ sp2 <- paste (species, "[organism] AND genomic sequence [title]")
 # adjust for "genomic sequence"
 #
 #Query used to ask the database
-query <- entrez_search(db="nuccore", term=sp ,retmax=5)
-query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=9999)
+query <- entrez_search(db="nuccore", term=sp ,retmax=4)
+query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=1)
   # extracting the IDs of every sequence that matches the query
 IDs <- c(query$ids, query2$ids)  #storing the IDs
 str(IDs) 
@@ -292,26 +292,27 @@ for (k in 1:length(lengths(in11))){ # 5end
   xx <- as.data.frame(strsplit(in11[[k]], ""))
   colnames(xx) <- "A"
   in11[[k]] <- paste(xx$A[1:13850], collapse="") } # end for
-write.fasta(in11, names(in11), "bin/5end.fasta")
+write.fasta(in11, names(in11), "../../../data/5end.fasta")
 
 in11 <- seqinr::read.fasta(out,seqtype=c("DNA"),as.string=T)
 for (k in 1:length(lengths(in11))){ # 5end
   xx <- as.data.frame(strsplit(in11[[k]], ""))
   colnames(xx) <- "A"
   in11[[k]] <- paste(xx$A[13851:106910], collapse="") } # end for
-write.fasta(in11, names(in11), "bin/core.fasta")
+write.fasta(in11, names(in11), "../../../data/core.fasta")
 
 in11 <- seqinr::read.fasta(out, seqtype=c("DNA"),as.string=T)
 for (k in 1:length(lengths(in11))){ # 5end
   xx <- as.data.frame(strsplit(in11[[k]], ""))
   colnames(xx) <- "A"
   in11[[k]] <- paste(xx$A[106911:length(xx$A)], collapse="") } # end for
-write.fasta(in11, names(in11), "bin/3end.fasta")
+write.fasta(in11, names(in11), "../../../data/3end.fasta")
 
 # Set up folders etc for subsequent analyses
 # split files up in SEQS/ folder
-out3 <- gsub('2_virus_2_\\.fasta','CURRENT',out) #  goatpox_2_virus_2_2_.fasta
-system2(command='mkdir', args=c(paste("../",out3,sep="")))
+# out3 <- gsub('2_virus_2_\\.fasta','CURRENT',out) #  goatpox_2_virus_2_2_.fasta
+out3 <- "CURRENT"
+system2(command='mkdir', args=c(paste("../../../",out3,sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/PANGROWTH/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/BLAST/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/PANACUS/",sep="")))
@@ -319,9 +320,9 @@ system2(command='mkdir', args=c(paste("../../../",out3,"/VCF/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/PANGROWTH/SEQS/",sep="")))
 print(paste('./faSplit ',' byname ', output, ' ../../../',out3,'/PANGROWTH/SEQS/',sep=""))
 system2(command='./faSplit', args=c('byname ',
-            output, paste(' ../',out3,'/PANGROWTH/SEQS/',sep="")))
-system2(command='mv', args=c(' T14* ../../../bin/'))
-system2(command='mv', args=c(' ID* ../../../bin/'))
-system2(command='mv', args=c(' *aln ../../../bin/'))
-system2(command='mv', args=c(' header* ../../../bin/'))
-system2(command='mv', args=c(' *png ../../../bin/'))
+            output, paste(' ../../../',out3,'/PANGROWTH/SEQS/',sep="")))
+system2(command='mv', args=c(' T14* ../../../data/'))
+system2(command='mv', args=c(' ID* ../../../data/'))
+system2(command='mv', args=c(' *aln ../../../data/'))
+system2(command='mv', args=c(' header* ../../../data/'))
+system2(command='mv', args=c(' *png ../../../data/'))

@@ -18,7 +18,7 @@ Modules
 #==============================================
 */
 
-include { download; make_pvg; rename; openness_panacus; openness_pangrowth } from './modules/processes.nf'
+include { download; make_pvg; odgi; openness_panacus; openness_pangrowth; get_vcf; getbases } from './modules/processes.nf'
 
 /*
 #==============================================
@@ -28,11 +28,11 @@ Parameters
 
 // Script parameters
 
-params.fasta = " "
-params.outdir = "/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/"
-//params.ref = "/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/lumpy_2_skin_2_disease_2_virus_2_2_.fasta"
-params.ref = "/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/goatpox_2_virus_2_2_.fasta"
-params.faSplit = "/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/faSplit"
+params.vcf = "bin/vcf.pl"
+params.faSplit = "bin/faSplit"
+//params.ref = "lumpy_2_skin_2_disease_2_virus_2_2_.fasta" 
+//params.ref2 = params.ref 
+//params.dirname = params.ref2.replaceFirst(/2_virus_2_2_.fasta/, "CURRENT")
 
 /*
 #==============================================
@@ -41,24 +41,38 @@ Modules
 */
 
 workflow { 
-   refFasta = channel.fromPath(params.ref, checkIfExists:true)
-   outDir = channel.fromPath(params.outdir, checkIfExists:true)
-   faSplit = channel.fromPath(params.faSplit, checkIfExists:true)
-      //  .first()
-      //  .set{refFasta}
+//   refFasta = channel.fromPath(params.ref, checkIfExists:true)
+//   outDir2 = channel.fromPath(params.dirname, checkIfExists:true)
+   vcf1 = channel.fromPath(params.vcf, checkIfExists:true)
+   faS = channel.fromPath(params.faSplit, checkIfExists:true)
 
-   // main:	
+   main:	
 
-   //    download()
-   //    download.out.write | view { "Found a fasta file $it" }
+       download(faS) 
+       download
+	  .out
+	  .write
+	  .set { refFasta }
 
-       make_pvg(refFasta, outDir)
+       make_pvg(refFasta) 
        make_pvg
           .out
-  	  .gfa
-   	  .set{ gfa_in }
+//   	  .set{ gfa_in }
+
+// println "Project : $workflow.projectDir"
+
+//       odgi(refFasta, outDir2)
+
+//       odgi(make_pvg.out, refFasta, outDir2, gfa_in)
+/*       odgi
+	.out
+	.og
+	.set { og_in }
 	
-       rename(refFasta, outDir, gfa_in)
-       openness_panacus(refFasta, outDir, gfa_in)
-       openness_pangrowth(refFasta, outDir, faSplit)
+       openness_panacus(make_pvg.out, outDir2, gfa_in)
+       openness_pangrowth(refFasta, outDir2)
+       get_vcf(make_pvg.out, refFasta, outDir2, gfa_in, vcf1)
+       getbases(odgi.out refFasta, outDir2, og_in)
+*/
+//       cleanup(outDir3)
 }

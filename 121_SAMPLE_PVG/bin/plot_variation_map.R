@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 library(ggplot2)
 library(ggExtra)
 map <- read.csv("variation_map.txt", sep="\t")

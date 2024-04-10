@@ -20,21 +20,17 @@ Download dataset to examine (eg LSDV)
 
 process download {
     input:
-    path (outDir)
     path (faS)
 
     output:
-    val true
+//    val true
     publishDir ".", mode: "copy"
-    path("*.fasta"), emit: "write"
-//    path("*.txt"), emit: "writetxt"
-//    path("*.aln"), emit: "writealn"
-//    path("T14*"), emit: "writeT14"
+    path("*2_2_.fasta"), emit: "write"
 
     script:
     """
     module load R
-    download.R
+    Rscript ${workflow.projectDir}/bin/download.R
     """
 }
 
@@ -43,34 +39,30 @@ process make_pvg {
     label 'pvg'
 
     input:
-    val ready
     path (refFasta)
-    path (outDir)
-    path (outDir2)
     
     output:
-    val true
-    publishDir "${outDir}", mode: "copy"
-    path("${refFasta}.gz.fai"), emit: sam_fai
-    path("${outDir}/${outDir2}/*.gfa"), emit: gfa
+    publishDir ".", mode: "copy"
+//    path("${refFasta}.gz.fai"), emit: sam_fai
+    path("CURRENT/*.gfa"), emit: gfa
     
     script:
     """
     # create Blast indexes for self-self blast
-    # makeblastdb -dbtype nucl -in ${refFasta} -out ${outDir}/${outDir2}/BLAST/fasta.db 
-    # blastall -p blastn -d ${outDir}/${outDir2}/BLAST/fasta.db -i ${refFasta} -e 1.0 -outfmt 6 > self-blast.out
+    # makeblastdb -dbtype nucl -in ${refFasta} -out ${workflow.projectDir}/BLAST/fasta.db 
+    # blastall -p blastn -d ${workflow.projectDir}/BLAST/fasta.db -i ${refFasta} -e 1.0 -outfmt 6 > self-blast.out
     
     # SAMtools index
     bgzip ${refFasta}
     samtools faidx ${refFasta}.gz > ${refFasta}.gz.fai
 
     # run pangenome in nf-core - don't work as reliably as PGGB, so best avoided
-    # nextflow run nf-core/pangenome --input ${refFasta}.gz --n_haplotypes 135 --outdir \
-    #   ${outDir}/${outDir2}  --communities  --wfmash_segment_length 1000
-    #odgi stats -m -i ${outDir}/${outDir2}/FINAL_ODGI/${refFasta}.gz.squeeze.og -S > ${outDir}/odgi.stats.txt 
+    # nextflow run nf-core/pangenome --input ${refFasta}.gz --n_haplotypes 5 --outdir \
+    #   ${workflow.projectDir}/CURRENT  --communities  --wfmash_segment_length 1000
+    #odgi stats -m -i ${workflow.projectDir}/CURRENT/FINAL_ODGI/${refFasta}.gz.squeeze.og -S > ${workflow.projectDir}/odgi.stats.txt 
 
     # alternative to nf-core pangenome
-    pggb -i ${refFasta}.gz -m -S -o ${outDir}/${outDir2} -t 46 -p 90 -s 1k -n 135 
+    pggb -i ${refFasta}.gz -m -S -o CURRENT/ -t 46 -p 90 -s 1k -n 5
     """
 }
 
@@ -79,21 +71,18 @@ process odgi {
     label 'odgi'
 
     input:
-    val ready
     path (refFasta)
-    path (outDir)
     path (outDir2)
-    path (gfa_in)
+//    path (gfa_in)
 
     output:
-    val true
-    publishDir "${outDir}", mode: "copy"
-    path("${outDir2}/*.fasta.og"), emit: og
+    publishDir ".", mode: "copy"
+//    path("*.fasta.og"), emit: og
 
     script:
     """
-    odgi build -g $gfa_in -o ${outDir}/${outDir2}/${refFasta}.og 
-    odgi stats -m -i ${outDir}/${outDir2}/${refFasta}.og -S > ${outDir}/odgi.stats.txt 
+    odgi build -g ${projectDir}/${outDir2}/*.gfa -o ${projectDir}/${outDir2}/${refFasta}.og 
+    odgi stats -m -i ${projectDir}/${outDir2}/${refFasta}.og -S > ${projectDir}/odgi.stats.txt 
     """
 }
 
@@ -103,24 +92,23 @@ process openness_panacus {
 
     input:
     val ready
-    path (outDir)
     path (outDir2)
     path (gfa_in)
     
     output:
-    publishDir "${outDir}", mode: "copy"
+    publishDir ".", mode: "copy"
     
     script:
     """
     # mamba install -c conda-forge -c bioconda panacus
     # get haplotypes
-    grep '^P' $gfa_in | cut -f2 > ${outDir}/${outDir2}/PANACUS/haplotypes.txt
+    grep '^P' $gfa_in | cut -f2 > ${workflow.projectDir}/${outDir2}/PANACUS/haplotypes.txt
     
     # run panacus to get data
-    RUST_LOG=info panacus histgrowth -t4 -l 1,2,1,1,1 -q 0,0,1,0.5,0.1 -S -s ${outDir}/${outDir2}/PANACUS/haplotypes.txt $gfa_in > ${outDir}/${outDir2}/PANACUS/histgrowth.node.tsv
+    RUST_LOG=info panacus histgrowth -t4 -l 1,2,1,1,1 -q 0,0,1,0.5,0.1 -S -s ${workflow.projectDir}/${outDir2}/PANACUS/haplotypes.txt $gfa_in > ${workflow.projectDir}/${outDir2}/PANACUS/histgrowth.node.tsv
  
     # visualise plot as PDF
-    panacus-visualize -e ${outDir}/${outDir2}/PANACUS/histgrowth.node.tsv > ${outDir}/${outDir2}/PANACUS/histgrowth.node.pdf
+    panacus-visualize -e ${workflow.projectDir}/${outDir2}/PANACUS/histgrowth.node.tsv > ${workflow.projectDir}/${outDir2}/PANACUS/histgrowth.node.pdf
     """
 }
 
@@ -130,7 +118,6 @@ process openness_pangrowth {
 
     input:
     path (refFasta)
-    path (outDir)
     path (outDir2)
 
     output:
@@ -165,7 +152,6 @@ process get_vcf {
     input:
     val true
     path (refFasta)
-    path (outDir)
     path (outDir2)
     path (gfa_in)
     path (vcf1)
@@ -200,7 +186,6 @@ process getbases {
     input:
     val ready
     path (refFasta)
-    path (outDir)
     path (outDir2)
     path (og_in)
 
@@ -212,15 +197,3 @@ process getbases {
     """
 }
 
-process cleanup {
-    tag {"cleanup"}
-    label 'remove_directory'
-
-    input:
-    path (outDir3)
-
-    script:
-    """
-    rm -rf ${outDir3}
-    """
-}
