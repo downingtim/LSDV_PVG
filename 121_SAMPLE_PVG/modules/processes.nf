@@ -19,8 +19,17 @@ Download dataset to examine (eg LSDV)
 */
 
 process download {
+    input:
+    path (outDir)
+    path (faS)
+
     output:
+    val true
+    publishDir ".", mode: "copy"
     path("*.fasta"), emit: "write"
+//    path("*.txt"), emit: "writetxt"
+//    path("*.aln"), emit: "writealn"
+//    path("T14*"), emit: "writeT14"
 
     script:
     """
@@ -34,24 +43,19 @@ process make_pvg {
     label 'pvg'
 
     input:
+    val ready
     path (refFasta)
     path (outDir)
     path (outDir2)
     
     output:
+    val true
     publishDir "${outDir}", mode: "copy"
     path("${refFasta}.gz.fai"), emit: sam_fai
     path("${outDir}/${outDir2}/*.gfa"), emit: gfa
     
     script:
     """
-    if [ ! -d "${outDir}/${outDir2}/" ]; then
-       mkdir ${outDir}/${outDir2}/
-    fi    # put all main output in this folder
-
-    if [ ! -d "${outDir}/${outDir2}/BLAST" ]; then
-       mkdir ${outDir}/${outDir2}/BLAST
-    fi
     # create Blast indexes for self-self blast
     # makeblastdb -dbtype nucl -in ${refFasta} -out ${outDir}/${outDir2}/BLAST/fasta.db 
     # blastall -p blastn -d ${outDir}/${outDir2}/BLAST/fasta.db -i ${refFasta} -e 1.0 -outfmt 6 > self-blast.out
@@ -75,13 +79,16 @@ process odgi {
     label 'odgi'
 
     input:
+    val ready
     path (refFasta)
     path (outDir)
     path (outDir2)
     path (gfa_in)
 
     output:
+    val true
     publishDir "${outDir}", mode: "copy"
+    path("${outDir2}/*.fasta.og"), emit: og
 
     script:
     """
@@ -95,6 +102,7 @@ process openness_panacus {
     label 'openness_panacus'
 
     input:
+    val ready
     path (outDir)
     path (outDir2)
     path (gfa_in)
@@ -106,9 +114,6 @@ process openness_panacus {
     """
     # mamba install -c conda-forge -c bioconda panacus
     # get haplotypes
-    if [ ! -d "${outDir}/${outDir2}/PANACUS" ]; then
-       mkdir ${outDir}/${outDir2}/PANACUS
-    fi
     grep '^P' $gfa_in | cut -f2 > ${outDir}/${outDir2}/PANACUS/haplotypes.txt
     
     # run panacus to get data
@@ -127,37 +132,29 @@ process openness_pangrowth {
     path (refFasta)
     path (outDir)
     path (outDir2)
-    path (faSplit)
 
     output:
     publishDir "${outDir}", mode: "copy"
     
     script:
     """
-    if [ ! -d "${outDir}/${outDir2}/PANGROWTH" ]; then
-       mkdir ${outDir}/${outDir2}/PANGROWTH
-    fi
-    if [ ! -d "${outDir}/${outDir2}/PANGROWTH/SEQS" ]; then
-       mkdir ${outDir}/${outDir2}/PANGROWTH/SEQS
-    fi
     # need to split files into individual files in folder SEQS
-
     # wget https://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/faSplit and chmod it
-    ./${faSplit} byname ${refFasta} ${outDir}/${outDir2}/PANGROWTH/SEQS/
+    #   ./${faSplit} byname ${refFasta} ${outDir}/${outDir2}/PANGROWTH/SEQS/
 
     # run pangrowth
-    ~/pangrowth/pangrowth hist -k 17 -t 12 ${outDir}/${outDir2}/PANGROWTH/SEQS/*a > ${outDir}/${outDir2}/PANGROWTH/hist.txt
+     ~/pangrowth/pangrowth hist -k 17 -t 12 ${outDir}/${outDir2}/PANGROWTH/SEQS/*a > ${outDir}/${outDir2}/PANGROWTH/hist.txt
 
     # plot AFS for single dataset - not very useful! 
-    python ~/pangrowth/scripts/plot_single_hist.py ${outDir}/${outDir2}/PANGROWTH/hist.txt ${outDir}/${outDir2}/PANGROWTH/LSDV.pangrowth.pdf
+     python ~/pangrowth/scripts/plot_single_hist.py ${outDir}/${outDir2}/PANGROWTH/hist.txt ${outDir}/${outDir2}/PANGROWTH/LSDV.pangrowth.pdf
 
     # model growth - prepare dataset 1 - not useful
-    ~/pangrowth/pangrowth growth -h ${outDir}/${outDir2}/PANGROWTH/hist.txt > ${outDir}/${outDir2}/PANGROWTH/LSDV
-    python ~/pangrowth/scripts/plot_growth.py ${outDir}/${outDir2}/PANGROWTH/LSDV ${outDir}/${outDir2}/PANGROWTH/LSDV.growth.pdf
+     ~/pangrowth/pangrowth growth -h ${outDir}/${outDir2}/PANGROWTH/hist.txt > ${outDir}/${outDir2}/PANGROWTH/LSDV
+     python ~/pangrowth/scripts/plot_growth.py ${outDir}/${outDir2}/PANGROWTH/LSDV ${outDir}/${outDir2}/PANGROWTH/LSDV.growth.pdf
 
     # do core
-    ~/pangrowth/pangrowth core -h ${outDir}/${outDir2}/PANGROWTH/hist.txt  -q 0.5 > ${outDir}/${outDir2}/PANGROWTH/LSDV_core
-    # python ~/pangrowth/scripts/plot_core.py ${outDir}/${outDir2}/PANGROWTH/LSDV_core ${outDir}/${outDir2}/PANGROWTH/LSDV_core.pdf
+     ~/pangrowth/pangrowth core -h ${outDir}/${outDir2}/PANGROWTH/hist.txt -q 0.5 > ${outDir}/${outDir2}/PANGROWTH/LSDV_core
+     python ~/pangrowth/scripts/plot_core.py ${outDir}/${outDir2}/PANGROWTH/LSDV_core ${outDir}/${outDir2}/PANGROWTH/LSDV_core.pdf
     """
 }
 
@@ -166,20 +163,18 @@ process get_vcf {
     label 'vcf'
 
     input:
+    val true
     path (refFasta)
     path (outDir)
     path (outDir2)
     path (gfa_in)
+    path (vcf1)
 
     output:
     publishDir "${outDir}", mode: "copy"
     
     script:
     """
-    if [ ! -d "${outDir}/${outDir2}/VCF" ]; then
-       mkdir ${outDir}/${outDir2}/VCF
-    fi
-
     ~/bin/gfautil -i $gfa_in gfa2vcf > ${outDir}/${outDir2}/VCF/${refFasta}.vcf
     # https://lib.rs/crates/gfautil
 
@@ -193,11 +188,29 @@ process get_vcf {
     # <query-path-name>\t<reference base>\t<reference pos>\t<query base>\t<query pos>
     # script to create initial file 
 
-    perl vcf.pl ${outDir2} #  sort out coordinates
-    Rscript bin/plot_variation_map.R # plot image of variation map
+    perl ${vcf1} ${outDir2} #  sort out coordinates
+    Rscript ${outDir}/bin/plot_variation_map.R # plot image of variation map in PDF
     """
 }
 
+process getbases {
+    tag {"get bases"}
+    label 'bases'
+
+    input:
+    val ready
+    path (refFasta)
+    path (outDir)
+    path (outDir2)
+    path (og_in)
+
+    output:
+    publishDir "${outDir}", mode: "copy"
+
+    """
+    odgi flatten -i ${outDir}/${og_in} -f ${refFasta} -b ${refFasta}.bed -t 22
+    """
+}
 
 process cleanup {
     tag {"cleanup"}

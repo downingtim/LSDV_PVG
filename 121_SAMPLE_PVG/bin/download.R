@@ -35,16 +35,16 @@ library(RcppArmadillo)
 ##Arguments collection
 # args <- commandArgs(trailingOnly = T)
 # species <- args[1] #ex : LSDV, Sheeppox_virus
-species <- "goatpox virus"
 species <- "lumpy skin disease virus"
+species <- "goatpox virus"
 
 ##Collecting the IDs of the sequences
 sp <- paste (species, "[organism] AND complete genome [title]")
 sp2 <- paste (species, "[organism] AND genomic sequence [title]")
 # adjust for "genomic sequence"
-
-##Query used to ask the database
-query <- entrez_search(db="nuccore", term=sp ,retmax=9999)
+#
+#Query used to ask the database
+query <- entrez_search(db="nuccore", term=sp ,retmax=5)
 query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=9999)
   # extracting the IDs of every sequence that matches the query
 IDs <- c(query$ids, query2$ids)  #storing the IDs
@@ -178,7 +178,7 @@ for (k in 1:length(lengths(in1))){
   str(xx)
   #str(paste(xx$A, collapse=""))
   in1[[k]] <- paste(xx$A, collapse="") } # end for
-out <- paste("/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/",old_fasta2,sep="")
+out <- old_fasta2
 print(out)
 write.fasta(in1, names(in1), out)
 outaln <- gsub("fasta", "aln", out)
@@ -190,17 +190,27 @@ system2(command='mafft', args=c('--thread 50 --auto ',out,' > ',outaln))
 # now run RAxML
 system2(command='raxml-ng', args=c(' --all --msa ',outaln,' --model GTR+G4 --prefix T14 --seed 21231 --bs-metric fbp,tbe --redo'))
 
-tree <- read.tree("/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/bin/T14.raxml.supportTBE")
+tree <- read.tree("T14.raxml.supportTBE")
 moyenne <- mean(tree$edge.length)
 SD <- sd(tree$edge.length)
 index <- which(tree$edge.length >= (moyenne + 10 * SD))
+
+# file.create("headers.txt")
+# truncate(file("headers.txt", open="w"))
+file2 <- file("headers.txt")
+writeLines(c("\n1","\n1"), file2)
+close(file2)
+
+png("tree.png",width=1900,height=1900,units="px")
+plot(tree)
+dev.off()
 
 if (length(index)==0){ write("", file = "IDstoremove.txt") 
   } else {
   for (i in 1:length(index)) {
     NODE <- c(tree$edge[index[i], 2])
     subtree <- extract.clade(tree,tree$edge[index[i], 2])
-  png(file = paste("/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/subtree_",i,".png"),
+  png(file = paste("subtree_",i,".png"),
                              width=1900, height=1000, units="px")
     plot(subtree)
    dev.off() 
@@ -211,7 +221,7 @@ if (length(index)==0){ write("", file = "IDstoremove.txt")
       "[A-Za-z]{2}\\d+\\.\\d+|[A-Za-z]{2}_\\d+\\.\\d+|[A-Za-z]\\d{5}\\.\\d+")
     } # end for
     
-    write(paste(NODE, collapse="\n"), file="/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/bin/headers.txt", append=F)
+    write(paste(NODE, collapse="\n"), file="headers.txt", append=F)
   } # end outer for
 } # end else
 
@@ -223,8 +233,9 @@ if (length(index)==0){ write("", file = "IDstoremove.txt")
 
 ##Arguments collection - out is the input below
 AC_of_interest_file = ""
-if(!(file.size("/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/bin/headers.txt")) < 2){ 
- AC_of_interest_file <- read.table("/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/bin/headers.txt") }
+print(getwd())
+ if(!(file.size("headers.txt")) < 2){ 
+      AC_of_interest_file <- read.table("headers.txt")     } 
  
 output <- gsub("virus", "virus_2", out) ## output file for data
 
@@ -264,12 +275,16 @@ write.fasta(sequences = data[vec.tokeep], names = names(data)[vec.tokeep],
 print(output)
 
 list1 <- c()
+
+system2(command='mkdir', args=c('bin'))
+
 in11 <- seqinr::read.fasta(out, seqtype=c("DNA"),as.string=T)
 for (k in 1:length(lengths(in11))){ # 5end
   xx <- as.data.frame(strsplit(in11[[k]], ""))
   colnames(xx) <- "A"
   if (length(xx$A)<150000) { print(length(xx$A)) }
-##  if (length(xx$A)<150000) { print(in11[[k]]) }
+# screen for length, needs to be adjustee
+#  if (length(xx$A)<150000) { print(in11[[k]]) }
   list1 <- c(list1, length(xx$A)) } # end for
 
 in11 <- seqinr::read.fasta(out, seqtype=c("DNA"),as.string=T)
@@ -277,23 +292,36 @@ for (k in 1:length(lengths(in11))){ # 5end
   xx <- as.data.frame(strsplit(in11[[k]], ""))
   colnames(xx) <- "A"
   in11[[k]] <- paste(xx$A[1:13850], collapse="") } # end for
-write.fasta(in11, names(in11), "v5_5end.fasta")
+write.fasta(in11, names(in11), "bin/5end.fasta")
 
 in11 <- seqinr::read.fasta(out,seqtype=c("DNA"),as.string=T)
 for (k in 1:length(lengths(in11))){ # 5end
   xx <- as.data.frame(strsplit(in11[[k]], ""))
   colnames(xx) <- "A"
   in11[[k]] <- paste(xx$A[13851:106910], collapse="") } # end for
-write.fasta(in11, names(in11), "v5_core.fasta")
+write.fasta(in11, names(in11), "bin/core.fasta")
 
 in11 <- seqinr::read.fasta(out, seqtype=c("DNA"),as.string=T)
 for (k in 1:length(lengths(in11))){ # 5end
   xx <- as.data.frame(strsplit(in11[[k]], ""))
   colnames(xx) <- "A"
   in11[[k]] <- paste(xx$A[106911:length(xx$A)], collapse="") } # end for
-write.fasta(in11, names(in11), "v5_3end.fasta")
+write.fasta(in11, names(in11), "bin/3end.fasta")
 
+# Set up folders etc for subsequent analyses
 # split files up in SEQS/ folder
-system2(command='mkdir', args=c('PANGROWTH'))
-system2(command='mkdir', args=c('PANGROWTH/SEQS'))
-system2(command='/mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/faSplit', args=c('byname ',output,' PANGROWTH/SEQS/'))
+out3 <- gsub('2_virus_2_\\.fasta','CURRENT',out) #  goatpox_2_virus_2_2_.fasta
+system2(command='mkdir', args=c(paste("../",out3,sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/PANGROWTH/",sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/BLAST/",sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/PANACUS/",sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/VCF/",sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/PANGROWTH/SEQS/",sep="")))
+print(paste('./faSplit ',' byname ', output, ' ../../../',out3,'/PANGROWTH/SEQS/',sep=""))
+system2(command='./faSplit', args=c('byname ',
+            output, paste(' ../',out3,'/PANGROWTH/SEQS/',sep="")))
+system2(command='mv', args=c(' T14* ../../../bin/'))
+system2(command='mv', args=c(' ID* ../../../bin/'))
+system2(command='mv', args=c(' *aln ../../../bin/'))
+system2(command='mv', args=c(' header* ../../../bin/'))
+system2(command='mv', args=c(' *png ../../../bin/'))
