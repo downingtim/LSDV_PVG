@@ -1,0 +1,3 @@
+
+
+more file_fa | perl -e '$b = join("",<>); @a=split(//,$b); $b=~ s/N//g; @a2=split(//,$b); print "Total length  = "; print ($#a-10); print "\tGap-free length  = "; print ($#a2-10); print "\n"; '

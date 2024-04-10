@@ -1,0 +1,246 @@
+
+library(ggplot2)
+
+name1 <- "FMDV_ALL"
+h1 <- read.csv(paste(name1, "/heaps.txt", sep=""), sep="\t") [1:255,]
+colnames(h1) <- c("a", "b", "pangenome")
+
+name2 <- "900_FMDV"
+h2 <- read.csv(paste(name2, "/heaps.txt", sep=""), sep="\t") [1:255,]
+colnames(h2) <- c("a", "b", "pangenome")
+
+name6 <- "FMDV_O"
+h6 <- read.csv(paste(name6, "/heaps.txt", sep=""), sep="\t")[1:255,]
+colnames(h6) <- c("a", "b", "pangenome")
+
+pdf("heaps_FMDV_All_O.fraction.pdf", width=14, height=8)
+ggplot()  +
+geom_point(aes(x=2:256, y= (h1$pangenome), color="All"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:256, y= (h1$pangenome),  col="All"),  linetype="dashed", linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:256, y= (h2$pangenome), color="NCBI"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:256, y= (h2$pangenome), col="NCBI"),   linetype="dashed", linewidth=1.5, alpha=0.5)  + 
+geom_point(aes(x=2:256, y= (h6$pangenome), color="O"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:256, y= (h6$pangenome), col="O"),   linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+scale_y_continuous(limits = c(0, 31000))  +
+labs(x = "Number of total samples in which path is present") + labs(y = "Number of bases in paths")  +
+theme(  legend.title=element_text(size=18),    legend.text=element_text(size=16), 
+axis.text=element_text(size=18), axis.title=element_text(size=18,face="bold"))  +
+  scale_color_manual(name='Groups', breaks=c('All', 'NCBI', 'O' ),  values=c('All'='red', 'NCBI'='black', 'O'='blue')) 
+		dev.off()
+
+__
+
+library(ggplot2)
+name3 <- "FMDV_A"
+h3 <- read.csv(paste(name3, "/heaps.txt", sep=""), sep="\t") 
+colnames(h3) <- c("a", "b", "pangenome")
+
+name4 <- "FMDV_ASIA1"
+h4 <- read.csv(paste(name4, "/heaps.txt", sep=""), sep="\t") 
+colnames(h4) <- c("a", "b", "pangenome")
+
+name5 <- "FMDV_C"
+h5 <- read.csv(paste(name5, "/heaps.txt", sep=""), sep="\t") 
+colnames(h5) <- c("a", "b", "pangenome")
+
+name7 <- "FMDV_SAT1"
+h7 <- read.csv(paste(name7, "/heaps.txt", sep=""), sep="\t") 
+colnames(h7) <- c("a", "b", "pangenome")
+
+name8 <- "FMDV_SAT2"
+h8 <- read.csv(paste(name8, "/heaps.txt", sep=""), sep="\t") 
+colnames(h8) <- c("a", "b", "pangenome")
+
+name9 <- "FMDV_SAT3"
+h9 <- read.csv(paste(name9, "/heaps.txt", sep=""), sep="\t") 
+colnames(h9) <- c("a", "b", "pangenome")
+
+name10 <- "FMDV_C_SAT1"
+h10 <- read.csv(paste(name10, "/heaps.txt", sep=""), sep="\t") 
+colnames(h10) <- c("a", "b", "pangenome")
+
+name11 <- "FMDV_C_SAT2"
+h11 <- read.csv(paste(name11, "/heaps.txt", sep=""), sep="\t") 
+colnames(h11) <- c("a", "b", "pangenome")
+
+name12 <- "FMDV_SAT1_SAT2"
+h12 <- read.csv(paste(name12, "/heaps.txt", sep=""), sep="\t") 
+colnames(h12) <- c("a", "b", "pangenome")
+
+name6 <- "FMDV_O"
+h6 <- read.csv(paste(name6, "/heaps.txt", sep=""), sep="\t")
+colnames(h6) <- c("a", "b", "pangenome")
+
+# h3 .. h12
+
+pdf("heaps_FMDV_A_ASIA1_C.numbers.pdf", width=14, height=8)
+ggplot()  +
+geom_point(aes(x=2:144, y=h3$pangenome, color="A"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:144, y=h3$pangenome,  col="A"),  linetype="dashed", linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:62, y=h4$pangenome, color="ASIA1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:62, y=h4$pangenome, col="ASIA1"),   linetype="dashed", linewidth=1.5, alpha=0.5)  + 
+geom_point(aes(x=2:34, y=h5$pangenome, color="C"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:34, y=h5$pangenome, col="C"),   linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+scale_y_continuous(limits = c(0, 14000))  +
+labs(x = "Fraction of total samples in which path is present") + labs(y = "Sum of bases in paths")  +
+theme(  legend.title=element_text(size=18),    legend.text=element_text(size=16), 
+axis.text=element_text(size=18), axis.title=element_text(size=18,face="bold"))  +
+  scale_color_manual(name='Groups', breaks=c('A', 'ASIA1', 'C'), 
+        values=c('A'='red', 'ASIA1'='black', 'C'='blue')) 
+		dev.off()
+
+pdf("heaps_FMDV_A_ASIA1_C_O.fraction.pdf", width=14, height=8)
+ggplot()  +
+geom_point(aes(x=2:144/144, y=h3$pangenome, color="A"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:144/144, y=h3$pangenome,  col="A"),  linetype="dashed", linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:62/62, y=h4$pangenome, color="ASIA1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:62/62, y=h4$pangenome, col="ASIA1"),   linetype="dashed", linewidth=1.5, alpha=0.5)  + 
+geom_point(aes(x=2:34/34, y=h5$pangenome, color="C"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:34/34, y=h5$pangenome, col="C"),   linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:562/562, y=h6$pangenome, color="O"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:562/562, y=h6$pangenome, col="O"),   linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+scale_y_continuous(limits = c(0, 15000))  +
+labs(x = "Fraction of total samples in which path is present") + labs(y = "Sum of bases in paths")  +
+theme(  legend.title=element_text(size=18),    legend.text=element_text(size=16), 
+axis.text=element_text(size=18), axis.title=element_text(size=18,face="bold"))  +
+  scale_color_manual(name='Groups', breaks=c('A', 'ASIA1', 'C', 'O'), 
+        values=c('A'='red', 'ASIA1'='black', 'C'='blue', 'O'='purple')) 
+		dev.off()
+
+pdf("heaps_FMDV.most.numbers.pdf", width=14, height=8)
+ggplot()  +
+geom_point(aes(x=2:144, y=h3$pangenome, color="A"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:144, y=h3$pangenome,  col="A"),  linetype="dashed", linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:62, y=h4$pangenome, color="ASIA1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:62, y=h4$pangenome, col="ASIA1"),   linetype="dashed", linewidth=1.5, alpha=0.5)  + 
+geom_point(aes(x=2:34, y=h5$pangenome, color="C"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:34, y=h5$pangenome, col="C"),   linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:34, y=h7$pangenome, color="SAT1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:34, y=h7$pangenome, col="SAT1"),  linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:31, y=h8$pangenome, color="SAT2"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:31, y=h8$pangenome, col="SAT2"),   linetype="dashed", linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:24, y=h9$pangenome, color="SAT3"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:24, y=h9$pangenome, col="SAT3"),   linetype="dashed", linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:68, y=h10$pangenome, color="C+SAT1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:68, y=h10$pangenome, col="C+SAT1"),  linetype="dashed",  linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:65, y=h11$pangenome, color="C+SAT2"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:65, y=h11$pangenome, col="C+SAT2"),  linetype="dashed",  linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:65, y=h12$pangenome, color="SAT1+SAT2"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:65, y=h12$pangenome, col="SAT1+SAT2"),  linetype="dashed",  linewidth=1.5, alpha=0.5) +
+scale_y_continuous(limits = c(0, 21000))  +
+labs(x = "Number of total samples in which path is present") + labs(y = "Sum of bases in paths")  +
+theme(  legend.title=element_text(size=18),    legend.text=element_text(size=16), 
+axis.text=element_text(size=18), axis.title=element_text(size=18,face="bold"))  +
+  scale_color_manual(name='Groups', 
+                     breaks=c('A', 'ASIA1', 'C', 'SAT1', 'SAT2', 'SAT3', 'C+SAT1', 'C+SAT2', 'SAT1+SAT2' ),
+                     values=c('A'='red', 'ASIA1'='black', 'C'='blue', 'SAT1'='green', 'SAT2'='grey',
+		 'SAT3'='cyan', 'C+SAT1'='yellow', 'C+SAT2'='orange', 'SAT1+SAT2'='brown')) 
+		dev.off()
+
+pdf("heaps_FMDV.all.fraction.pdf", width=14, height=8)
+ggplot()  +
+geom_point(aes(x=2:144/144, y=h3$pangenome, color="A"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:144/144, y=h3$pangenome,  col="A"),  linetype="dashed", linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:62/62, y=h4$pangenome, color="ASIA1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:62/62, y=h4$pangenome, col="ASIA1"),   linetype="dashed", linewidth=1.5, alpha=0.5)  + 
+geom_point(aes(x=2:34/34, y=h5$pangenome, color="C"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:34/34, y=h5$pangenome, col="C"),   linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:562/562, y=h6$pangenome, color="O"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:562/562, y=h6$pangenome, col="O"),   linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:34/34, y=h7$pangenome, color="SAT1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:34/34, y=h7$pangenome, col="SAT1"),  linetype="dashed",  linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:31/31, y=h8$pangenome, color="SAT2"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:31/31, y=h8$pangenome, col="SAT2"),   linetype="dashed", linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:24/24, y=h9$pangenome, color="SAT3"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:24/24, y=h9$pangenome, col="SAT3"),   linetype="dashed", linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:68/68, y=h10$pangenome, color="C+SAT1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:68/68, y=h10$pangenome, col="C+SAT1"),  linetype="dashed",  linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:65/65, y=h11$pangenome, color="C+SAT2"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:65/65, y=h11$pangenome, col="C+SAT2"),  linetype="dashed",  linewidth=1.5, alpha=0.5)+ 
+geom_point(aes(x=2:65/65, y=h12$pangenome, color="SAT1+SAT2"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:65/65, y=h12$pangenome, col="SAT1+SAT2"),  linetype="dashed",  linewidth=1.5, alpha=0.5) +
+scale_y_continuous(limits = c(0, 21000))  +
+labs(x = "Fraction of total samples in which path is present") + labs(y = "Sum of bases in paths")  +
+theme(  legend.title=element_text(size=18),    legend.text=element_text(size=16), 
+axis.text=element_text(size=18), axis.title=element_text(size=18,face="bold"))  +
+  scale_color_manual(name='Groups', 
+                     breaks=c('A', 'ASIA1', 'C', 'O', 'SAT1', 'SAT2', 'SAT3', 'C+SAT1', 'C+SAT2', 'SAT1+SAT2' ),
+                     values=c('A'='red', 'ASIA1'='black', 'C'='blue', 'O'='purple', 'SAT1'='green', 'SAT2'='grey',
+		 'SAT3'='cyan', 'C+SAT1'='yellow', 'C+SAT2'='orange', 'SAT1+SAT2'='brown')) 
+		dev.off()
+
+table <- data.frame(matrix(ncol=4))
+colnames(table) <- c("Group", "Core", "Median", "Complete")
+table <- rbind(table, c("A",h3$pangenome[length(h3$pangenome)], median(h3$pangenome), h3$pangenome[1] ) )
+table <- rbind(table, c("ASIA1",h4$pangenome[length(h4$pangenome)],median(h4$pangenome), h4$pangenome[1] ) )
+table <- rbind(table, c("C",h5$pangenome[length(h5$pangenome)],median(h5$pangenome), h5$pangenome[1] ) )
+table <- rbind(table, c("O",h6$pangenome[length(h6$pangenome)],median(h6$pangenome), h6$pangenome[1] ) )
+table <- rbind(table, c("SAT1",h7$pangenome[length(h7$pangenome)],median(h7$pangenome), h7$pangenome[1] ) )
+table <- rbind(table, c("SAT2",h8$pangenome[length(h8$pangenome)],median(h8$pangenome), h8$pangenome[1] ) )
+table <- rbind(table, c("SAT3",h9$pangenome[length(h9$pangenome)],median(h9$pangenome), h9$pangenome[1] ) )
+table <- rbind(table, c("C+SAT1",h10$pangenome[length(h10$pangenome)],median(h10$pangenome), h10$pangenome[1] ) )
+table <- rbind(table, c("C+SAT2",h11$pangenome[length(h11$pangenome)],median(h11$pangenome), h11$pangenome[1] ) )
+table <- rbind(table, c("SAT1+SAT2",h12$pangenome[length(h12$pangenome)],median(h12$pangenome), h12$pangenome[1] ) )
+table <- table[-c(1),]
+table
+
+LSDV
+
+name21 <- "62_LSDV_genomes"
+h21 <- read.csv(paste(name21, "/heaps.txt", sep=""), sep="\t")
+colnames(h21) <- c("a", "b", "pangenome")
+
+name22 <- "66_LSDV_genomes"
+h22 <- read.csv(paste(name22, "/heaps.txt", sep=""), sep="\t") 
+colnames(h22) <- c("a", "b", "pangenome")
+
+pdf("heaps_LSDV.pdf", width=14, height=8)
+ggplot()  +
+geom_point(aes(x=2:62, y= (h21$pangenome), color="Clade 1"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:62, y= (h21$pangenome),  col="Clade 1"),  linetype="dashed", linewidth=1.5, alpha=0.5) + 
+geom_point(aes(x=2:66, y= (h22$pangenome), color="Clades 1 + 2"), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:66, y= (h22$pangenome), col="Clades 1 + 2"),   linetype="dashed", linewidth=1.5, alpha=0.5)  + 
+scale_y_continuous(limits = c(0, 230000))  +
+labs(x = "Number of total samples in which path is present") + labs(y = "Number of bases in paths")  +
+theme(  legend.title=element_text(size=18),    legend.text=element_text(size=16), 
+axis.text=element_text(size=18), axis.title=element_text(size=18,face="bold"))  +
+  scale_color_manual(name='Groups', breaks=c('Clade 1', 'Clades 1 + 2' ), 
+  values=c('Clade 1'='red', 'Clades 1 + 2'='black')) 
+		dev.off()
+   
+
+table <- data.frame(matrix(ncol=4))
+colnames(table) <- c("Group", "Core", "Median", "Complete")
+table <- rbind(table, c("Clade 1",h21$pangenome[length(h21$pangenome)], median(h21$pangenome), h21$pangenome[1]  ) )
+table <- rbind(table, c("Clade 1 + 2",h22$pangenome[length(h22$pangenome)],median(h22$pangenome), h22$pangenome[1]  ) )
+table <- table[-c(1),]
+table
+
+
+ASFV
+
+library(ggplot2)
+name31 <- "ASFV"
+h31 <- read.csv(paste(name31, "/heaps.txt", sep=""), sep="\t")
+colnames(h31) <- c("a", "b", "pangenome")
+
+
+pdf("heaps_ASFV.pdf", width=14, height=8)
+ggplot()  +
+geom_point(aes(x=2:214, y= (h31$pangenome)), size=1.2, alpha=0.5)  +
+geom_line(aes(x=2:214, y= (h31$pangenome)),  linetype="dashed",
+ linewidth=1.5, alpha=0.5) + 
+scale_y_continuous(limits = c(0, 325000))  +
+labs(x = "Number of total samples in which path is present") +
+labs(y = "Number of bases in paths")
+dev.off()
+   
+
+table <- data.frame(matrix(ncol=4))
+colnames(table) <- c("Group", "Core", "Median", "Complete")
+table <- rbind(table, c("Clade 1",h31$pangenome[length(h31$pangenome)], median(h31$pangenome), h31$pangenome[1]  ) ) 
+table <- table[-c(1),]
+table
+
+quit()
+y

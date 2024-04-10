@@ -44,7 +44,7 @@ sp2 <- paste (species, "[organism] AND genomic sequence [title]")
 # adjust for "genomic sequence"
 #
 #Query used to ask the database
-query <- entrez_search(db="nuccore", term=sp ,retmax=4)
+query <- entrez_search(db="nuccore", term=sp ,retmax=6)
 query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=1)
   # extracting the IDs of every sequence that matches the query
 IDs <- c(query$ids, query2$ids)  #storing the IDs
@@ -161,8 +161,19 @@ for (i in 1:length(lengths(str_split(in1, "")))){
     print(lengths(str_split(in1[i], "")))
     counter = counter+1
     in1 <- in1[-i]}  }
+
+counter2=0
+for (i in 1:length(lengths(str_split(in1, "")))){ 
+  if(( lengths(str_split(in1[i], "")) > 200000)||
+     ( lengths(str_split(in1[i], "")) < 145000)){
+    print(lengths(str_split(in1[i], "")))
+    print(i)
+    print(lengths(str_split(in1[i], "")))
+    counter2 = counter2+1
+    in1 <- in1[-i]}  }
+
 print(length(lengths(in1)))
-print(paste("Removed", counter, "seqs"))
+print(paste("Removed", counter + counter2, "seqs"))
 
 old_fasta2 <- gsub("_", "_2_", titre)
 names(in1) <- gsub("_NA_NA", "", names(in1)) 
