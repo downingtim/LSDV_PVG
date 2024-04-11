@@ -28,7 +28,6 @@ process download {
 
     script:
     """
-    export NXF_JVM_ARGS="-Xms12g -Xmx16g"
     module load R
     Rscript ${workflow.projectDir}/bin/download.R
     """
@@ -42,13 +41,11 @@ process make_pvg {
     path (refFasta)
     
     output:
-    val true
+    val true, emit: value1
     publishDir ".", mode: "copy"
     
     script:
     """
-    read -r number < "${workflow.projectDir}/bin/number1.txt"   #   get number
-
     # create Blast indexes for self-self blast
     # makeblastdb -dbtype nucl -in ${refFasta} -out ${workflow.projectDir}/BLAST/fasta.db 
     # blastall -p blastn -d ${workflow.projectDir}/BLAST/fasta.db -i ${refFasta} -e 1.0 -outfmt 6 > self-blast.out
@@ -56,6 +53,13 @@ process make_pvg {
     # SAMtools index
     bgzip ${refFasta}
     samtools faidx ${refFasta}.gz > ${refFasta}.gz.fai
+    echo ${workflow.projectDir}/${refFasta}
+    # number=`grep -c ">" ../../../${refFasta}`
+    number=5
+    command="grep -c \">\" ../../../${refFasta}"
+    if output=$(eval "$command"); then
+        number=$output
+    fi
 
     # run PGGB - you need to specify the number of haplotypes in $number
     pggb -i ${refFasta}.gz -m -S -o CURRENT/ -t 46 -p 90 -s 1k -n $number
@@ -76,7 +80,7 @@ process odgi {
     label 'odgi'
 
     input:
-    val ready from make_pvg.out
+    val ready 
     path (refFasta)
 
     output:
@@ -95,7 +99,7 @@ process openness_panacus {
     label 'openness_panacus'
 
     input:
-    val ready from make_pvg.out
+    val ready 
 
     output:
     publishDir ".", mode: "copy"
@@ -119,7 +123,7 @@ process openness_pangrowth {
     label 'openness_pangrowth'
 
     input:
-    val ready from make_pvg.out
+    val ready 
     path (refFasta)
 
     output:
@@ -144,7 +148,7 @@ process openness_pangrowth {
     # do core - this does not converge to a solution for n<10 samples, causes error
      ~/pangrowth/pangrowth core -h ${workflow.projectDir}/CURRENT/PANGROWTH/hist.txt -q 0.5 > ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV_core
 
-    read -r number < "${workflow.projectDir}/bin/number1.txt"   #   get number
+    number=`grep -c "" ${workflow.projectDir}/${refFasta}.gz.fai`
     if [ $number -gt 10 ]; then # if the core is too small, this crashes
        python ~/pangrowth/scripts/plot_core.py ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV_core    ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV_core.pdf
     fi
@@ -156,7 +160,7 @@ process get_vcf {
     label 'vcf'
 
     input:
-    val ready from make_pvg.out
+    val ready 
     path (refFasta)
 
     output:
@@ -178,6 +182,7 @@ process get_vcf {
     # script to create initial input to visualise with R
     perl ${workflow.projectDir}/bin/vcf.pl ../../../CURRENT/VCF/path1  #  sort out coordinates
     Rscript ${workflow.projectDir}/bin/plot_variation_map.R # plot image of variation map in PDF
+    Rscript ${workflow.projectDir}/bin/plot_SNP_density.R ${workflow.projectDir}/CURRENT/VCF/${refFasta}.vcf
     """
 }
 
@@ -203,7 +208,7 @@ process viz2 {
 	label 'viz2'
 
 	input:
-	val ready from make_pvg.out
+	val ready 
 
 	output:
 	publishDir "${outDir}", mode: "copy"
@@ -223,15 +228,25 @@ process heaps {
 	label 'heaps'
 
 	input:
-	val ready from make_pvg.out
+	val ready 
 
 	output:
 	publishDir "${outDir}", mode: "copy"
 
 	"""
-	read -r number < "${workflow.projectDir}/bin/number1.txt"   #   get number
-
+        number=`grep -c "" ${workflow.projectDir}/${refFasta}.gz.fai`
 	# visualise output, reading in heaps file, 3rd column only of interest
         Rscript bin/visualisation.R $number
 	"""
+}
+
+process pavs {
+	tag{"pavs"}
+	label 'pavs'
+
+	input:
+	
+	"""
+	"""
+
 }
