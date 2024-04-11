@@ -44,8 +44,8 @@ sp2 <- paste (species, "[organism] AND genomic sequence [title]")
 # adjust for "genomic sequence"
 #
 #Query used to ask the database
-query <- entrez_search(db="nuccore", term=sp ,retmax=6)
-query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=1)
+query <- entrez_search(db="nuccore", term=sp ,retmax=6) # change this
+query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=1) # change this
   # extracting the IDs of every sequence that matches the query
 IDs <- c(query$ids, query2$ids)  #storing the IDs
 str(IDs) 
@@ -131,7 +131,7 @@ close(output_conn)
 
 ##Now suppress the unnecessary information in the headlines
 fasta <- readLines("transientfile.fasta")
-fasta_modified <- gsub("complete genome|Lumpy skin disease virus |Lumpy_skin_disease_virus|LSDV|isolate|genomic sequence|_NULL| strain|\"|\'|:|,|\\)|\\(", "", fasta) #Removing non relevant information
+fasta_modified <- gsub("complete genome|Lumpy skin disease virus |Lumpy_skin_disease_virus|LSDV|isolate|genomic sequence|_NULL| strain|\"|\'|:|,|\\)|\\(", "", fasta )  #Removing non relevant information
 fasta_modified2 <- gsub(" |  ", "_", fasta_modified)
 #Getting rid of the spaces, for the tree labels later
 fasta_modified2 <- gsub("strain", "", fasta_modified2) 
@@ -337,3 +337,4 @@ system2(command='mv', args=c(' ID* ../../../data/'))
 system2(command='mv', args=c(' *aln ../../../data/'))
 system2(command='mv', args=c(' header* ../../../data/'))
 system2(command='mv', args=c(' *png ../../../data/'))
+system2(command='grep', args=c(' -c \">\" out3 > ../../../",out3,"/number1.txt",sep=""))

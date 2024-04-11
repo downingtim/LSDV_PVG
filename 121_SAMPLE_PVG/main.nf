@@ -18,21 +18,7 @@ Modules
 #==============================================
 */
 
-include { download; make_pvg; odgi; openness_panacus; openness_pangrowth; get_vcf; getbases } from './modules/processes.nf'
-
-/*
-#==============================================
-Parameters
-#==============================================
-*/
-
-// Script parameters
-
-params.vcf = "bin/vcf.pl"
-params.faSplit = "bin/faSplit"
-//params.ref = "lumpy_2_skin_2_disease_2_virus_2_2_.fasta" 
-//params.ref2 = params.ref 
-//params.dirname = params.ref2.replaceFirst(/2_virus_2_2_.fasta/, "CURRENT")
+include { download; make_pvg; odgi; openness_panacus; openness_pangrowth; get_vcf; getbases; viz2; heaps } from './modules/processes.nf'
 
 /*
 #==============================================
@@ -41,10 +27,7 @@ Modules
 */
 
 workflow { 
-//   refFasta = channel.fromPath(params.ref, checkIfExists:true)
-//   outDir2 = channel.fromPath(params.dirname, checkIfExists:true)
-   vcf1 = channel.fromPath(params.vcf, checkIfExists:true)
-   faS = channel.fromPath(params.faSplit, checkIfExists:true)
+   faS = channel.fromPath("bin/faSplit", checkIfExists:true)
 
    main:	
 
@@ -54,25 +37,20 @@ workflow {
 	  .write
 	  .set { refFasta }
 
-       make_pvg(refFasta) 
-       make_pvg
-          .out
-//   	  .set{ gfa_in }
+       make_pvg(refFasta )
+/*
+       odgi(make_pvg.out, refFasta)
+       
+       openness_panacus(make_pvg.out)
 
-// println "Project : $workflow.projectDir"
+       openness_pangrowth(make_pvg.out, refFasta)
 
-//       odgi(refFasta, outDir2)
+       getbases(make_pvg.out, refFasta)
+       
+       get_vcf(make_pvg.out, refFasta)
 
-//       odgi(make_pvg.out, refFasta, outDir2, gfa_in)
-/*       odgi
-	.out
-	.og
-	.set { og_in }
-	
-       openness_panacus(make_pvg.out, outDir2, gfa_in)
-       openness_pangrowth(refFasta, outDir2)
-       get_vcf(make_pvg.out, refFasta, outDir2, gfa_in, vcf1)
-       getbases(odgi.out refFasta, outDir2, og_in)
+       viz2(make_pvg.out)
+       
+       heaps(make_pvg.out)
 */
-//       cleanup(outDir3)
 }

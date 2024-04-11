@@ -23,12 +23,12 @@ process download {
     path (faS)
 
     output:
-//    val true
     publishDir ".", mode: "copy"
     path("*2_2_.fasta"), emit: "write"
 
     script:
     """
+    export NXF_JVM_ARGS="-Xms12g -Xmx16g"
     module load R
     Rscript ${workflow.projectDir}/bin/download.R
     """
@@ -42,12 +42,13 @@ process make_pvg {
     path (refFasta)
     
     output:
+    val true
     publishDir ".", mode: "copy"
-//    path("${refFasta}.gz.fai"), emit: sam_fai
-    path("CURRENT/*.gfa"), emit: gfa
     
     script:
     """
+    read -r number < "${workflow.projectDir}/bin/number1.txt"   #   get number
+
     # create Blast indexes for self-self blast
     # makeblastdb -dbtype nucl -in ${refFasta} -out ${workflow.projectDir}/BLAST/fasta.db 
     # blastall -p blastn -d ${workflow.projectDir}/BLAST/fasta.db -i ${refFasta} -e 1.0 -outfmt 6 > self-blast.out
@@ -56,13 +57,17 @@ process make_pvg {
     bgzip ${refFasta}
     samtools faidx ${refFasta}.gz > ${refFasta}.gz.fai
 
+    # run PGGB - you need to specify the number of haplotypes in $number
+    pggb -i ${refFasta}.gz -m -S -o CURRENT/ -t 46 -p 90 -s 1k -n $number
+    mv -f CURRENT/* ${workflow.projectDir}/CURRENT/ # move files to correct folders 
+    # mv -f CURRENT/multiqc_data/ ${workflow.projectDir}/CURRENT/
+    mv -f *a.g* ${workflow.projectDir}  # move fasta files and extensions 
+    # if issues, remove CURRENT/ in ${workflow.projectDir}  before re-running 
+
     # run pangenome in nf-core - don't work as reliably as PGGB, so best avoided
-    # nextflow run nf-core/pangenome --input ${refFasta}.gz --n_haplotypes 5 --outdir \
+    # nextflow run nf-core/pangenome --input ${refFasta}.gz --n_haplotypes $number --outdir \
     #   ${workflow.projectDir}/CURRENT  --communities  --wfmash_segment_length 1000
     #odgi stats -m -i ${workflow.projectDir}/CURRENT/FINAL_ODGI/${refFasta}.gz.squeeze.og -S > ${workflow.projectDir}/odgi.stats.txt 
-
-    # alternative to nf-core pangenome
-    pggb -i ${refFasta}.gz -m -S -o CURRENT/ -t 46 -p 90 -s 1k -n 5
     """
 }
 
@@ -71,18 +76,17 @@ process odgi {
     label 'odgi'
 
     input:
+    val ready from make_pvg.out
     path (refFasta)
-    path (outDir2)
-//    path (gfa_in)
 
     output:
     publishDir ".", mode: "copy"
-//    path("*.fasta.og"), emit: og
 
     script:
     """
-    odgi build -g ${projectDir}/${outDir2}/*.gfa -o ${projectDir}/${outDir2}/${refFasta}.og 
-    odgi stats -m -i ${projectDir}/${outDir2}/${refFasta}.og -S > ${projectDir}/odgi.stats.txt 
+    #odgi build -g ${projectDir}/CURRENT/*.gfa -o ${projectDir}/CURRENT/${refFasta}.og 
+    #odgi stats -m -i ${projectDir}/CURRENT/${refFasta}.og -S > ${projectDir}/odgi.stats.txt 
+    odgi stats -m -i ${projectDir}/CURRENT/*.og -S > ${projectDir}/odgi.stats.txt 
     """
 }
 
@@ -91,10 +95,8 @@ process openness_panacus {
     label 'openness_panacus'
 
     input:
-    val ready
-    path (outDir2)
-    path (gfa_in)
-    
+    val ready from make_pvg.out
+
     output:
     publishDir ".", mode: "copy"
     
@@ -102,13 +104,13 @@ process openness_panacus {
     """
     # mamba install -c conda-forge -c bioconda panacus
     # get haplotypes
-    grep '^P' $gfa_in | cut -f2 > ${workflow.projectDir}/${outDir2}/PANACUS/haplotypes.txt
+    grep '^P' ${workflow.projectDir}/CURRENT/*.gfa | cut -f2 > ${workflow.projectDir}/CURRENT/PANACUS/haplotypes.txt
     
-    # run panacus to get data
-    RUST_LOG=info panacus histgrowth -t4 -l 1,2,1,1,1 -q 0,0,1,0.5,0.1 -S -s ${workflow.projectDir}/${outDir2}/PANACUS/haplotypes.txt $gfa_in > ${workflow.projectDir}/${outDir2}/PANACUS/histgrowth.node.tsv
+    # run panacus to get data - just use defaults
+    RUST_LOG=info panacus histgrowth -t4 -l 1,2,1,1,1 -q 0,0,1,0.5,0.1 -S -s ${workflow.projectDir}/CURRENT/PANACUS/haplotypes.txt ${workflow.projectDir}/CURRENT/*.gfa > ${workflow.projectDir}/CURRENT/PANACUS/histgrowth.node.tsv
  
     # visualise plot as PDF
-    panacus-visualize -e ${workflow.projectDir}/${outDir2}/PANACUS/histgrowth.node.tsv > ${workflow.projectDir}/${outDir2}/PANACUS/histgrowth.node.pdf
+    panacus-visualize -e ${workflow.projectDir}/CURRENT/PANACUS/histgrowth.node.tsv > ${workflow.projectDir}/CURRENT/PANACUS/histgrowth.node.pdf
     """
 }
 
@@ -117,31 +119,35 @@ process openness_pangrowth {
     label 'openness_pangrowth'
 
     input:
+    val ready from make_pvg.out
     path (refFasta)
-    path (outDir2)
 
     output:
-    publishDir "${outDir}", mode: "copy"
+    publishDir ".", mode: "copy"
     
     script:
     """
     # need to split files into individual files in folder SEQS
     # wget https://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/faSplit and chmod it
-    #   ./${faSplit} byname ${refFasta} ${outDir}/${outDir2}/PANGROWTH/SEQS/
+    #   ./faSplit byname ${refFasta} ${workflow.projectDir}/CURRENT/PANGROWTH/SEQS/
 
     # run pangrowth
-     ~/pangrowth/pangrowth hist -k 17 -t 12 ${outDir}/${outDir2}/PANGROWTH/SEQS/*a > ${outDir}/${outDir2}/PANGROWTH/hist.txt
+     ~/pangrowth/pangrowth hist -k 17 -t 12 ${workflow.projectDir}/CURRENT/PANGROWTH/SEQS/*a > ${workflow.projectDir}/CURRENT/PANGROWTH/hist.txt
 
     # plot AFS for single dataset - not very useful! 
-     python ~/pangrowth/scripts/plot_single_hist.py ${outDir}/${outDir2}/PANGROWTH/hist.txt ${outDir}/${outDir2}/PANGROWTH/LSDV.pangrowth.pdf
+     python ~/pangrowth/scripts/plot_single_hist.py ${workflow.projectDir}/CURRENT/PANGROWTH/hist.txt ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV.pangrowth.pdf
 
     # model growth - prepare dataset 1 - not useful
-     ~/pangrowth/pangrowth growth -h ${outDir}/${outDir2}/PANGROWTH/hist.txt > ${outDir}/${outDir2}/PANGROWTH/LSDV
-     python ~/pangrowth/scripts/plot_growth.py ${outDir}/${outDir2}/PANGROWTH/LSDV ${outDir}/${outDir2}/PANGROWTH/LSDV.growth.pdf
+     ~/pangrowth/pangrowth growth -h ${workflow.projectDir}/CURRENT/PANGROWTH/hist.txt > ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV
+     python ~/pangrowth/scripts/plot_growth.py ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV.growth.pdf
 
-    # do core
-     ~/pangrowth/pangrowth core -h ${outDir}/${outDir2}/PANGROWTH/hist.txt -q 0.5 > ${outDir}/${outDir2}/PANGROWTH/LSDV_core
-     python ~/pangrowth/scripts/plot_core.py ${outDir}/${outDir2}/PANGROWTH/LSDV_core ${outDir}/${outDir2}/PANGROWTH/LSDV_core.pdf
+    # do core - this does not converge to a solution for n<10 samples, causes error
+     ~/pangrowth/pangrowth core -h ${workflow.projectDir}/CURRENT/PANGROWTH/hist.txt -q 0.5 > ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV_core
+
+    read -r number < "${workflow.projectDir}/bin/number1.txt"   #   get number
+    if [ $number -gt 10 ]; then # if the core is too small, this crashes
+       python ~/pangrowth/scripts/plot_core.py ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV_core    ${workflow.projectDir}/CURRENT/PANGROWTH/LSDV_core.pdf
+    fi
     """
 }
 
@@ -150,32 +156,28 @@ process get_vcf {
     label 'vcf'
 
     input:
-    val true
+    val ready from make_pvg.out
     path (refFasta)
-    path (outDir2)
-    path (gfa_in)
-    path (vcf1)
 
     output:
-    publishDir "${outDir}", mode: "copy"
+    publishDir ".", mode: "copy"
     
     script:
     """
-    ~/bin/gfautil -i $gfa_in gfa2vcf > ${outDir}/${outDir2}/VCF/${refFasta}.vcf
-    # https://lib.rs/crates/gfautil
+    ~/bin/gfautil -i ${workflow.projectDir}/CURRENT/*.gfa gfa2vcf > ${workflow.projectDir}/CURRENT/VCF/${refFasta}.vcf
+    # https://lib.rs/crates/gfautil - download this
 
     # need to get paths from GFA
-    odgi paths -i ${outDir}/${outDir2}/${refFasta}.og -L > ${outDir}/${outDir2}/VCF/paths.txt
-    head -n 1 ${outDir}/${outDir2}/VCF/paths.txt > ${outDir}/${outDir2}/VCF/path1
+    odgi paths -i ${workflow.projectDir}/CURRENT/*.og -L > ${workflow.projectDir}/CURRENT/VCF/paths.txt
+    head -n 1 ${workflow.projectDir}/CURRENT/VCF/paths.txt > ${workflow.projectDir}/CURRENT/VCF/path1
     # these correspond to the samples, eg "K303/83_g001_s001"
-    # get first sample name
-    # then give to gfautil
+    # get first sample name then give to gfautil
     # Outputs a tab-delimited list in the format:
     # <query-path-name>\t<reference base>\t<reference pos>\t<query base>\t<query pos>
-    # script to create initial file 
 
-    perl ${vcf1} ${outDir2} #  sort out coordinates
-    Rscript ${outDir}/bin/plot_variation_map.R # plot image of variation map in PDF
+    # script to create initial input to visualise with R
+    perl ${workflow.projectDir}/bin/vcf.pl ../../../CURRENT/VCF/path1  #  sort out coordinates
+    Rscript ${workflow.projectDir}/bin/plot_variation_map.R # plot image of variation map in PDF
     """
 }
 
@@ -186,14 +188,50 @@ process getbases {
     input:
     val ready
     path (refFasta)
-    path (outDir2)
-    path (og_in)
 
     output:
     publishDir "${outDir}", mode: "copy"
 
     """
-    odgi flatten -i ${outDir}/${og_in} -f ${refFasta} -b ${refFasta}.bed -t 22
+    odgi flatten -i ${workflow.projectDir}/CURRENT/*.og -f ${refFasta} -b ${refFasta}.bed -t 22
+    perl ${workflow.projectDir}/bin/bases.pl ${refFasta}
     """
 }
 
+process viz2 {
+	tag {"big viz"}
+	label 'viz2'
+
+	input:
+	val ready from make_pvg.out
+
+	output:
+	publishDir "${outDir}", mode: "copy"
+
+	"""
+        # y = height of plot
+        # w = step size for blocks in plot
+        # c = numbers of characters for sample names
+        # x = width in pixels of output
+        # y = height in pixels of output
+        odgi viz -i ${workflow.projectDir}/CURRENT/*.og -o ${workflow.projectDir}/LSDV.viz.png -c 55 -w 50 -y 1500
+        """
+}
+
+process heaps {
+	tag {"heaps"}
+	label 'heaps'
+
+	input:
+	val ready from make_pvg.out
+
+	output:
+	publishDir "${outDir}", mode: "copy"
+
+	"""
+	read -r number < "${workflow.projectDir}/bin/number1.txt"   #   get number
+
+	# visualise output, reading in heaps file, 3rd column only of interest
+        Rscript bin/visualisation.R $number
+	"""
+}
