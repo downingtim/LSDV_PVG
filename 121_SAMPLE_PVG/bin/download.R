@@ -337,5 +337,5 @@ system2(command='mv', args=c(' ID* ../../../data/'))
 system2(command='mv', args=c(' *aln ../../../data/'))
 system2(command='mv', args=c(' header* ../../../data/'))
 system2(command='mv', args=c(' *png ../../../data/'))
-write(length(lengths(in11)), paste("../../../CURRENT/number1.txt",sep=""))
+write(length(lengths(in11)), paste("../../../bin/number1.txt",sep=""))
 
