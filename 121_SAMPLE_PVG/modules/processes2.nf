@@ -20,5 +20,6 @@ process make_pvg {
     """
     number=0
     number=`grep -c "" /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/lumpy_2_skin_2_disease_2_virus_2_2_.fasta.gz.fai`
+    echo $number
     """
 }

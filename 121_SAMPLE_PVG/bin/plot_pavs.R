@@ -2,15 +2,14 @@
 
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 1) {
-  cat("Usage: Rscript script.R <arg1> <arg2> ...\n")
+  cat("Usage: Rscript script.R <arg1> \n")
   quit(status = 1) }
 
 x <- read.csv(args[1], sep="\t")
-str(x)
-colnames(x) <- c("val")
+new <- gsub("tsv", "pdf", args[1])
 
-pdf("mfs.pdf")
-hist( x$val, breaks=62, xlab=c("Number of samples"),  ylab=c("Fraction of mutations"), main="", freq=F)  
+pdf(new, width=8, height=7)
+hist( x$pav, breaks=62, xlab=c("Number of samples"),  ylab=c("Number of mutations"), main="", freq=F)  
 dev.off()
 
 quit()

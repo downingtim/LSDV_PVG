@@ -36,16 +36,17 @@ library(RcppArmadillo)
 # args <- commandArgs(trailingOnly = T)
 # species <- args[1] #ex : LSDV, Sheeppox_virus
 species <- "lumpy skin disease virus"
-# species <- "goatpox virus"
+#
+species <- "goatpox virus"
 
 ##Collecting the IDs of the sequences
 sp <- paste (species, "[organism] AND complete genome [title]")
 sp2 <- paste (species, "[organism] AND genomic sequence [title]")
 # adjust for "genomic sequence"
-#
+
 #Query used to ask the database
-query <- entrez_search(db="nuccore", term=sp ,retmax=6) # change this
-query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=1) # change this
+query <- entrez_search(db="nuccore", term=sp ,retmax=6999) # change this
+query2 <- entrez_search(db="nuccore", term=sp2 ,retmax=1999) # change this
   # extracting the IDs of every sequence that matches the query
 IDs <- c(query$ids, query2$ids)  #storing the IDs
 str(IDs) 
@@ -323,7 +324,15 @@ write.fasta(in11, names(in11), "../../../data/3end.fasta")
 # split files up in SEQS/ folder
 # out3 <- gsub('2_virus_2_\\.fasta','CURRENT',out) #  goatpox_2_virus_2_2_.fasta
 out3 <- "CURRENT"
+
+# remove folders
+system2(command='rm -rf ', args=c(paste("../../../",out3,sep="")))
+system2(command='rm -rf ', args=c("../../../temp2"))
+
+# make folders
 system2(command='mkdir', args=c(paste("../../../",out3,sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/PANAROO/",sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/COMMUNITIES/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/PANGROWTH/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/BLAST/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/PANACUS/",sep="")))
