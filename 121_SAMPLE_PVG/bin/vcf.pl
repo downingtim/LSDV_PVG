@@ -15,7 +15,7 @@ for $a (1000..148500){
     system("~/bin/gfautil --quiet -t 15 -i $argument/*.gfa snps --ref $ain --snps $a >> temp2 ");
 }
 
-open(IN2, "more temp2 | sort -nk 3 | ");
+open(IN2, "more temp2 | sort -nk 3 | grep -v temp2  | grep -v \: |");
 
 while(<IN2>){
     if($_ =~ /path/) { ; }

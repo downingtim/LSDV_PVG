@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 # make heatmap
-x2 <- as.data.frame(read.csv("../CURRENT/PANAROO/gene_presence_absence.Rtab", sep="\t"))
+x2 <- as.data.frame(read.csv("../../../CURRENT/PANAROO/gene_presence_absence.Rtab", sep="\t"))
 # str(x2) # samples as columns, genes as rows
 rownames(x2) <- x2[,1] # reassign row (ie, gene) names
 x2 <- x2[,-1] # remove gene names from table (not needed)
