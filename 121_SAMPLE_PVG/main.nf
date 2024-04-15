@@ -38,29 +38,29 @@ workflow {
 */
        MAKE_PVG( refFasta )
 
-       ODGI(make_pvg.out, refFasta)
+       ODGI(MAKE_PVG.out, refFasta)
        
-       OPENNESS_PANACUS(make_pvg.out)
+       OPENNESS_PANACUS(MAKE_PVG.out)
 
-       OPENNESS_PANGROWTH(make_pvg.out, refFasta)
+       OPENNESS_PANGROWTH(MAKE_PVG.out, refFasta)
 
-       GETBASES(make_pvg.out, refFasta)
+       GETBASES(MAKE_PVG.out, refFasta)
        
-       GET_VCF(make_pvg.out, refFasta)
+       GET_VCF(MAKE_PVG.out, refFasta)
 
-       VIZ2(make_pvg.out, refFasta )
+       VIZ2(MAKE_PVG.out, refFasta )
        
-       HEAPS(make_pvg.out )
+       HEAPS(MAKE_PVG.out )
 
-       PAVS(make_pvg.out, refFasta)
+       PAVS(MAKE_PVG.out, refFasta)
 
-       COMMUNITIES(make_pvg.out, refFasta)
+       COMMUNITIES(MAKE_PVG.out, refFasta)
 
-       PANAROO(make_pvg.out, refFasta)
+       PANAROO(MAKE_PVG.out, refFasta)
 
-       BUSCO(make_pvg.out, refFasta)
+       BUSCO(MAKE_PVG.out, refFasta)
 
-       waragraph
+       waragraph()
 
 }
 
