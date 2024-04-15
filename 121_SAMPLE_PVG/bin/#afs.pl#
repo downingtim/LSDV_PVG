@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 
 open(IN, "$ARGV[0]");
-$n=$ARGV[0].".out";
-open(OUT, ">../../../CURRENT/$n");
+$n=@../$ARGV[0].".out";
+open(OUT, ">./$n");
 # get AFS for pangenomes
 # plot fraction of bases (y-axis) vs
 # number of samples in which it was found (x-axis)

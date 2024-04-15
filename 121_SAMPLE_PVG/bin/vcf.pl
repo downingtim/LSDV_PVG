@@ -7,7 +7,7 @@ chomp($ain);
 $argument = $ARGV[0];
 $argument =~ s/VCF\/path1//g;
 
-open(OUT, ">./variation_map.txt");
+open(OUT, ">../../../CURRENT/variation_map.txt");
 
 for $a (1000..148500){ 
     #
