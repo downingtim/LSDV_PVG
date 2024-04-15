@@ -1,2 +1,0 @@
-Sample	organism	contigs	bases	CDS
-strain	Capripoxvirus species	1	150381	150
