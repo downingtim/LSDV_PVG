@@ -332,6 +332,7 @@ system2(command='rm -rf ', args=c("../../../temp2"))
 # make folders
 system2(command='mkdir', args=c(paste("../../../",out3,sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/PANAROO/",sep="")))
+system2(command='mkdir', args=c(paste("../../../",out3,"/BUSCO/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/COMMUNITIES/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/PANGROWTH/",sep="")))
 system2(command='mkdir', args=c(paste("../../../",out3,"/BLAST/",sep="")))

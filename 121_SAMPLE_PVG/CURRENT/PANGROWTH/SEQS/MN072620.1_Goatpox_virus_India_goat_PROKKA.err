@@ -1,0 +1,121 @@
+[18:28:24] This is prokka 1.14.6
+[18:28:24] Written by Torsten Seemann <torsten.seemann@gmail.com>
+[18:28:24] Homepage is https://github.com/tseemann/prokka
+[18:28:24] Local time is Fri Apr 12 18:28:24 2024
+[18:28:24] You are downing
+[18:28:24] Operating system is linux
+[18:28:24] You have BioPerl 1.7.8
+Argument "1.7.8" isn't numeric in numeric lt (<) at /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/prokka line 259.
+[18:28:24] System has 64 cores.
+[18:28:24] Will use maximum of 8 cores.
+[18:28:24] Annotating as >>> Viruses <<<
+[18:28:24] Generating locus_tag from '../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat.fa' contents.
+[18:28:24] Setting --locustag FIFPKDEO from MD5 f2f94de8a662d917e7b1404aca46fc33
+[18:28:24] Creating new output folder: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA
+[18:28:24] Running: mkdir -p \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA
+[18:28:24] Using filename prefix: MN072620.1_Goatpox_virus_India_goat.XXX
+[18:28:24] Setting HMMER_NCPU=1
+[18:28:24] Writing log to: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.log
+[18:28:24] Command: /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/prokka --kingdom Viruses --proteins KX894508.gb --gffver 3 --usegenus --outdir ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA --force --genus Capripoxvirus --prefix MN072620.1_Goatpox_virus_India_goat ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat.fa
+[18:28:24] Appending to PATH: /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin
+[18:28:24] Looking for 'aragorn' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/aragorn
+[18:28:24] Determined aragorn version is 001002 from 'ARAGORN v1.2.41 Dean Laslett'
+[18:28:24] Looking for 'barrnap' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/barrnap
+[18:28:24] Determined barrnap version is 000009 from 'barrnap 0.9'
+[18:28:24] Looking for 'blastp' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/blastp
+[18:28:24] Determined blastp version is 002013 from 'blastp: 2.13.0+'
+[18:28:24] Looking for 'cmpress' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/cmpress
+[18:28:24] Determined cmpress version is 001001 from '# INFERNAL 1.1.4 (Dec 2020)'
+[18:28:24] Looking for 'cmscan' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/cmscan
+[18:28:24] Determined cmscan version is 001001 from '# INFERNAL 1.1.4 (Dec 2020)'
+[18:28:24] Looking for 'egrep' - found /usr/bin/egrep
+[18:28:24] Looking for 'find' - found /usr/bin/find
+[18:28:24] Looking for 'grep' - found /usr/bin/grep
+[18:28:24] Looking for 'hmmpress' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/hmmpress
+[18:28:24] Determined hmmpress version is 003003 from '# HMMER 3.3.2 (Nov 2020); http://hmmer.org/'
+[18:28:24] Looking for 'hmmscan' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/hmmscan
+[18:28:24] Determined hmmscan version is 003003 from '# HMMER 3.3.2 (Nov 2020); http://hmmer.org/'
+[18:28:24] Looking for 'java' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/java
+[18:28:24] Looking for 'makeblastdb' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/makeblastdb
+[18:28:24] Determined makeblastdb version is 002013 from 'makeblastdb: 2.13.0+'
+[18:28:24] Looking for 'minced' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/minced
+[18:28:24] Determined minced version is 004002 from 'minced 0.4.2'
+[18:28:24] Looking for 'parallel' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/parallel
+[18:28:24] Determined parallel version is 20220922 from 'GNU parallel 20220922'
+[18:28:24] Looking for 'prodigal' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/prodigal
+[18:28:24] Determined prodigal version is 002006 from 'Prodigal V2.6.3: February, 2016'
+[18:28:24] Looking for 'prokka-genbank_to_fasta_db' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/prokka-genbank_to_fasta_db
+[18:28:24] Looking for 'sed' - found /cm/shared/apps/mambaforge/envs/R.4.2.2/bin/sed
+[18:28:24] Looking for 'tbl2asn' - found /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/bin/tbl2asn
+[18:28:24] Determined tbl2asn version is 025007 from 'tbl2asn 25.7   arguments:'
+[18:28:24] Using genetic code table 1.
+[18:28:24] Loading and checking input file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat.fa
+[18:28:24] Wrote 1 contigs totalling 150381 bp.
+[18:28:24] Predicting tRNAs and tmRNAs
+[18:28:24] Running: aragorn -l -gc1  -w \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.fna
+[18:28:24] Found 0 tRNAs
+[18:28:24] Disabling rRNA search: --kingdom=Viruses or --norrna=0
+[18:28:24] Skipping ncRNA search, enable with --rfam if desired.
+[18:28:24] Total of 0 tRNA + rRNA features
+[18:28:24] Searching for CRISPR repeats
+[18:28:24] Found 0 CRISPRs
+[18:28:24] Predicting coding sequences
+[18:28:24] Contigs total 150381 bp, so using single mode
+[18:28:24] Running: prodigal -i \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.fna -c -m -g 1 -p single -f sco -q
+[18:28:24] Found 150 CDS
+[18:28:24] Connecting features back to sequences
+[18:28:24] Skipping genus-specific proteins as can't see /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/db/Capripoxvirus
+[18:28:24] Annotating CDS, please be patient.
+[18:28:24] Will use 8 CPUs for similarity searching.
+[18:28:24] There are still 150 unannotated CDS left (started with 150)
+[18:28:24] Will use blast to search against /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/db/kingdom/Viruses/sprot with 8 CPUs
+[18:28:24] Running: cat \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.sprot\.tmp\.611350\.faa | parallel --gnu --plain -j 8 --block 2929 --recstart '>' --pipe blastp -query - -db /mnt/lustre/RDS-live/downing/miniconda3/envs/snippy/db/kingdom/Viruses/sprot -evalue 1e-09 -qcov_hsp_perc 80 -num_threads 1 -num_descriptions 1 -num_alignments 1 -seg no > \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.sprot\.tmp\.611350\.blast 2> /dev/null
+[18:28:25] Modify product: Viral interleukin-10 homolog => Viral interleukin-10 
+[18:28:25] Modify product: G-protein coupled receptor homolog US28 => G-protein coupled receptor US28
+[18:28:25] Modify product: Protein J1 homolog => Protein J1 
+[18:28:25] Modify product: Probable dual specificity protein phosphatase H1 homolog => putative dual specificity protein phosphatase H1 
+[18:28:25] Modify product: Probable FAD-linked sulfhydryl oxidase E10 => putative FAD-linked sulfhydryl oxidase E10
+[18:28:26] Cleaned 5 /product names
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.sprot.tmp.611350.faa
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.sprot.tmp.611350.blast
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/proteins.psq
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/proteins.phr
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/proteins.pin
+[18:28:26] Labelling remaining 48 proteins as 'hypothetical protein'
+[18:28:26] Possible /pseudo 'Ankyrin repeat domain-containing protein M-T5' at MN072620.1_Goatpox_virus_India_goat position 141731
+[18:28:26] Found 36 unique /gene codes.
+[18:28:26] Fixed 2 duplicate /gene - KBTB1_1 KBTB1_2
+[18:28:26] Fixed 1 colliding /gene names.
+[18:28:26] Adding /locus_tag identifiers
+[18:28:26] Assigned 150 locus_tags to CDS and RNA features.
+[18:28:26] Writing outputs to ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/
+[18:28:26] Generating annotation statistics file
+[18:28:26] Generating Genbank and Sequin files
+[18:28:26] Running: tbl2asn -V b -a r10k -l paired-ends -M n -N 1 -y 'Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka' -Z \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.err -i \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.fsa 2> /dev/null
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/errorsummary.val
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.dr
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.fixedproducts
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.ecn
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.val
+[18:28:26] Repairing broken .GBK output that tbl2asn produces...
+[18:28:26] Running: sed 's/COORDINATES: profile/COORDINATES:profile/' < \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.gbf > \.\.\/CURRENT\/PANGROWTH\/SEQS\/MN072620\.1_Goatpox_virus_India_goat_PROKKA\/MN072620\.1_Goatpox_virus_India_goat\.gbk
+[18:28:26] Deleting unwanted file: ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.gbf
+[18:28:26] Output files:
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.ffn
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.log
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.sqn
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.gff
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.faa
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.txt
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.tbl
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.fna
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.err
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.gbk
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.tsv
+[18:28:26] ../CURRENT/PANGROWTH/SEQS/MN072620.1_Goatpox_virus_India_goat_PROKKA/MN072620.1_Goatpox_virus_India_goat.fsa
+[18:28:26] Annotation finished successfully.
+[18:28:26] Walltime used: 0.03 minutes
+[18:28:26] If you use this result please cite the Prokka paper:
+[18:28:26] Seemann T (2014) Prokka: rapid prokaryotic genome annotation. Bioinformatics. 30(14):2068-9.
+[18:28:26] Type 'prokka --citation' for more details.
+[18:28:26] Thank you, come again.

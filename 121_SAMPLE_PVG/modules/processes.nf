@@ -18,7 +18,7 @@ Download dataset to examine (eg LSDV)
 #==============================================
 */
 
-process download {
+process DOWNLOAD {
     input:
     path (faS)
 
@@ -33,7 +33,7 @@ process download {
     """
 }
 
-process make_pvg {
+process MAKE_PVG {
     tag {"index reference FASTA"}
     label 'pvg'
 
@@ -82,7 +82,7 @@ process make_pvg {
     """
 } 
 
-process odgi {
+process ODGI {
     tag {"odgi"}
     label 'odgi'
 
@@ -101,7 +101,7 @@ process odgi {
     """
 }
 
-process openness_panacus {
+process OPENNESS_PANACUS {
     tag {"get PVG openness panacus"}
     label 'openness_panacus'
 
@@ -126,7 +126,7 @@ process openness_panacus {
     """
 }
 
-process openness_pangrowth {
+process OPENNESS_PANGROWTH {
     tag {"get PVG openness pangrowth"}
     label 'openness_pangrowth'
 
@@ -167,7 +167,7 @@ process openness_pangrowth {
     """
 }
 
-process get_vcf {
+process GET_VCF {
     tag {"get VCFs"}
     label 'vcf'
 
@@ -210,7 +210,7 @@ process get_vcf {
     """
 }
 
-process getbases {
+process GETBASES {
     tag {"get bases"}
     label 'bases'
 
@@ -228,7 +228,7 @@ process getbases {
     """
 }
 
-process viz2 {
+process VIZ2 {
 	tag {"big viz"}
 	label 'viz2'
 
@@ -250,7 +250,7 @@ process viz2 {
         """
 }
 
-process heaps {
+process HEAPS {
     tag {"heaps"}
     label 'heaps'
 
@@ -272,7 +272,7 @@ process heaps {
     """
 }
 
-process pavs {
+process PAVS {
     tag{"pavs"}
     label 'pavs'
 
@@ -299,7 +299,7 @@ process pavs {
     """
 }
 
-process waragraph {
+process WARAGRAPH {
     tag{"waragraph"}
     label 'waragraph'
 
@@ -323,7 +323,7 @@ process waragraph {
     """
 }
 
-process communities {
+process COMMUNITIES {
     tag{"communities"}
     label 'communities'
 
@@ -375,7 +375,7 @@ process communities {
     """
 }
 
-process busco { 
+process BUSCO { 
     input:
     val ready
     path (refFasta)
@@ -385,15 +385,17 @@ process busco {
 
     script:
     """
-    # need  to set up BUSCO dir
-    # put busco in path
+    # TO DO
+
+    # need  to set up BUSCO dir  # put busco in path
     export PATH=$PATH:/mnt/lustre/RDS-live/downing/busco/bin
-    pantools busco_protein  --odb10=poxviridae_odb10     LSDV_DB
+
+    ${workflow.projectDir}/bin/busco -f -i ${refFasta} -l poxviridae_odb10 -o ${workflow.projectDir}/CURRENT/BUSCO -m genome
     # identifies genes using the poxvirus annotation for busco v5 process annotate {
     """
 }
 
-process panaroo {
+process PANAROO {
     input:
     val ready
     path (refFasta)
@@ -420,7 +422,7 @@ process panaroo {
     """
 }
 
-process recombination {
+process RECOMBINATION {
     input:
     val ready
     path (refFasta)
@@ -430,6 +432,7 @@ process recombination {
 
     script:
     """
+    # TO DO
     ./3seq -c my3seqTable2000 # check 3seq works
     ./3seq -i   v5_full_genomes.aln -quiet # check file is ok
     ./3seq  -f  v5_full_genomes.aln   -id R1  -f2500 -l148000 -bp-all &> all.out  

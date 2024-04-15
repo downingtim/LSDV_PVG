@@ -18,7 +18,7 @@ Modules
 #==============================================
 */
 
-include { download; make_pvg; odgi; openness_panacus; openness_pangrowth; get_vcf; getbases; viz2; heaps; pavs; waragraph; communities; panaroo } from './modules/processes.nf'
+include { DOWNLOAD; MAKE_PVG; ODGI; OPENNESS_PANACUS; OPENNESS_PANGROWTH; GET_VCF; GETBASES; VIZ2; HEAPS; PAVS; WARAGRAPH COMMUNITIES; PANAROO; BUSCO } from './modules/processes.nf'
 
 /*
 #==============================================
@@ -30,34 +30,41 @@ workflow {
    faS = channel.fromPath("bin/faSplit", checkIfExists:true)
    refFasta = channel.fromPath("goatpox_2_virus_2_2_.fasta", checkIfExists:true)
 
-/*       download(faS) 
-       download
+/*     DOWNLOAD(faS) 
+       DOWNLOAD
 	  .out
 	  .write
 	  .set { refFasta }
 */
-       make_pvg( refFasta )
+       MAKE_PVG( refFasta )
 
-       odgi(make_pvg.out, refFasta)
+       ODGI(make_pvg.out, refFasta)
        
-       openness_panacus(make_pvg.out)
+       OPENNESS_PANACUS(make_pvg.out)
 
-       openness_pangrowth(make_pvg.out, refFasta)
+       OPENNESS_PANGROWTH(make_pvg.out, refFasta)
 
-       getbases(make_pvg.out, refFasta)
+       GETBASES(make_pvg.out, refFasta)
        
-       get_vcf(make_pvg.out, refFasta)
+       GET_VCF(make_pvg.out, refFasta)
 
-       viz2(make_pvg.out, refFasta )
+       VIZ2(make_pvg.out, refFasta )
        
-       heaps(make_pvg.out )
+       HEAPS(make_pvg.out )
 
-       pavs(make_pvg.out, refFasta)
+       PAVS(make_pvg.out, refFasta)
 
-//       waragraph(make_pvg.out, refFasta)
+       COMMUNITIES(make_pvg.out, refFasta)
 
-       communities(make_pvg.out, refFasta)
+       PANAROO(make_pvg.out, refFasta)
 
-       panaroo(make_pvg.out, refFasta)
+       BUSCO(make_pvg.out, refFasta)
 
+       waragraph
+
+}
+
+workflow waragraph { 
+   refFasta = channel.fromPath("goatpox_2_virus_2_2_.fasta", checkIfExists:true)
+//      WARAGRAPH(make_pvg.out, refFasta)
 }

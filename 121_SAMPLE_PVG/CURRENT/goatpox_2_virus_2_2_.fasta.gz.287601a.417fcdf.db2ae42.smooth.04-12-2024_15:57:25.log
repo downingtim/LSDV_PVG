@@ -1,0 +1,315 @@
+Starting pggb on 04-12-2024_15:57:25
+
+Command: /mnt/lustre/RDS-live/downing/miniconda3/bin/pggb -i goatpox_2_virus_2_2_.fasta.gz -m -S -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ -t 46 -p 90 -s 1k -n 13
+
+PARAMETERS
+
+general:
+  input-fasta:        goatpox_2_virus_2_2_.fasta.gz
+  output-dir:         /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/
+  temp-dir:           /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/
+  resume:             false
+  compress:           false
+  threads:            46
+  poa_threads:        46
+wfmash:
+  version:            v0.10.3-3-g8ba3c53
+  segment-length:     1000
+  block-length:       5000
+  map-pct-id:         90
+  n-mappings:         13
+  no-splits:          false
+  sparse-map:         false
+  mash-kmer:          19
+  mash-kmer-thres:    0.001
+  exclude-delim:      false
+  no-merge-segments:  false
+seqwish:
+  version:            v0.7.9-0-gd9e7ab5
+  min-match-len:      19
+  sparse-factor:      0
+  transclose-batch:   10000000
+smoothxg:
+  version:            v0.7.0-0-g66d3044
+  skip-normalization: false
+  n-haps:             13
+  path-jump-max:      0
+  edge-jump-max:      0
+  poa-length-target:  700,900,1100
+  poa-params:         1,19,39,3,81,1
+  poa_padding:        0.001
+  run_abpoa:          false
+  run_global_poa:     false
+  pad-max-depth:      100
+  write-maf:          false
+  consensus-spec:     false
+  consensus-prefix:   Consensus_
+  block-id-min:       .9000
+  block-ratio-min:    0
+odgi:
+  version:            v0.8.3-26-gbc7742ed
+  viz:                true
+  layout:             true
+  stats:              true
+gfaffix:
+  version:            v0.1.4
+  reduce-redundancy:  true
+vg:
+  version:            v1.43.0
+  deconstruct:        false
+reporting:
+  version:            v1.14
+  multiqc:            true
+
+Running pggb
+
+[wfmash::map] Reference = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::map] Query = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::map] Kmer size = 19
+[wfmash::map] Window size = 27
+[wfmash::map] Segment length = 1000 (read split allowed)
+[wfmash::map] Block length min = 5000
+[wfmash::map] Chaining gap max = 100000
+[wfmash::map] Percentage identity threshold = 90%
+[wfmash::map] Skip self mappings
+[wfmash::map] Mapping output file = /dev/stdout
+[wfmash::map] Filter mode = 1 (1 = map, 2 = one-to-one, 3 = none)
+[wfmash::map] Execution threads  = 46
+[wfmash::skch::Sketch::build] minimizers picked from reference = 143368
+[wfmash::skch::Sketch::index] unique minimizers = 14435
+[wfmash::skch::Sketch::computeFreqHist] Frequency histogram of minimizers = (1, 579) ... (83, 1)
+[wfmash::skch::Sketch::computeFreqHist] With threshold 0.001%, consider all minimizers during lookup.
+[wfmash::map] time spent computing the reference index: 0.0609623 sec
+[wfmash::skch::Map::mapQuery] mapped  3.84% @ 9.27e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped  3.84% @ 9.19e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::skch::Map::mapQuery] mapped 100.00% @ 3.83e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[wfmash::skch::Map::mapQuery] count of mapped reads = 12, reads qualified for mapping = 13, total input reads = 13, total input bp = 1947701
+[wfmash::map] time spent mapping the query: 5.12e-01 sec
+[wfmash::map] mapping results saved in: /dev/stdout
+wfmash -s 1000 -l 5000 -p 90 -n 12 -k 19 -H 0.001 -X -t 46 --tmp-base /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ goatpox_2_virus_2_2_.fasta.gz --approx-map
+2.43s user 4.37s system 1155% cpu 0.58s total 34168Kb max memory
+[wfmash::align] Reference = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::align] Query = [goatpox_2_virus_2_2_.fasta.gz]
+[wfmash::align] Mapping file = /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//wfmash-5Xmj5p
+[wfmash::align] Alignment identity cutoff = 0.72%
+[wfmash::align] Alignment output file = /dev/stdout
+[wfmash::align] time spent loading the reference index: 0.0350869 sec
+[wfmash::align::computeAlignments] aligned  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[wfmash::align::computeAlignments] aligned 100.00% @ 2.29e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[wfmash::align::computeAlignments] count of mapped reads = 13, total aligned bp = 11569000
+[wfmash::align] time spent computing the alignment: 5.40e-01 sec
+[wfmash::align] alignment results saved in: /dev/stdout
+wfmash -s 1000 -l 5000 -p 90 -n 12 -k 19 -H 0.001 -X -t 46 --tmp-base /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ goatpox_2_virus_2_2_.fasta.gz -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.mappings.wfmash.paf --invert-filtering
+9.18s user 4.26s system 2400% cpu 0.56s total 438072Kb max memory
+[seqwish::seqidx] 0.000 indexing sequences
+[seqwish::seqidx] 0.040 index built
+[seqwish::alignments] 0.040 processing alignments
+[seqwish::alignments] 0.057 indexing
+[seqwish::alignments] 0.094 index built
+[seqwish::transclosure] 0.098 computing transitive closures
+[seqwish::transclosure] 0.104 0.00% 0-1947701 overlap_collect
+[seqwish::transclosure] 0.380 0.00% 0-1947701 rank_build
+[seqwish::transclosure] 0.407 0.00% 0-1947701 parallel_union_find
+[seqwish::transclosure] 0.432 0.00% 0-1947701 dset_write
+[seqwish::transclosure] 0.445 0.00% 0-1947701 dset_compression
+[seqwish::transclosure] 0.523 0.00% 0-1947701 dset_sort
+[seqwish::transclosure] 0.588 0.00% 0-1947701 dset_invert
+[seqwish::transclosure] 0.657 0.00% 0-1947701 graph_emission
+[seqwish::transclosure] 0.831 100.00% building node_iitree and path_iitree indexes
+[seqwish::transclosure] 0.858 100.00% done
+[seqwish::transclosure] 0.858 done with transitive closures
+[seqwish::compact] 0.858 compacting nodes
+[seqwish::compact] 0.866 done compacting
+[seqwish::compact] 0.866 built node index
+[seqwish::links] 0.866 finding graph links
+[seqwish::links] 0.912 links derived
+[seqwish::gfa] 0.912 writing graph
+[seqwish::gfa] 0.982 done
+seqwish -s goatpox_2_virus_2_2_.fasta.gz -p /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.alignments.wfmash.paf -k 19 -f 0 -g /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa -B 10000000 -t 46 --temp-dir /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ -P
+15.28s user 0.33s system 1571% cpu 0.99s total 129040Kb max memory
+[smoothxg::(1-3)::main] loading graph
+[smoothxg::(1-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  1.25% @ 1.91e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.68e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  1.19% @ 8.86e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 3.64e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths:  7.69% @ 1.16e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 5.02e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::prep] building path index
+[smoothxg::(1-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(1-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(1-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (4.62e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.03% @ 6.16e+05/s elapsed: 00:00:00:00 remain: 00:00:00:09[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 2.37e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  1.09% @ 6.10e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 2.69e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 21.66% @ 2.53e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.69e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  8.72% @ 3.83e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.67e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::prep] chopping graph to 100
+[odgi::chop] 488 node(s) to chop.
+[smoothxg::(1-3)::prep] writing graph /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa.prep.0.gfa
+[smoothxg::(1-3)::main] building xg index
+[smoothxg::(1-3)::smoothable_blocks] computing blocks
+[smoothxg::(1-3)::smoothable_blocks] computing blocks for 7614 handles:  0.09% @ 2.18e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smoothable_blocks] computing blocks for 7614 handles: 100.00% @ 3.04e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1400) and depth >= 0
+[smoothxg::(1-3)::break_and_split_blocks] splitting 285 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
+[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 285 blocks:  8.77% @ 8.30e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::break_and_split_blocks] cutting and splitting 285 blocks: 100.00% @ 1.12e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(1-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 285 blocks:  4.91% @ 8.33e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 285 blocks: 20.70% @ 2.21e+02/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 285 blocks: 43.51% @ 2.40e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 285 blocks: 67.02% @ 2.49e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] applying local SPOA to 285 blocks: 100.00% @ 2.80e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 3.47e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(1-3)::smooth_and_lace] adding nodes from 285 graphs: 12.98% @ 1.53e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding nodes from 285 graphs: 100.00% @ 1.14e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] adding edges from 285 graphs:  8.77% @ 5.71e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] adding edges from 285 graphs: 100.00% @ 1.14e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] embedding 3000 path fragments:  0.07% @ 1.67e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] embedding 3000 path fragments: 100.00% @ 1.20e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] validating 13 path sequences:  7.69% @ 3.36e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] validating 13 path sequences: 100.00% @ 5.13e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::smooth_and_lace] walking edges in 13 paths:  7.69% @ 1.43e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(1-3)::smooth_and_lace] walking edges in 13 paths: 100.00% @ 5.18e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(1-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 168 nodes into 81 new nodes.
+[smoothxg::(1-3)::main] smoothed graph length 181281bp in 7817 nodes
+[smoothxg::(1-3)::main] writing smoothed graph to /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa.smooth.0.gfa
+[smoothxg::(2-3)::main] loading graph
+[smoothxg::(2-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  1.35% @ 3.34e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.68e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.35% @ 2.07e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 3.64e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths:  7.69% @ 1.30e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 5.04e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::prep] building path index
+[smoothxg::(2-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(2-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(2-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (4.62e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.02% @ 6.36e+05/s elapsed: 00:00:00:00 remain: 00:00:00:09[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 2.37e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming:  3.14% @ 2.23e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 2.68e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 13.92% @ 1.91e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.69e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  0.57% @ 1.24e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.68e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::prep] chopping graph to 100
+[odgi::chop] 488 node(s) to chop.
+[smoothxg::(2-3)::prep] writing graph /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa.smooth.0.gfa.prep.1.gfa
+[smoothxg::(2-3)::main] building xg index
+[smoothxg::(2-3)::smoothable_blocks] computing blocks
+[smoothxg::(2-3)::smoothable_blocks] computing blocks for 7614 handles:  0.12% @ 1.37e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smoothable_blocks] computing blocks for 7614 handles: 100.00% @ 3.04e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (1800) and depth >= 0
+[smoothxg::(2-3)::break_and_split_blocks] splitting 228 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
+[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 228 blocks: 10.96% @ 9.17e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::break_and_split_blocks] cutting and splitting 228 blocks: 100.00% @ 9.02e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(2-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 228 blocks:  0.44% @ 8.46e+01/s elapsed: 00:00:00:00 remain: 00:00:00:02[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 228 blocks: 18.86% @ 1.64e+02/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 228 blocks: 38.16% @ 1.70e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 228 blocks: 57.46% @ 1.72e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 228 blocks: 95.61% @ 2.15e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] applying local SPOA to 228 blocks: 100.00% @ 1.81e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 1.34e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(2-3)::smooth_and_lace] adding nodes from 228 graphs:  3.51% @ 9.45e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding nodes from 228 graphs: 100.00% @ 9.12e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] adding edges from 228 graphs: 10.96% @ 4.85e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] adding edges from 228 graphs: 100.00% @ 9.11e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] embedding 2327 path fragments:  0.04% @ 1.49e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] embedding 2327 path fragments: 100.00% @ 9.30e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] validating 13 path sequences: 100.00% @ 2.21e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::smooth_and_lace] walking edges in 13 paths:  7.69% @ 1.52e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(2-3)::smooth_and_lace] walking edges in 13 paths: 100.00% @ 5.18e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(2-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 153 nodes into 75 new nodes.
+[smoothxg::(2-3)::main] smoothed graph length 181237bp in 7828 nodes
+[smoothxg::(2-3)::main] writing smoothed graph to /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa.smooth.1.gfa
+[smoothxg::(3-3)::main] loading graph
+[smoothxg::(3-3)::main] prepping graph for smoothing
+[odgi::gfa_to_handle] building nodes:  1.74% @ 3.90e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 2.68e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.69% @ 5.35e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 3.64e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths: 15.38% @ 3.19e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 5.07e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::prep] building path index
+[smoothxg::(3-3)::prep] path_sgd_zipf_space_max: 100
+[smoothxg::(3-3)::prep] path_sgd_zipf_max_number_of_distributions: 101
+[smoothxg::(3-3)::prep] sorting graph
+[odgi::path_linear_sgd] calculating linear SGD schedule (4.62e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD:  1.74% @ 1.43e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 2.32e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming: 100.00% @ 1.39e+06/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 14.67% @ 1.26e+07/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 2.69e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  0.68% @ 7.67e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 2.68e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::prep] chopping graph to 100
+[odgi::chop] 488 node(s) to chop.
+[smoothxg::(3-3)::prep] writing graph /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa.smooth.1.gfa.prep.2.gfa
+[smoothxg::(3-3)::main] building xg index
+[smoothxg::(3-3)::smoothable_blocks] computing blocks
+[smoothxg::(3-3)::smoothable_blocks] computing blocks for 7614 handles:  0.14% @ 4.05e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smoothable_blocks] computing blocks for 7614 handles: 100.00% @ 3.04e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::break_and_split_blocks] cutting blocks that contain sequences longer than max-poa-length (2200) and depth >= 0
+[smoothxg::(3-3)::break_and_split_blocks] splitting 177 blocks at identity 0.900 (WFA-based clustering) and at estimated-identity 0.900 (mash-based clustering)
+[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 177 blocks:  6.21% @ 3.03e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::break_and_split_blocks] cutting and splitting 177 blocks: 100.00% @ 6.99e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::break_and_split_blocks] cut 0 blocks of which 0 had repeats
+[smoothxg::(3-3)::break_and_split_blocks] split 0 blocks
+[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 177 blocks:  0.56% @ 4.99e+01/s elapsed: 00:00:00:00 remain: 00:00:00:03[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 177 blocks:  8.47% @ 5.55e+01/s elapsed: 00:00:00:00 remain: 00:00:00:02[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 177 blocks: 31.64% @ 1.08e+02/s elapsed: 00:00:00:00 remain: 00:00:00:01[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 177 blocks: 51.41% @ 1.18e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 177 blocks: 84.18% @ 1.46e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] applying local SPOA to 177 blocks: 100.00% @ 1.39e+02/s elapsed: 00:00:00:01 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] flipping 0 block graphs: 100.00% @ 8.39e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] sorting path_mappings
+[smoothxg::(3-3)::smooth_and_lace] adding nodes from 177 graphs:  7.91% @ 1.23e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding nodes from 177 graphs: 100.00% @ 7.07e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] adding edges from 177 graphs:  3.39% @ 1.44e+05/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] adding edges from 177 graphs: 100.00% @ 7.08e+02/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] embedding 1897 path fragments:  0.05% @ 2.99e+04/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] embedding 1897 path fragments: 100.00% @ 7.58e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] validating 13 path sequences: 100.00% @ 1.66e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::smooth_and_lace] walking edges in 13 paths:  7.69% @ 1.38e+03/s elapsed: 00:00:00:00 remain: 00:00:00:00[smoothxg::(3-3)::smooth_and_lace] walking edges in 13 paths: 100.00% @ 5.18e+01/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[smoothxg::(3-3)::main] unchopping smoothed graph
+[odgi::unchop] unchopped 82 nodes into 40 new nodes.
+[smoothxg::(3-3)::main] smoothed graph length 178239bp in 7821 nodes
+[smoothxg::(3-3)::main] writing smoothed graph to /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.gfa
+smoothxg -t 46 -T 46 -g /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa -r 13 --base /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ --chop-to 100 -I .9000 -R 0 -j 0 -e 0 -l 700,900,1100 -P 1,19,39,3,81,1 -O 0.001 -Y 1300 -d 0 -D 0 -Q Consensus_ -V -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.gfa
+58.15s user 101.87s system 1100% cpu 14.53s total 1151444Kb max memory
+gfaffix /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.gfa -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.fix.gfa
+0.05s user 0.00s system 94% cpu 0.05s total 11336Kb max memory
+pigz
+0.00s user 0.00s system 1% cpu 0.05s total 2424Kb max memory
+[odgi::gfa_to_handle] building nodes:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 1.56e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 2.13e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 2.60e+01 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi build -t 46 -P -g /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.fix.gfa -o - -O
+0.12s user 0.02s system 9% cpu 1.52s total 13428Kb max memory
+[odgi::unchop] unchopped 17 nodes into 8 new nodes.
+odgi unchop -P -t 46 -i - -o -
+1.42s user 0.09s system 94% cpu 1.61s total 27228Kb max memory
+path_sgd_zipf_space_max: 100
+path_sgd_zipf_max_number_of_distributions: 101
+[odgi::path_linear_sgd] 1D path-guided SGD:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd] calculating linear SGD schedule (3.77e-08 1.00e+00 100 0 1.00e-02)
+[odgi::path_linear_sgd] calculating zetas for 102 zipf distributions
+[odgi::path_linear_sgd] 1D path-guided SGD: 100.00% @ 1.31e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] grooming: 58.18% @ 2.75e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 59.22% @ 2.75e+06 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] grooming: 100.00% @ 1.55e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] organizing handles: 33.22% @ 2.94e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 45.97% @ 3.93e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::groom] organizing handles: 100.00% @ 1.56e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::groom] flipped 0 handles
+[odgi::topological_order] sorting nodes:  0.09% @ 4.31e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes:  0.12% @ 1.19e+05 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::topological_order] sorting nodes: 100.00% @ 1.56e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi sort -P -p Ygs --temp-dir /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ -t 46 -i - -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og
+8.30s user 0.04s system 223% cpu 3.73s total 30508Kb max memory
+odgi view -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -g
+0.02s user 0.00s system 94% cpu 0.03s total 8184Kb max memory
+[odgi::gfa_to_handle] building nodes:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building nodes: 100.00% @ 1.34e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building edges:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building edges: 100.00% @ 1.82e+04 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+[odgi::gfa_to_handle] building paths:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::gfa_to_handle] building paths: 100.00% @ 2.60e+01 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi build -t 46 -P -g /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.gfa -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.seqwish.og
+0.09s user 0.00s system 6% cpu 1.51s total 12452Kb max memory
+odgi viz -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.viz_multiqc.png -x 1500 -y 500 -a 10 -I Consensus_
+0.02s user 0.00s system 91% cpu 0.03s total 14592Kb max memory
+odgi viz -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.viz_pos_multiqc.png -x 1500 -y 500 -a 10 -u -d -I Consensus_
+0.05s user 0.00s system 95% cpu 0.06s total 14904Kb max memory
+odgi viz -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.viz_depth_multiqc.png -x 1500 -y 500 -a 10 -m -I Consensus_
+0.07s user 0.00s system 96% cpu 0.07s total 14612Kb max memory
+odgi viz -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.viz_inv_multiqc.png -x 1500 -y 500 -a 10 -z -I Consensus_
+0.05s user 0.00s system 95% cpu 0.06s total 14536Kb max memory
+odgi viz -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.viz_O_multiqc.png -x 1500 -y 500 -a 10 -O -I Consensus_
+0.03s user 0.00s system 95% cpu 0.04s total 12780Kb max memory
+odgi viz -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.viz_uncalled_multiqc.png -x 1500 -y 500 -a 10 -N -I Consensus_
+0.07s user 0.00s system 96% cpu 0.08s total 14752Kb max memory
+[odgi::path_linear_sgd_layout] 2D path-guided SGD:  0.00% @ 0.00e+00 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00[odgi::path_linear_sgd_layout] 2D path-guided SGD: 100.00% @ 3.94e+07 bp/s elapsed: 00:00:00:00 remain: 00:00:00:00
+odgi layout -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.lay -T /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.lay.tsv -t 46 --temp-dir /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ -P
+12.68s user 0.06s system 2020% cpu 0.63s total 30024Kb max memory
+odgi draw -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -c /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.lay -p /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.lay.draw.png -H 1000
+2.84s user 0.17s system 157% cpu 1.92s total 453312Kb max memory
+odgi draw -i /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og -c /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.lay -p /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//goatpox_2_virus_2_2_.fasta.gz.287601a.417fcdf.db2ae42.smooth.final.og.lay.draw_multiqc.png -C -w 20 -H 1000
+3.66s user 0.16s system 160% cpu 2.38s total 506780Kb max memory
+
+  /// MultiQC 🔍 | v1.14
+
+|           multiqc | MultiQC Version v1.21 now available!
+|           multiqc | Not cleaning sample names
+|           multiqc | Search path : /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 40/40  
+|              odgi | Found 2 reports
+|    custom_content | odgi_O: Found 1 sample (image)
+|    custom_content | odgi_viz: Found 1 sample (image)
+|    custom_content | odgi_viz_pos: Found 1 sample (image)
+|    custom_content | odgi_viz_inv: Found 1 sample (image)
+|    custom_content | odgi_viz_depth: Found 1 sample (image)
+|    custom_content | odgi_viz_uncalled: Found 1 sample (image)
+|    custom_content | odgi_draw: Found 1 sample (image)
+|           multiqc | Compressing plot data
+|           multiqc | Report      : ../../../CURRENT/multiqc_report.html
+|           multiqc | Data        : ../../../CURRENT/multiqc_data
+|           multiqc | MultiQC complete
+multiqc /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ -s -o /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT/ -c /mnt/lustre/RDS-live/downing/LSDV_PVG/121_SAMPLE_PVG/CURRENT//multiqc_config.yaml
+3.57s user 4.72s system 176% cpu 4.70s total 108444Kb max memory

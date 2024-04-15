@@ -1,0 +1,2 @@
+Sample	Prokka_mqc-generalstats-prokka-organism	Prokka_mqc-generalstats-prokka-contigs	Prokka_mqc-generalstats-prokka-bases	Prokka_mqc-generalstats-prokka-CDS
+strain	Capripoxvirus species	1	150381	150
