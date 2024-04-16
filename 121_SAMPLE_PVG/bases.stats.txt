@@ -1,2 +1,0 @@
-Total length  = -9
-Gap-free length  = -9

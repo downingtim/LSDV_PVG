@@ -1,3 +1,0 @@
-Sample	Sum of distances: node space
-LSDV_genomes	1.65789
-seqwish	10.4474
