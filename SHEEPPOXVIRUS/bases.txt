@@ -1,1 +1,0 @@
-Total length  = 3810537	Gap-free length  = 3810525
