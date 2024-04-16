@@ -44,11 +44,6 @@ process MAKE_PVG {
     val true, emit: value1
     publishDir ".", mode: "copy"
 
-    println "Project : $workflow.projectDir"
-    println "Git info: $workflow.repository - $workflow.revision [$workflow.commitId]"
-    println "Cmd line: $workflow.commandLine"
-    println "Manifest's pipeline version: $workflow.manifest.version"
-
     exec:
     def file1 = file('bin/number1.txt')
     allLines = file1.readLines()
@@ -79,6 +74,12 @@ process MAKE_PVG {
 
     # visualise gfa
     vg view -F -p -d ${workflow.projectDir}/CURRENT/*.gfa  | dot -Tpng -o ${workflow.projectDir}/CURRENT/${refFasta}.vg.png
+
+    # get lengths of genomes etc
+    perl ${workflow.projectDir}/bin/lengths.pl ${refFasta} 
+
+    # get Bandage stats
+    Bandage info ${workflow.projectDir}/CURRENT/*.gfa  > bandage.stats.txt
     """
 } 
 
@@ -300,9 +301,6 @@ process PAVS {
 }
 
 process WARAGRAPH {
-    tag{"waragraph"}
-    label 'waragraph'
-
     input:
     val ready
     path (refFasta)
@@ -323,10 +321,23 @@ process WARAGRAPH {
     """
 }
 
-process COMMUNITIES {
-    tag{"communities"}
-    label 'communities'
+process BANDAGE {
+    input:
+    val ready
+    path (refFasta)
 
+    output:
+    publishDir ".", mode: "copy"
+
+    script:
+    """
+    # view in Bandage 
+    Bandage load ${workflow.projectDir}/CURRENT/*.gfa --nodewidth=22
+    """
+}
+
+
+process COMMUNITIES {
     input:
     val ready
     path (refFasta)
@@ -337,35 +348,35 @@ process COMMUNITIES {
     script:
     """
     # use data in CURRENT/PANGROWTH/SEQS -> send to COMMUNITIES
-    #     mkdir ${workflow.projectDir}/COMMUNITIES/
+    #     mkdir ${workflow.projectDir}/CURRENT/COMMUNITIES/
 
     # create genomes.fasta in COMMUNITIES using fastix
     bash ${workflow.projectDir}/bin/fastix.sh
 
-    rm -rf ${workflow.projectDir}/COMMUNITIES/genomes.fasta.gz
-    bgzip -@ 4 ${workflow.projectDir}/COMMUNITIES/genomes.fasta
-    samtools faidx ${workflow.projectDir}/COMMUNITIES/genomes.fasta.gz # index
+    rm -rf ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.fasta.gz
+    bgzip -@ 4 ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.fasta
+    samtools faidx ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.fasta.gz # index
 
     # Community detection based on p/w alignments based on 90% ID at mash level with 6
     # mappings per segment, using k-mer of 19 and window of 67
-    wfmash ${workflow.projectDir}/COMMUNITIES/genomes.fasta.gz -p 90 -n 6 -t 44 -m > ${workflow.projectDir}/COMMUNITIES/genomes.mapping.paf
+    wfmash ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.fasta.gz -p 90 -n 6 -t 44 -m > ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.mapping.paf
 
     # Convert PAF mappings into a network:
-    python3 ${workflow.projectDir}/bin/paf2net.py -p ${workflow.projectDir}/COMMUNITIES/genomes.mapping.paf
+    python3 ${workflow.projectDir}/bin/paf2net.py -p ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.mapping.paf
 
     # make plot
-    python3 ${workflow.projectDir}/bin/net2communities.py -e ${workflow.projectDir}/COMMUNITIES/genomes.mapping.paf.edges.list.txt -w ${workflow.projectDir}/COMMUNITIES/genomes.mapping.paf.edges.weights.txt -n ${workflow.projectDir}/COMMUNITIES/genomes.mapping.paf.vertices.id2name.txt --plot
+    python3 ${workflow.projectDir}/bin/net2communities.py -e ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.mapping.paf.edges.list.txt -w ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.mapping.paf.edges.weights.txt -n ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.mapping.paf.vertices.id2name.txt --plot
 
     # mash-based partitioning
-    mash dist ${workflow.projectDir}/COMMUNITIES/genomes.fasta.gz ${workflow.projectDir}/COMMUNITIES/genomes.fasta.gz -s 10000 -i > ${workflow.projectDir}/COMMUNITIES/genomes.distances.tsv
+    mash dist ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.fasta.gz ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.fasta.gz -s 10000 -i > ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.distances.tsv
 
     # get distances
-    python3 ${workflow.projectDir}/bin/mash2net.py -m ${workflow.projectDir}/COMMUNITIES/genomes.distances.tsv
+    python3 ${workflow.projectDir}/bin/mash2net.py -m ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.distances.tsv
 
     # get numbers in each group
     bash ${workflow.projectDir}/bin/community_numbers.sh
 
-    ${workflow.projectDir}/bin/pafgnostic --paf ${workflow.projectDir}/COMMUNITIES/genomes.mapping.paf > ${workflow.projectDir}/COMMUNITIES/genomes.mapping.paf.txt 
+    ${workflow.projectDir}/bin/pafgnostic --paf ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.mapping.paf > ${workflow.projectDir}/CURRENT/COMMUNITIES/genomes.mapping.paf.txt 
     #  pafgnostic outputs a tab-separated table directly to the console with the following columns:
     # - Query name, start, end, strand
     # - Target name, start, end
@@ -385,11 +396,6 @@ process BUSCO {
 
     script:
     """
-    # TO DO
-
-    # need  to set up BUSCO dir  # put busco in path
-    export PATH=$PATH:/mnt/lustre/RDS-live/downing/busco/bin
-
     ${workflow.projectDir}/bin/busco -f -i ${refFasta} -l poxviridae_odb10 -o ${workflow.projectDir}/CURRENT/BUSCO -m genome
     # identifies genes using the poxvirus annotation for busco v5 process annotate {
     """
@@ -411,11 +417,10 @@ process PANAROO {
     Rscript ${workflow.projectDir}/bin/annotate.R gpv
 
     # mamba update panaroo
-    panaroo -i ${workflow.projectDir}/CURRENT/PANGROWTH/SEQS/*PROKKA/*.gff -o ${workflow.projectDir}/CURRENT/PANAROO --clean-mode strict 
+    ${workflow.projectDir}/bin/panaroo -i ${workflow.projectDir}/CURRENT/PANGROWTH/SEQS/*PROKKA/*.gff -o ${workflow.projectDir}/CURRENT/PANAROO --clean-mode strict 
 
     # generate simple plot
     Rscript ${workflow.projectDir}/bin/view_gml.R
-
     
     # visualise presence absence
     Rscript ${workflow.projectDir}/bin/panaroo_viz.R
