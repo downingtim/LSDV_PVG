@@ -1,4 +1,6 @@
-# This is the code and data repository for the lumpy skin disease virus (LSDV) pangenome variation graph (PVG).
+# see https://github.com/downingtim/LSDV-PVG for the latest version
+
+# This was the code and data repository for the lumpy skin disease virus (LSDV) pangenome variation graph (PVG).
 
 ## 1 # The complete LSDV PVG 
 
